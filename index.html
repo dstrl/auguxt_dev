@@ -1,0 +1,1762 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auguxt Dev — Разработка сайтов для бизнеса в Казахстане и СНГ</title>
+  <meta name="description" content="Разработка современных, быстрых и адаптивных сайтов от лендинга до корпоративного портала. Ибрагим Хайрола — веб-разработчик из Алматы.">
+  <link rel="canonical" href="https://auguxt.dev/">
+
+  <!-- Hreflang -->
+  <link rel="alternate" hreflang="ru" href="https://auguxt.dev/">
+  <link rel="alternate" hreflang="x-default" href="https://auguxt.dev/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Auguxt Dev — Разработка сайтов для бизнеса">
+  <meta property="og:description" content="Создание сайтов в Алматы и по СНГ: лендинги, корпоративные порталы, интернет-магазины. Стартовые цены для первых клиентов.">
+  <meta property="og:image" content="https://auguxt.dev/assets/og-preview.png">
+  <meta property="og:url" content="https://auguxt.dev/">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Auguxt Dev — Разработка сайтов">
+  <meta name="twitter:description" content="Создание сайтов в Казахстане и СНГ. Стартовые цены для первых клиентов.">
+  <meta name="twitter:image" content="https://auguxt.dev/assets/og-preview.png">
+
+  <!-- Favicon (SVG) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231E3A8A'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' fill='%23FFFFFF' font-family='sans-serif' font-weight='800' font-size='16'>A</text></svg>">
+
+  <!-- Schema.org JSON-LD (с affiliation вместо alumniOf) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Auguxt Dev",
+    "image": "https://auguxt.dev/assets/og-preview.png",
+    "@id": "https://auguxt.dev/",
+    "url": "https://auguxt.dev/",
+    "telephone": "+77087273646",
+    "email": "ibrahimkhairulin@gmail.com",
+    "priceRange": "20700 KZT - 299000 KZT",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Алматы",
+      "addressCountry": "KZ"
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "Ибрагим Хайрола",
+      "jobTitle": "Веб-разработчик",
+      "affiliation": {
+        "@type": "EducationalOrganization",
+        "name": "Satbayev University"
+      }
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg-canvas: #FAFAFC;
+      --bg-surface: #FFFFFF;
+      --bg-subtle: #F3F4F8;
+      --text-main: #0F172A;
+      --text-muted: #475569;
+      --brand-primary: #1E3A8A;
+      --brand-gradient: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%);
+      --brand-hover: #172554;
+      --brand-focus: #3B82F6;
+      --promo-red: #DC2626;
+      --promo-bg: #FEF2F2;
+      --border-color: #E2E8F0;
+      --border-hover: #CBD5E1;
+      --radius: 12px;
+      --radius-sm: 6px;
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+      --shadow-lg: 0 20px 30px -10px rgba(15, 23, 42, 0.1);
+      --font-stack: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-stack);
+      background-color: var(--bg-canvas);
+      color: var(--text-main);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -60px;
+      left: 16px;
+      background: var(--brand-primary);
+      color: #FFFFFF;
+      padding: 10px 18px;
+      z-index: 1000;
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: var(--radius-sm);
+      transition: top 0.2s ease;
+    }
+    .skip-link:focus {
+      top: 16px;
+    }
+
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+      outline: 3px solid var(--brand-focus);
+      outline-offset: 3px;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Навигация */
+    header {
+      border-bottom: 1px solid var(--border-color);
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: all 0.2s ease;
+    }
+
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 76px;
+    }
+
+    .brand-logo {
+      font-weight: 800;
+      font-size: 1.35rem;
+      color: var(--text-main);
+      text-decoration: none;
+      letter-spacing: -0.03em;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .brand-logo span {
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.15s ease;
+    }
+    .nav-links a:hover {
+      color: var(--brand-primary);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 8px 12px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: var(--text-main);
+    }
+
+    .header-cta {
+      display: none;
+    }
+
+    @media (min-width: 769px) {
+      .header-cta {
+        display: inline-flex;
+      }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      border-radius: var(--radius);
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      text-align: center;
+      border: 1px solid transparent;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-main {
+      background: var(--brand-gradient);
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+    }
+    .btn-main:hover {
+      background: var(--brand-primary);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+    }
+
+    .btn-outline {
+      border-color: var(--border-color);
+      background: var(--bg-surface);
+      color: var(--text-main);
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-outline:hover {
+      border-color: var(--border-hover);
+      background: var(--bg-subtle);
+      transform: translateY(-1px);
+    }
+
+    /* Секции */
+    section {
+      padding: 96px 0;
+      scroll-margin-top: 80px;
+      position: relative;
+    }
+
+    .hero-section {
+      padding: 120px 0 100px;
+      text-align: center;
+      background: radial-gradient(circle at 50% 20%, rgba(37, 99, 235, 0.08) 0%, transparent 60%);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(30, 58, 138, 0.06);
+      border: 1px solid rgba(30, 58, 138, 0.15);
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--brand-primary);
+      margin-bottom: 24px;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: #10B981;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+      }
+    }
+
+    .hero-section h1 {
+      font-size: clamp(2.3rem, 5vw, 3.8rem);
+      line-height: 1.15;
+      font-weight: 800;
+      margin-bottom: 24px;
+      letter-spacing: -0.03em;
+      color: var(--text-main);
+    }
+
+    .hero-section p {
+      max-width: 680px;
+      margin: 0 auto 40px;
+      font-size: 1.2rem;
+      color: var(--text-muted);
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .section-header {
+      margin-bottom: 56px;
+      text-align: center;
+    }
+
+    .section-header h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      margin-top: 10px;
+      font-size: 1.05rem;
+    }
+
+    /* Баннер стартовых цен */
+    .discount-banner {
+      background: linear-gradient(135deg, #FEF2F2 0%, #FFF1F2 100%);
+      border: 1px solid #FECDD3;
+      border-radius: var(--radius);
+      padding: 16px 24px;
+      max-width: 800px;
+      margin: -24px auto 48px;
+      text-align: center;
+      color: #9F1239;
+      font-weight: 600;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      box-shadow: 0 4px 12px rgba(225, 29, 72, 0.06);
+    }
+
+    .discount-badge-icon {
+      background: var(--promo-red);
+      color: #FFFFFF;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    /* Карточки цен */
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+      gap: 24px;
+    }
+
+    .pricing-card {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 36px 24px;
+      background: var(--bg-surface);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--border-hover);
+    }
+
+    .pricing-card.featured {
+      border: 2px solid var(--brand-primary);
+      position: relative;
+      box-shadow: var(--shadow-lg);
+      background: #FFFFFF;
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--brand-gradient);
+      color: #FFFFFF;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+    }
+
+    .price-box {
+      margin: 20px 0 24px;
+    }
+
+    .price-old-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    /* Контраст проверен по WCAG AA (>= 4.5:1 к белому фону) */
+    .price-old {
+      font-size: 1rem;
+      color: #64748B;
+      text-decoration: line-through;
+      font-weight: 500;
+    }
+
+    .discount-pill {
+      background: var(--promo-bg);
+      color: var(--promo-red);
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid #FECACA;
+    }
+
+    .price-value {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--text-main);
+      letter-spacing: -0.03em;
+      margin-top: 6px;
+    }
+
+    /* Сетка процесса */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+      gap: 20px;
+    }
+
+    @media (min-width: 1024px) {
+      .process-grid {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+
+    .step-item {
+      padding: 32px 20px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      background: var(--bg-surface);
+      position: relative;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+    }
+    .step-item:hover {
+      border-color: var(--border-hover);
+      box-shadow: var(--shadow-md);
+    }
+
+    .step-number {
+      font-size: 1.8rem;
+      font-weight: 900;
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+
+    /* Карточки проектов */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
+      gap: 28px;
+    }
+
+    .country-block {
+      margin-bottom: 56px;
+    }
+
+    .country-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      padding: 8px 18px;
+      border-radius: 30px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .card {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 32px;
+      background: var(--bg-surface);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--border-hover);
+    }
+
+    .card-meta {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--brand-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .card h4 {
+      font-size: 1.35rem;
+      margin: 10px 0 14px;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.96rem;
+      line-height: 1.65;
+    }
+
+    /* Технологии */
+    .tech-stack {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .tech-chip {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      padding: 10px 22px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.15s ease;
+    }
+    .tech-chip:hover {
+      border-color: var(--brand-focus);
+      color: var(--brand-primary);
+    }
+
+    /* Обо мне */
+    .about-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+      background: var(--bg-surface);
+      padding: 56px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-md);
+    }
+
+    .about-box img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-color);
+      background: #E2E8F0;
+    }
+
+    /* FAQ */
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .faq-item {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      background: var(--bg-surface);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      transition: border-color 0.15s ease;
+    }
+    .faq-item:hover {
+      border-color: var(--border-hover);
+    }
+
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      padding: 20px 24px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-main);
+    }
+
+    .faq-icon {
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--brand-primary);
+      transition: transform 0.2s ease;
+      display: inline-block;
+      line-height: 1;
+    }
+
+    .faq-answer {
+      padding: 0 24px 22px;
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      display: none;
+      line-height: 1.6;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    /* Форма */
+    .form-wrapper {
+      max-width: 580px;
+      margin: 0 auto;
+      border: 1px solid var(--border-color);
+      padding: 40px;
+      border-radius: var(--radius);
+      background: var(--bg-surface);
+      box-shadow: var(--shadow-md);
+    }
+
+    .field {
+      margin-bottom: 22px;
+    }
+
+    .field label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+    }
+
+    .field input, .field textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      font-size: 0.98rem;
+      font-family: inherit;
+      color: var(--text-main);
+      background-color: #FFFFFF;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    .field input:focus, .field textarea:focus {
+      border-color: var(--brand-focus);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+      outline: none;
+    }
+
+    .checkbox-field {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 24px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .checkbox-field input {
+      margin-top: 4px;
+      width: 18px;
+      height: 18px;
+      accent-color: var(--brand-primary);
+    }
+
+    .form-status {
+      display: none;
+      padding: 12px;
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    .form-status.success {
+      display: block;
+      background: #DEF7EC;
+      color: #03543F;
+    }
+    .form-status.error {
+      display: block;
+      background: #FDE8E8;
+      color: #9B1C1C;
+    }
+
+    .modal-link-btn {
+      background: none;
+      border: none;
+      padding: 0;
+      color: var(--brand-primary);
+      text-decoration: underline;
+      font: inherit;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .modal-link-btn:hover {
+      color: var(--brand-hover);
+    }
+
+    .contacts-box {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 48px 32px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .contact-links-grid {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 64px 0 32px;
+      background: var(--bg-subtle);
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+
+    .footer-col h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      letter-spacing: -0.01em;
+    }
+
+    .footer-col p, .footer-col ul {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      list-style: none;
+    }
+
+    .footer-col a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+    .footer-col a:hover {
+      text-decoration: underline;
+      color: var(--text-main);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border-color);
+      padding-top: 28px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Cookie Banner */
+    .cookie-alert {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      right: 24px;
+      max-width: 460px;
+      background: #0F172A;
+      color: #FFFFFF;
+      padding: 22px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+      z-index: 1000;
+      display: none;
+    }
+
+    .cookie-alert p {
+      font-size: 0.88rem;
+      line-height: 1.5;
+      margin-bottom: 14px;
+      color: #CBD5E1;
+    }
+
+    .cookie-alert button.modal-link-btn {
+      color: #93C5FD;
+    }
+
+    .cookie-buttons {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .cookie-buttons button {
+      padding: 8px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: #FFFFFF;
+      color: #0F172A;
+      border: 1px solid #FFFFFF;
+    }
+
+    /* Модальные окна */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 2000;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-window {
+      background: #FFFFFF;
+      width: 100%;
+      max-width: 760px;
+      max-height: 85vh;
+      border-radius: var(--radius);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    .modal-header {
+      padding: 20px 28px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-header h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .modal-close-btn {
+      background: transparent;
+      border: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+      color: var(--text-muted);
+      padding: 4px 8px;
+      border-radius: var(--radius-sm);
+    }
+
+    .modal-body {
+      padding: 28px;
+      overflow-y: auto;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      line-height: 1.65;
+    }
+
+    .modal-body h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 20px 0 8px;
+      text-transform: uppercase;
+      color: var(--brand-primary);
+    }
+
+    .modal-body p {
+      margin-bottom: 12px;
+      color: var(--text-muted);
+    }
+
+    .modal-body ul {
+      margin: 0 0 16px 20px;
+      color: var(--text-muted);
+    }
+
+    .modal-body li {
+      margin-bottom: 6px;
+    }
+
+    .modal-footer {
+      padding: 16px 28px;
+      border-top: 1px solid var(--border-color);
+      background: var(--bg-subtle);
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        right: 0;
+        background: #FFFFFF;
+        padding: 20px 24px;
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: var(--shadow-md);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .about-box {
+        grid-template-columns: 1fr;
+        padding: 28px 20px;
+        gap: 28px;
+      }
+
+      .form-wrapper {
+        padding: 28px 20px;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Перейти к основному содержимому</a>
+
+  <!-- Шапка -->
+  <header>
+    <div class="container nav-bar">
+      <a href="#" class="brand-logo" aria-label="Auguxt Dev — на главную">
+        <span>Auguxt</span> Dev
+      </a>
+      
+      <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-label="Открыть меню навигации">
+        ☰
+      </button>
+
+      <nav aria-label="Основная навигация">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#pricing">Цены</a></li>
+          <li><a href="#process">Процесс</a></li>
+          <li><a href="#projects">Проекты</a></li>
+          <li><a href="#about">Обо мне</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact-me">Контакты</a></li>
+        </ul>
+      </nav>
+      
+      <a href="#discuss" class="btn btn-main header-cta">Оставить заявку</a>
+    </div>
+  </header>
+
+  <div id="main-content-wrapper">
+    <main id="main-content">
+      
+      <!-- Первый экран (Hero) -->
+      <section class="hero-section">
+        <div class="container">
+          <div class="hero-badge">
+            <span class="pulse-dot"></span>
+            Принимаю заказы на разработку сайтов
+          </div>
+          <h1>Сайты для бизнеса в Казахстане и СНГ: от лендинга до портала</h1>
+          <p>Создаю чистые, скоростные и адаптивные веб-решения под задачи бизнеса. Индивидуальная разработка с акцентом на надежность, структуру и соблюдение сроков.</p>
+          <div class="hero-buttons">
+            <a href="#discuss" class="btn btn-main">Обсудить проект</a>
+            <a href="#projects" class="btn btn-outline">Посмотреть работы</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Раздел: Цены (Стартовые цены на Лендинг и Корпоративный) -->
+      <section id="pricing" style="background-color: var(--bg-subtle);">
+        <div class="container">
+          <div class="section-header">
+            <h2>Стоимость разработки</h2>
+            <p>Фиксированные и прозрачные тарифы без скрытых переплат</p>
+          </div>
+
+          <!-- Баннер стартовых цен -->
+          <div class="discount-banner">
+            <span class="discount-badge-icon">АКЦИЯ -70%</span>
+            <span>Стартовые цены для первых клиентов из Казахстана: скидка 70% действует на разработку лендингов и корпоративных сайтов.</span>
+          </div>
+
+          <div class="grid-4">
+            <!-- 1. Лендинг со скидкой -->
+            <div class="pricing-card">
+              <div>
+                <h3 style="font-size: 1.25rem;">Лендинг</h3>
+                <p style="color: var(--text-muted); font-size: 0.92rem; margin-top: 6px;">Одностраничный сайт для презентации товара, услуги или промо-кампании.</p>
+                <div class="price-box">
+                  <div class="price-old-wrapper">
+                    <span class="price-old">69 000 ₸</span>
+                    <span class="discount-pill">-70%</span>
+                  </div>
+                  <div class="price-value">20 700 ₸</div>
+                </div>
+              </div>
+              <a href="#discuss" class="btn btn-outline" style="width: 100%;">Заказать лендинг</a>
+            </div>
+
+            <!-- 2. Корпоративный со скидкой -->
+            <div class="pricing-card featured">
+              <span class="pricing-badge">Стартовая цена</span>
+              <div>
+                <h3 style="font-size: 1.25rem;">Корпоративный</h3>
+                <p style="color: var(--text-muted); font-size: 0.92rem; margin-top: 6px;">Многостраничный сайт компании с каталогом услуг, разделами и историей бренда.</p>
+                <div class="price-box">
+                  <div class="price-old-wrapper">
+                    <span class="price-old">149 000 ₸</span>
+                    <span class="discount-pill">-70%</span>
+                  </div>
+                  <div class="price-value">44 700 ₸</div>
+                </div>
+              </div>
+              <a href="#discuss" class="btn btn-main" style="width: 100%;">Выбрать тариф</a>
+            </div>
+
+            <!-- 3. Интернет-магазин (без скидок, стандартная цена) -->
+            <div class="pricing-card">
+              <div>
+                <h3 style="font-size: 1.25rem;">Интернет-магазин</h3>
+                <p style="color: var(--text-muted); font-size: 0.92rem; margin-top: 6px;">Полнофункциональный магазин: каталог, корзина, фильтры и приём заказов.</p>
+                <div class="price-box">
+                  <div class="price-value" style="margin-top: 24px;">299 000 ₸</div>
+                </div>
+              </div>
+              <a href="#discuss" class="btn btn-outline" style="width: 100%;">Заказать магазин</a>
+            </div>
+
+            <!-- 4. Доработки (без скидок, стандартная цена) -->
+            <div class="pricing-card">
+              <div>
+                <h3 style="font-size: 1.25rem;">Доработки</h3>
+                <p style="color: var(--text-muted); font-size: 0.92rem; margin-top: 6px;">Устранение багов, оптимизация скорости, верстка новых блоков и интеграции.</p>
+                <div class="price-box">
+                  <div class="price-value" style="margin-top: 24px;">от 10 000 ₸</div>
+                </div>
+              </div>
+              <a href="#discuss" class="btn btn-outline" style="width: 100%;">Обсудить задачу</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Раздел: Процесс работы (5 колонок) -->
+      <section id="process">
+        <div class="container">
+          <div class="section-header">
+            <h2>Процесс работы</h2>
+            <p>Понятные и предсказуемые этапы реализации каждого проекта</p>
+          </div>
+          <div class="process-grid">
+            <div class="step-item">
+              <div class="step-number">01</div>
+              <h3 style="font-size: 1.2rem; margin-bottom: 8px;">ТЗ</h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem;">Определяем задачи, структуру и требования сайта.</p>
+            </div>
+            <div class="step-item">
+              <div class="step-number">02</div>
+              <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Дизайн</h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem;">Создаём внешний вид и согласовываем его с вами.</p>
+            </div>
+            <div class="step-item">
+              <div class="step-number">03</div>
+              <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Разработка</h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem;">Верстаем и программируем адаптивный сайт.</p>
+            </div>
+            <div class="step-item">
+              <div class="step-number">04</div>
+              <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Сдача</h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem;">Тестируем, исправляем ошибки и передаём готовый сайт.</p>
+            </div>
+            <div class="step-item">
+              <div class="step-number">05</div>
+              <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Поддержка</h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem;">Обновления, исправления и дальнейшие доработки.</p>
+            </div>
+          </div>
+
+          <div style="margin-top: 64px; text-align: center;">
+            <h3 style="font-size: 1.3rem; margin-bottom: 8px;">Технологический стек</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Проверенные инструменты для надежной и быстрой работы</p>
+            <div class="tech-stack">
+              <span class="tech-chip">HTML5</span>
+              <span class="tech-chip">CSS3</span>
+              <span class="tech-chip">JavaScript</span>
+              <span class="tech-chip">Python</span>
+              <span class="tech-chip">PostgreSQL</span>
+              <span class="tech-chip">Git</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Раздел: Проекты -->
+      <section id="projects" style="background-color: var(--bg-subtle);">
+        <div class="container">
+          <div class="section-header">
+            <h2>Реализованные проекты</h2>
+            <p>Практический опыт разработки веб-систем для бизнеса и организаций в Казахстане и России</p>
+          </div>
+
+          <!-- Казахстан -->
+          <div class="country-block">
+            <div class="country-title">
+              <span>🇰🇿</span> Проекты в Казахстане
+            </div>
+            <div class="grid-2">
+              <div class="card">
+                <div>
+                  <span class="card-meta">Сфера услуг • Алматы</span>
+                  <h4>APAN BANYA</h4>
+                  <p>
+                    Для проекта APAN BANYA я разработал полноценное цифровое представление бренда в интернете — от продуманной структуры страниц до финальной реализации интерфейса. Выстроил подачу услуг так, чтобы посетитель мог быстро ознакомиться с предложением, получить необходимую информацию и перейти к записи. Отдельное внимание уделил визуальной подаче, удобству навигации и адаптации сайта под мобильные устройства. В результате получился современный и понятный сайт, который работает не только как визитная карточка, но и как инструмент взаимодействия с клиентами.
+                  </p>
+                </div>
+                <div style="margin-top: 24px;">
+                  <a 
+                    href="https://ooon.ai/kz/almaty/banya/apan.banya/ru/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="modal-link-btn"
+                    aria-label="Посмотреть проект APAN BANYA (откроется в новой вкладке)"
+                  >
+                    Посмотреть проект APAN BANYA &rarr;
+                  </a>
+                </div>
+              </div>
+
+              <div class="card">
+                <div>
+                  <span class="card-meta">Образование • Алматы</span>
+                  <h4>КРМУ</h4>
+                  <p>
+                    В рамках проекта КРМУ была разработана масштабная структура корпоративного сайта с большим объёмом информации. Я продумал логику расположения контента, структуру основных разделов и навигацию, чтобы пользователю было максимально легко находить нужную информацию. Реализовал современный интерфейс и адаптивную вёрстку для комфортной работы с сайтом на различных устройствах. Основной задачей было объединить большое количество образовательной и организационной информации в единую, понятную и удобную цифровую среду.
+                  </p>
+                </div>
+                <div style="margin-top: 24px;">
+                  <a 
+                    href="https://new.krmu.edu.kz/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="modal-link-btn"
+                    aria-label="Перейти на сайт КРМУ (откроется в новой вкладке)"
+                  >
+                    Перейти на сайт new.krmu.edu.kz &rarr;
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Россия -->
+          <div class="country-block" style="margin-bottom: 0;">
+            <div class="country-title">
+              <span>🇷🇺</span> Проекты в России
+            </div>
+            <div class="grid-2">
+              <div class="card">
+                <div>
+                  <span class="card-meta">Автобизнес • Детейлинг</span>
+                  <h4>CarBase</h4>
+                  <p>
+                    Разработка веб-сайта для детейлинг-центра и автомойки CarBase. Продуманный каталог услуг по уходу за автомобилями, детализированные прайс-листы, примеры работ и удобный интерфейс записи на обслуживание.
+                  </p>
+                </div>
+                <div style="margin-top: 24px;">
+                  <a 
+                    href="https://carbase-dc.ru/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="modal-link-btn"
+                    aria-label="Перейти на сайт CarBase (откроется в новой вкладке)"
+                  >
+                    Перейти на сайт carbase-dc.ru &rarr;
+                  </a>
+                </div>
+              </div>
+
+              <div class="card">
+                <div>
+                  <span class="card-meta">Творчество • Образование</span>
+                  <h4>Академия Игоря Крутого</h4>
+                  <p>
+                    Веб-ресурс для филиала Академии Игоря Крутого в Санкт-Петербурге. Презентация творческих направлений обучения (вокал, хореография, актерское мастерство), расписания, событий и запись на прослушивания.
+                  </p>
+                </div>
+                <div style="margin-top: 24px;">
+                  <a 
+                    href="https://academy-ik-spb.ru/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="modal-link-btn"
+                    aria-label="Перейти на сайт Академии Игоря Крутого (откроется в новой вкладке)"
+                  >
+                    Перейти на сайт academy-ik-spb.ru &rarr;
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Раздел: Обо мне -->
+      <section id="about">
+        <div class="container">
+          <div class="about-box">
+            <div>
+              <h2 style="font-size: 2rem; margin-bottom: 18px;">Обо мне</h2>
+              <p style="color: var(--text-muted); margin-bottom: 14px;">
+                Я — опытный разработчик из Алматы, занимаюсь веб-разработкой с 2021 года. Создаю современные, функциональные и удобные сайты под задачи бизнеса в Казахстане и СНГ.
+              </p>
+              <p style="color: var(--text-muted); margin-bottom: 14px;">
+                Свободно владею английским языком на уровне носителя, что позволяет мне работать с передовой документацией и международными инженерными практиками.
+              </p>
+              <p style="color: var(--text-muted); margin-bottom: 14px;">
+                Сейчас обучаюсь в одном из ведущих технических вузов Казахстана — <strong>Satbayev University</strong>, по специальности <strong>Computer Science</strong>, на полном образовательном гранте.
+              </p>
+              <p style="color: var(--text-muted);">
+                Постоянно развиваю свои навыки и стремлюсь создавать не просто красивые сайты, а качественные цифровые решения, которые действительно работают на результат.
+              </p>
+            </div>
+            <div>
+              <img 
+                src="./assets/workspace.webp" 
+                alt="Рабочее пространство веб-разработчика" 
+                width="800"
+                height="533"
+                loading="lazy"
+                onerror="this.src='https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80'"
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Раздел: FAQ -->
+      <section id="faq" style="background-color: var(--bg-subtle);">
+        <div class="container">
+          <div class="section-header">
+            <h2>Часто задаваемые вопросы</h2>
+            <p>Ответы на ключевые моменты сотрудничества</p>
+          </div>
+          <div class="faq-container">
+            <div class="faq-item">
+              <button type="button" class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                <span>Сколько занимает разработка сайта?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                В среднем от 3 до 14 дней — срок зависит от типа сайта, количества страниц и сложности функционала.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                <span>Как проходит оплата?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Работа начинается после согласования ТЗ и внесения 50% предоплаты. Оставшаяся сумма оплачивается после завершения и проверки проекта.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                <span>Что входит в поддержку?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Исправление ошибок, небольшие изменения контента, техническая помощь и консультации после запуска сайта.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                <span>Как проходит возврат?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Если работа ещё не начата — предоплата возвращается в полном объёме. После начала разработки возврат рассчитывается с учётом уже выполненной работы.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Раздел: Давайте обсудим ваш проект -->
+      <section id="discuss">
+        <div class="container">
+          <div class="section-header">
+            <h2>Давайте обсудим ваш проект</h2>
+            <p>Есть идея для сайта или уже готовое техническое задание? Свяжитесь со мной — обсудим задачу, подберём оптимальное решение и определим дальнейшие шаги.</p>
+          </div>
+          
+          <div class="form-wrapper">
+            <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+              <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+              <input type="hidden" name="subject" value="Новая заявка с сайта Auguxt Dev">
+              <input type="hidden" name="from_name" value="Auguxt Dev Site">
+              
+              <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+              <div id="formStatus" class="form-status"></div>
+
+              <div class="field">
+                <label for="userName">Ваше имя *</label>
+                <input type="text" id="userName" name="name" required autocomplete="name" placeholder="Иван">
+              </div>
+
+              <div class="field">
+                <label for="userEmail">Электронная почта *</label>
+                <input type="email" id="userEmail" name="email" required autocomplete="email" placeholder="example@domain.com">
+              </div>
+
+              <div class="field">
+                <label for="userPhone">Номер телефона / WhatsApp</label>
+                <input type="tel" id="userPhone" name="phone" placeholder="+7 (___) ___-__-__">
+              </div>
+
+              <div class="field">
+                <label for="userCompany">Название компании</label>
+                <input type="text" id="userCompany" name="company" placeholder="ТОО / ИП / Бренд">
+              </div>
+
+              <div class="field">
+                <label for="userMessage">Описание проекта *</label>
+                <textarea id="userMessage" name="message" rows="4" required placeholder="Опишите задачу, примерные сроки или вопросы..."></textarea>
+              </div>
+
+              <div class="checkbox-field">
+                <input type="checkbox" id="userConsent" name="consent" required>
+                <label for="userConsent">
+                  Я даю согласие на обработку контактных данных в соответствии с 
+                  <button type="button" class="modal-link-btn" onclick="openModal('privacyModal')">Политикой конфиденциальности</button>.
+                </label>
+              </div>
+
+              <button type="submit" id="submitBtn" class="btn btn-main" style="width: 100%;">Отправить заявку</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Раздел: Связаться со мной -->
+      <section id="contact-me" style="background-color: var(--bg-subtle);">
+        <div class="container">
+          <div class="contacts-box">
+            <h2 style="font-size: 2rem; margin-bottom: 12px;">Связаться со мной</h2>
+            <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 1.05rem;">
+              Если у вас есть идея, проект или вопрос — свяжитесь со мной удобным для вас способом. Буду рад обсудить ваш проект и ответить на любые вопросы.
+            </p>
+            <div class="contact-links-grid">
+              <a href="https://wa.me/77087273646" target="_blank" rel="noopener noreferrer" class="btn btn-main">
+                WhatsApp: +7 (708) 727-36-46
+              </a>
+              <a href="mailto:ibrahimkhairulin@gmail.com" class="btn btn-outline">
+                ibrahimkhairulin@gmail.com
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Подвал сайта -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-col">
+            <h4>Реквизиты</h4>
+            <p>
+              <strong>Исполнитель:</strong> Ибрагим Хайрола<br>
+              <strong>Бренд:</strong> Auguxt Dev<br>
+              <strong>Город:</strong> Алматы, Казахстан<br>
+              <strong>Email:</strong> <a href="mailto:ibrahimkhairulin@gmail.com">ibrahimkhairulin@gmail.com</a><br>
+              <strong>WhatsApp:</strong> <a href="https://wa.me/77087273646" target="_blank" rel="noopener noreferrer">+7 (708) 727-36-46</a>
+            </p>
+          </div>
+
+          <div class="footer-col">
+            <h4>Документы</h4>
+            <ul>
+              <li><button type="button" class="modal-link-btn" onclick="openModal('termsModal')">Условия обслуживания (T&C)</button></li>
+              <li><button type="button" class="modal-link-btn" onclick="openModal('privacyModal')">Политика конфиденциальности</button></li>
+              <li><button type="button" class="modal-link-btn" onclick="openModal('cookieModal')">Политика файлов cookie</button></li>
+              <li><button type="button" class="modal-link-btn" onclick="openModal('refundModal')">Политика возврата средств</button></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Навигация</h4>
+            <ul>
+              <li><a href="#pricing">Цены</a></li>
+              <li><a href="#process">Процесс</a></li>
+              <li><a href="#projects">Проекты</a></li>
+              <li><a href="#about">Обо мне</a></li>
+              <li><a href="#faq">FAQ</a></li>
+              <li><a href="#contact-me">Контакты</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          &copy; 2026 Auguxt Dev. Все права защищены.
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Cookie Banner -->
+  <aside class="cookie-alert" id="cookieAlert" role="region" aria-label="Согласие на использование файлов cookie">
+    <p>
+      Сайт использует только технические файлы cookie для корректной навигации. Подробнее в 
+      <button type="button" class="modal-link-btn" onclick="openModal('cookieModal')">Политике cookie</button>.
+    </p>
+    <div class="cookie-buttons">
+      <button type="button" onclick="acceptCookies()">Понятно</button>
+    </div>
+  </aside>
+
+  <!-- 1. Модалка: Политика конфиденциальности -->
+  <div class="modal-overlay" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyTitle" onclick="handleOverlayClick(event, 'privacyModal')">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3 id="privacyTitle">Политика конфиденциальности</h3>
+        <button type="button" class="modal-close-btn" onclick="closeModal('privacyModal')" aria-label="Закрыть">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Дата вступления в силу:</strong> 14 марта 2026 г.</p>
+        <p>Настоящая политика описывает, как Ибрагим Хайрола, работающий под брендом <strong>Auguxt Dev</strong> (далее «мы»), собирает, использует и защищает персональные данные посетителей сайта <strong>auguxt.dev</strong> (далее «Сайт»).</p>
+        <p><strong>Контакты:</strong> ibrahimkhairulin@gmail.com, +7 (708) 727-36-46, г. Алматы, Республика Казахстан.</p>
+
+        <h4>Какие данные мы собираем</h4>
+        <p><strong>Данные, которые вы передаёте сами:</strong> имя, email, номер телефона, название компании и описание проекта при заполнении формы обратной связи. Данные поступают на почту через защищенный шлюз Web3Forms.</p>
+        <p><strong>Технические данные:</strong> IP-адрес, тип браузера и устройства, посещённые страницы, время визита, фиксируемые сервером хостинга.</p>
+        <p>Мы не принимаем платёжные данные через Сайт и не собираем специальные категории данных.</p>
+
+        <h4>Для чего мы используем данные</h4>
+        <ul>
+          <li>Чтобы ответить на ваш запрос и обсудить создание сайта;</li>
+          <li>Чтобы подготовить коммерческое предложение и заключить договор;</li>
+          <li>Чтобы выполнять обязательства по разработке;</li>
+          <li>Соблюдать законы Республики Казахстан.</li>
+        </ul>
+
+        <h4>Кому мы передаём данные</h4>
+        <p>Мы не продаём данные третьим лицам. Доступ к технической обработке имеют только:</p>
+        <ul>
+          <li>Хостинг GitHub Pages (GitHub Inc.);</li>
+          <li>Шлюз передачи формы Web3Forms;</li>
+          <li>Почтовый сервис Gmail (Google LLC);</li>
+          <li>Государственные органы РК строго по закону.</li>
+        </ul>
+
+        <h4>Cookie-файлы</h4>
+        <p>Сайт применяет исключительно технические cookie для базового функционирования интерфейса. Рекламные трекеры отсутствуют.</p>
+
+        <h4>Срок хранения</h4>
+        <p>Данные из заявок хранятся до 12 месяцев при отсутствии заключенного договора. По договорам — в течение срока действия обязательств и требований законодательства.</p>
+
+        <h4>Ваши права</h4>
+        <p>Вы имеете право запросить копию данных, потребовать их изменение или удаление, написав на <a href="mailto:ibrahimkhairulin@gmail.com">ibrahimkhairulin@gmail.com</a>.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-main" onclick="closeModal('privacyModal')">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Модалка: Условия обслуживания (T&C) -->
+  <div class="modal-overlay" id="termsModal" role="dialog" aria-modal="true" aria-labelledby="termsTitle" onclick="handleOverlayClick(event, 'termsModal')">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3 id="termsTitle">Условия обслуживания (Terms & Conditions)</h3>
+        <button type="button" class="modal-close-btn" onclick="closeModal('termsModal')" aria-label="Закрыть">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Дата вступления в силу:</strong> 14 марта 2026 г.</p>
+        <h4>1. Общие положения</h4>
+        <p>Настоящие условия регулируют порядок взаимодействия между заказчиком и разработчиком Ибрагимом Хайрола (Auguxt Dev). Оформление заявки на сайте означает согласие с данными условиями.</p>
+
+        <h4>2. Порядок работ и оплата</h4>
+        <p>Разработка осуществляется на основании согласованного технического задания (ТЗ). Стандартный порядок взаиморасчетов: предоплата 50% до начала проектирования, оставшиеся 50% — после завершения тестирования и демонстрации готового сайта.</p>
+
+        <h4>3. Интеллектуальная собственность</h4>
+        <p>После полной оплаты проекта все исключительные права на разработанный исходный код и структуру сайта передаются заказчику.</p>
+
+        <h4>4. Гарантии и ответственность</h4>
+        <p>Разработчик предоставляет <strong>30 дней бесплатных технических исправлений</strong> со дня сдачи проекта при обнаружении любых дефектов в рамках утверждённого ТЗ.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-main" onclick="closeModal('termsModal')">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Модалка: Политика Cookie -->
+  <div class="modal-overlay" id="cookieModal" role="dialog" aria-modal="true" aria-labelledby="cookieTitle" onclick="handleOverlayClick(event, 'cookieModal')">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3 id="cookieTitle">Политика использования cookie</h3>
+        <button type="button" class="modal-close-btn" onclick="closeModal('cookieModal')" aria-label="Закрыть">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Дата вступления в силу:</strong> 14 марта 2026 г.</p>
+        <h4>Что такое cookie?</h4>
+        <p>Cookie — небольшие текстовые файлы, сохраняемые на вашем устройстве для обеспечения корректной работы веб-сайта.</p>
+
+        <h4>Какие cookie мы используем?</h4>
+        <p>Auguxt Dev использует исключительно технические файлы cookie (например, отметку о закрытии плашки). Маркетинговые или следящие cookie сторонних сетей отсутствуют.</p>
+
+        <h4>Управление cookie</h4>
+        <p>Вы можете в любой момент заблокировать или удалить файлы cookie через настройки вашего браузера.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-main" onclick="closeModal('cookieModal')">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Модалка: Политика возврата (Refund Policy) -->
+  <div class="modal-overlay" id="refundModal" role="dialog" aria-modal="true" aria-labelledby="refundTitle" onclick="handleOverlayClick(event, 'refundModal')">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3 id="refundTitle">Политика возврата средств (Refund Policy)</h3>
+        <button type="button" class="modal-close-btn" onclick="closeModal('refundModal')" aria-label="Закрыть">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Дата вступления в силу:</strong> 14 марта 2026 г.</p>
+        <h4>Условия аннулирования и возврата</h4>
+        <ul>
+          <li><strong>До начала разработки:</strong> Если заказчик принимает решение отказаться от проекта до старта проектирования, сумма внесённой предоплаты возвращается в полном объёме (100%).</li>
+          <li><strong>В процессе разработки:</strong> При досрочном расторжении договора после утверждения ТЗ возврат рассчитывается за вычетом фактически понесённых расходов и стоимости уже выполненных этапов.</li>
+          <li><strong>После сдачи работ:</strong> После финального утверждения проекта и передачи исходных файлов возврат средств не производится.</li>
+        </ul>
+        <p>Для подачи заявки на возврат направьте письмо на <a href="mailto:ibrahimkhairulin@gmail.com">ibrahimkhairulin@gmail.com</a>.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-main" onclick="closeModal('refundModal')">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Скрипты -->
+  <script>
+    // 1. Мобильное меню
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', !isExpanded);
+      navLinks.classList.toggle('active');
+    });
+
+    document.querySelectorAll('#navLinks a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // 2. FAQ с aria-expanded и индикатором
+    function toggleFaq(btn) {
+      const item = btn.parentElement;
+      const isActive = item.classList.contains('active');
+
+      document.querySelectorAll('.faq-item').forEach(el => {
+        el.classList.remove('active');
+        const qBtn = el.querySelector('.faq-question');
+        if (qBtn) {
+          qBtn.setAttribute('aria-expanded', 'false');
+          const ic = qBtn.querySelector('.faq-icon');
+          if (ic) ic.textContent = '+';
+        }
+      });
+
+      if (!isActive) {
+        item.classList.add('active');
+        btn.setAttribute('aria-expanded', 'true');
+        const icon = btn.querySelector('.faq-icon');
+        if (icon) icon.textContent = '−';
+      }
+    }
+
+    // 3. Cookie баннер с безопасным try/catch
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        if (!localStorage.getItem('auguxt_cookies_accepted')) {
+          document.getElementById('cookieAlert').style.display = 'block';
+        }
+      } catch (e) {
+        document.getElementById('cookieAlert').style.display = 'block';
+      }
+    });
+
+    function acceptCookies() {
+      try {
+        localStorage.setItem('auguxt_cookies_accepted', 'true');
+      } catch (e) {}
+      document.getElementById('cookieAlert').style.display = 'none';
+    }
+
+    // 4. Доступные модалки с Focus Trap (скрывают и main-content-wrapper, и cookieAlert)
+    let previousActiveElement = null;
+    let currentModalFocusables = [];
+
+    function openModal(id) {
+      previousActiveElement = document.activeElement;
+      const modal = document.getElementById(id);
+      modal.classList.add('active');
+      
+      // Скрываем фон от скринридеров
+      document.getElementById('main-content-wrapper').setAttribute('aria-hidden', 'true');
+      const cookieBanner = document.getElementById('cookieAlert');
+      if (cookieBanner) cookieBanner.setAttribute('aria-hidden', 'true');
+
+      document.body.style.overflow = 'hidden';
+
+      currentModalFocusables = Array.from(modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'));
+      if (currentModalFocusables.length) {
+        currentModalFocusables[0].focus();
+      }
+    }
+
+    function closeModal(id) {
+      const modal = document.getElementById(id);
+      modal.classList.remove('active');
+      
+      // Возвращаем видимость фону
+      document.getElementById('main-content-wrapper').removeAttribute('aria-hidden');
+      const cookieBanner = document.getElementById('cookieAlert');
+      if (cookieBanner) cookieBanner.removeAttribute('aria-hidden');
+
+      document.body.style.overflow = '';
+      currentModalFocusables = [];
+      if (previousActiveElement) previousActiveElement.focus();
+    }
+
+    function handleOverlayClick(event, id) {
+      if (event.target === document.getElementById(id)) {
+        closeModal(id);
+      }
+    }
+
+    // Focus Trap & Escape
+    document.addEventListener('keydown', (e) => {
+      const activeModal = document.querySelector('.modal-overlay.active');
+      if (!activeModal) return;
+
+      if (e.key === 'Escape') {
+        closeModal(activeModal.id);
+        return;
+      }
+
+      if (e.key === 'Tab') {
+        if (!currentModalFocusables.length) return;
+        const firstElement = currentModalFocusables[0];
+        const lastElement = currentModalFocusables[currentModalFocusables.length - 1];
+
+        if (e.shiftKey) {
+          if (document.activeElement === firstElement) {
+            e.preventDefault();
+            lastElement.focus();
+          }
+        } else {
+          if (document.activeElement === lastElement) {
+            e.preventDefault();
+            firstElement.focus();
+          }
+        }
+      }
+    });
+
+    // 5. Отправка формы через Web3Forms AJAX
+    const form = document.getElementById('contactForm');
+    const statusDiv = document.getElementById('formStatus');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Отправка...';
+      statusDiv.className = 'form-status';
+
+      const formData = new FormData(form);
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      })
+      .then(async (response) => {
+        let json = await response.json();
+        if (response.status === 200) {
+          statusDiv.textContent = 'Спасибо! Ваша заявка успешно отправлена. Я свяжусь с вами в ближайшее время.';
+          statusDiv.className = 'form-status success';
+          form.reset();
+        } else {
+          statusDiv.textContent = json.message || 'Ошибка отправки. Напишите напрямую в WhatsApp или на почту.';
+          statusDiv.className = 'form-status error';
+        }
+      })
+      .catch(error => {
+        statusDiv.textContent = 'Не удалось отправить форму. Пожалуйста, напишите мне напрямую в WhatsApp или на почту.';
+        statusDiv.className = 'form-status error';
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Отправить заявку';
+      });
+    });
+  </script>
+
+</body>
+</html>
