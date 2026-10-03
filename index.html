@@ -14,20 +14,20 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Auguxt Dev — Разработка сайтов для бизнеса">
-  <meta property="og:description" content="Создание сайтов в Алматы и по СНГ: лендинги, корпоративные порталы, интернет-магазины. Стартовые цены для первых клиентов.">
+  <meta property="og:description" content="Создание сайтов в Алматы и по СНГ: лендинги, корпоративные порталы, интернет-магазины.">
   <meta property="og:image" content="https://auguxt.dev/assets/og-preview.png">
   <meta property="og:url" content="https://auguxt.dev/">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Auguxt Dev — Разработка сайтов">
-  <meta name="twitter:description" content="Создание сайтов в Казахстане и СНГ. Стартовые цены для первых клиентов.">
+  <meta name="twitter:description" content="Создание сайтов в Казахстане и СНГ.">
   <meta name="twitter:image" content="https://auguxt.dev/assets/og-preview.png">
 
   <!-- Favicon (SVG) -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231E3A8A'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' fill='%23FFFFFF' font-family='sans-serif' font-weight='800' font-size='16'>A</text></svg>">
 
-  <!-- Schema.org JSON-LD (с affiliation вместо alumniOf) -->
+  <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -39,6 +39,7 @@
     "telephone": "+77087273646",
     "email": "ibrahimkhairulin@gmail.com",
     "priceRange": "20700 KZT - 299000 KZT",
+    "paymentAccepted": "Kaspi, Halyk Bank",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Алматы",
@@ -47,11 +48,7 @@
     "founder": {
       "@type": "Person",
       "name": "Ибрагим Хайрола",
-      "jobTitle": "Веб-разработчик",
-      "affiliation": {
-        "@type": "EducationalOrganization",
-        "name": "Satbayev University"
-      }
+      "jobTitle": "Веб-разработчик"
     }
   }
   </script>
@@ -67,8 +64,6 @@
       --brand-gradient: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%);
       --brand-hover: #172554;
       --brand-focus: #3B82F6;
-      --promo-red: #DC2626;
-      --promo-bg: #FEF2F2;
       --border-color: #E2E8F0;
       --border-hover: #CBD5E1;
       --radius: 12px;
@@ -114,7 +109,7 @@
       top: 16px;
     }
 
-    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
       outline: 3px solid var(--brand-focus);
       outline-offset: 3px;
     }
@@ -324,30 +319,30 @@
 
     /* Баннер стартовых цен */
     .discount-banner {
-      background: linear-gradient(135deg, #FEF2F2 0%, #FFF1F2 100%);
-      border: 1px solid #FECDD3;
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
       border-radius: var(--radius);
       padding: 16px 24px;
       max-width: 800px;
       margin: -24px auto 48px;
       text-align: center;
-      color: #9F1239;
+      color: #1E40AF;
       font-weight: 600;
       font-size: 1rem;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 12px;
-      box-shadow: 0 4px 12px rgba(225, 29, 72, 0.06);
+      box-shadow: var(--shadow-sm);
     }
 
     .discount-badge-icon {
-      background: var(--promo-red);
+      background: var(--brand-primary);
       color: #FFFFFF;
       padding: 4px 10px;
       border-radius: 6px;
       font-size: 0.85rem;
-      font-weight: 800;
+      font-weight: 700;
       letter-spacing: 0.02em;
     }
 
@@ -402,29 +397,10 @@
       margin: 20px 0 24px;
     }
 
-    .price-old-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    /* Контраст проверен по WCAG AA (>= 4.5:1 к белому фону) */
-    .price-old {
-      font-size: 1rem;
-      color: #64748B;
-      text-decoration: line-through;
+    .price-tag-sub {
+      font-size: 0.85rem;
+      color: var(--text-muted);
       font-weight: 500;
-    }
-
-    .discount-pill {
-      background: var(--promo-bg);
-      color: var(--promo-red);
-      font-size: 0.75rem;
-      font-weight: 800;
-      padding: 2px 8px;
-      border-radius: 4px;
-      border: 1px solid #FECACA;
     }
 
     .price-value {
@@ -432,7 +408,7 @@
       font-weight: 900;
       color: var(--text-main);
       letter-spacing: -0.03em;
-      margin-top: 6px;
+      margin-top: 4px;
     }
 
     /* Сетка процесса */
@@ -660,7 +636,7 @@
       margin-bottom: 6px;
     }
 
-    .field input, .field textarea {
+    .field input, .field select, .field textarea {
       width: 100%;
       padding: 12px 16px;
       border: 1px solid var(--border-color);
@@ -671,7 +647,7 @@
       background-color: #FFFFFF;
       transition: border-color 0.15s ease, box-shadow 0.15s ease;
     }
-    .field input:focus, .field textarea:focus {
+    .field input:focus, .field select:focus, .field textarea:focus {
       border-color: var(--brand-focus);
       box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
       outline: none;
@@ -1010,7 +986,7 @@
         </div>
       </section>
 
-      <!-- Раздел: Цены (Стартовые цены на Лендинг и Корпоративный) -->
+      <!-- Раздел: Цены -->
       <section id="pricing" style="background-color: var(--bg-subtle);">
         <div class="container">
           <div class="section-header">
@@ -1020,63 +996,59 @@
 
           <!-- Баннер стартовых цен -->
           <div class="discount-banner">
-            <span class="discount-badge-icon">АКЦИЯ -70%</span>
-            <span>Стартовые цены для первых клиентов из Казахстана: скидка 70% действует на разработку лендингов и корпоративных сайтов.</span>
+            <span class="discount-badge-icon">СПЕЦПРЕДЛОЖЕНИЕ</span>
+            <span>Специальный стартовый тариф для первых 3 проектов в портфолио — 20 700 ₸.</span>
           </div>
 
           <div class="grid-4">
-            <!-- 1. Лендинг со скидкой -->
+            <!-- 1. Лендинг -->
             <div class="pricing-card">
               <div>
                 <h3 style="font-size: 1.25rem;">Лендинг</h3>
                 <p style="color: var(--text-muted); font-size: 0.92rem; margin-top: 6px;">Одностраничный сайт для презентации товара, услуги или промо-кампании.</p>
                 <div class="price-box">
-                  <div class="price-old-wrapper">
-                    <span class="price-old">69 000 ₸</span>
-                    <span class="discount-pill">-70%</span>
-                  </div>
+                  <div class="price-tag-sub">Стартовый тариф</div>
                   <div class="price-value">20 700 ₸</div>
                 </div>
               </div>
               <a href="#discuss" class="btn btn-outline" style="width: 100%;">Заказать лендинг</a>
             </div>
 
-            <!-- 2. Корпоративный со скидкой -->
+            <!-- 2. Корпоративный -->
             <div class="pricing-card featured">
-              <span class="pricing-badge">Стартовая цена</span>
+              <span class="pricing-badge">Спецтариф</span>
               <div>
                 <h3 style="font-size: 1.25rem;">Корпоративный</h3>
                 <p style="color: var(--text-muted); font-size: 0.92rem; margin-top: 6px;">Многостраничный сайт компании с каталогом услуг, разделами и историей бренда.</p>
                 <div class="price-box">
-                  <div class="price-old-wrapper">
-                    <span class="price-old">149 000 ₸</span>
-                    <span class="discount-pill">-70%</span>
-                  </div>
+                  <div class="price-tag-sub">Стартовый тариф</div>
                   <div class="price-value">44 700 ₸</div>
                 </div>
               </div>
               <a href="#discuss" class="btn btn-main" style="width: 100%;">Выбрать тариф</a>
             </div>
 
-            <!-- 3. Интернет-магазин (без скидок, стандартная цена) -->
+            <!-- 3. Интернет-магазин -->
             <div class="pricing-card">
               <div>
                 <h3 style="font-size: 1.25rem;">Интернет-магазин</h3>
                 <p style="color: var(--text-muted); font-size: 0.92rem; margin-top: 6px;">Полнофункциональный магазин: каталог, корзина, фильтры и приём заказов.</p>
                 <div class="price-box">
-                  <div class="price-value" style="margin-top: 24px;">299 000 ₸</div>
+                  <div class="price-tag-sub">Базовая цена</div>
+                  <div class="price-value">299 000 ₸</div>
                 </div>
               </div>
               <a href="#discuss" class="btn btn-outline" style="width: 100%;">Заказать магазин</a>
             </div>
 
-            <!-- 4. Доработки (без скидок, стандартная цена) -->
+            <!-- 4. Доработки -->
             <div class="pricing-card">
               <div>
                 <h3 style="font-size: 1.25rem;">Доработки</h3>
                 <p style="color: var(--text-muted); font-size: 0.92rem; margin-top: 6px;">Устранение багов, оптимизация скорости, верстка новых блоков и интеграции.</p>
                 <div class="price-box">
-                  <div class="price-value" style="margin-top: 24px;">от 10 000 ₸</div>
+                  <div class="price-tag-sub">Почасовая ставка</div>
+                  <div class="price-value">от 10 000 ₸</div>
                 </div>
               </div>
               <a href="#discuss" class="btn btn-outline" style="width: 100%;">Обсудить задачу</a>
@@ -1085,7 +1057,7 @@
         </div>
       </section>
 
-      <!-- Раздел: Процесс работы (5 колонок) -->
+      <!-- Раздел: Процесс работы (1, 2, 3...) -->
       <section id="process">
         <div class="container">
           <div class="section-header">
@@ -1094,27 +1066,27 @@
           </div>
           <div class="process-grid">
             <div class="step-item">
-              <div class="step-number">01</div>
+              <div class="step-number">1</div>
               <h3 style="font-size: 1.2rem; margin-bottom: 8px;">ТЗ</h3>
               <p style="color: var(--text-muted); font-size: 0.95rem;">Определяем задачи, структуру и требования сайта.</p>
             </div>
             <div class="step-item">
-              <div class="step-number">02</div>
+              <div class="step-number">2</div>
               <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Дизайн</h3>
               <p style="color: var(--text-muted); font-size: 0.95rem;">Создаём внешний вид и согласовываем его с вами.</p>
             </div>
             <div class="step-item">
-              <div class="step-number">03</div>
+              <div class="step-number">3</div>
               <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Разработка</h3>
               <p style="color: var(--text-muted); font-size: 0.95rem;">Верстаем и программируем адаптивный сайт.</p>
             </div>
             <div class="step-item">
-              <div class="step-number">04</div>
+              <div class="step-number">4</div>
               <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Сдача</h3>
               <p style="color: var(--text-muted); font-size: 0.95rem;">Тестируем, исправляем ошибки и передаём готовый сайт.</p>
             </div>
             <div class="step-item">
-              <div class="step-number">05</div>
+              <div class="step-number">5</div>
               <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Поддержка</h3>
               <p style="color: var(--text-muted); font-size: 0.95rem;">Обновления, исправления и дальнейшие доработки.</p>
             </div>
@@ -1140,13 +1112,13 @@
         <div class="container">
           <div class="section-header">
             <h2>Реализованные проекты</h2>
-            <p>Практический опыт разработки веб-систем для бизнеса и организаций в Казахстане и России</p>
+            <p>Практический опыт разработки веб-систем для бизнеса и организаций в Казахстане и СНГ</p>
           </div>
 
           <!-- Казахстан -->
           <div class="country-block">
             <div class="country-title">
-              <span>🇰🇿</span> Проекты в Казахстане
+              Проекты в Казахстане
             </div>
             <div class="grid-2">
               <div class="card">
@@ -1154,7 +1126,7 @@
                   <span class="card-meta">Сфера услуг • Алматы</span>
                   <h4>APAN BANYA</h4>
                   <p>
-                    Для проекта APAN BANYA я разработал полноценное цифровое представление бренда в интернете — от продуманной структуры страниц до финальной реализации интерфейса. Выстроил подачу услуг так, чтобы посетитель мог быстро ознакомиться с предложением, получить необходимую информацию и перейти к записи. Отдельное внимание уделил визуальной подаче, удобству навигации и адаптации сайта под мобильные устройства. В результате получился современный и понятный сайт, который работает не только как визитная карточка, но и как инструмент взаимодействия с клиентами.
+                    Для проекта APAN BANYA я разработал цифровое представление бренда в интернете: от продуманной структуры страниц до финальной реализации интерфейса. Выстроил подачу услуг так, чтобы посетитель мог быстро ознакомиться с предложением и перейти к бронированию. Отдельное внимание уделил мобильной адаптации и удобству навигации.
                   </p>
                 </div>
                 <div style="margin-top: 24px;">
@@ -1175,7 +1147,7 @@
                   <span class="card-meta">Образование • Алматы</span>
                   <h4>КРМУ</h4>
                   <p>
-                    В рамках проекта КРМУ была разработана масштабная структура корпоративного сайта с большим объёмом информации. Я продумал логику расположения контента, структуру основных разделов и навигацию, чтобы пользователю было максимально легко находить нужную информацию. Реализовал современный интерфейс и адаптивную вёрстку для комфортной работы с сайтом на различных устройствах. Основной задачей было объединить большое количество образовательной и организационной информации в единую, понятную и удобную цифровую среду.
+                    В рамках проекта КРМУ была разработана масштабная структура университетского сайта с большим объёмом информации. Я спроектировал логику расположения контента, навигацию и адаптивную вёрстку для удобной работы с сайтом на любых мобильных и десктопных устройствах.
                   </p>
                 </div>
                 <div style="margin-top: 24px;">
@@ -1193,10 +1165,10 @@
             </div>
           </div>
 
-          <!-- Россия -->
+          <!-- СНГ / Россия -->
           <div class="country-block" style="margin-bottom: 0;">
             <div class="country-title">
-              <span>🇷🇺</span> Проекты в России
+              Проекты в СНГ
             </div>
             <div class="grid-2">
               <div class="card">
@@ -1253,25 +1225,25 @@
             <div>
               <h2 style="font-size: 2rem; margin-bottom: 18px;">Обо мне</h2>
               <p style="color: var(--text-muted); margin-bottom: 14px;">
-                Я — опытный разработчик из Алматы, занимаюсь веб-разработкой с 2021 года. Создаю современные, функциональные и удобные сайты под задачи бизнеса в Казахстане и СНГ.
+                Я — разработчик из Алматы, занимаюсь веб-разработкой с 2021 года. Создаю современные, функциональные и удобные сайты под задачи бизнеса в Казахстане и СНГ.
               </p>
               <p style="color: var(--text-muted); margin-bottom: 14px;">
-                Свободно владею английским языком на уровне носителя, что позволяет мне работать с передовой документацией и международными инженерными практиками.
+                Свободно владею английским языком на уровне C1 (IELTS Academic), что позволяет мне работать с передовой документацией и международными инженерными практиками.
               </p>
               <p style="color: var(--text-muted); margin-bottom: 14px;">
-                Сейчас обучаюсь в одном из ведущих технических вузов Казахстана — <strong>Satbayev University</strong>, по специальности <strong>Computer Science</strong>, на полном образовательном гранте.
+                Обучаюсь в одном из ведущих технических вузов Казахстана — <strong>Satbayev University</strong>, по специальности <strong>Computer Science</strong>, на полном образовательном гранте.
               </p>
               <p style="color: var(--text-muted);">
-                Постоянно развиваю свои навыки и стремлюсь создавать не просто красивые сайты, а качественные цифровые решения, которые действительно работают на результат.
+                Постоянно развиваю свои навыки и создаю качественные цифровые решения, которые действительно работают на результат бизнеса.
               </p>
             </div>
             <div>
               <img 
                 src="./assets/workspace.webp" 
                 alt="Рабочее пространство веб-разработчика" 
-                width="800"
-                height="533"
-                loading="lazy"
+                width="800" 
+                height="533" 
+                loading="lazy" 
                 onerror="this.src='https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80'"
               >
             </div>
@@ -1293,7 +1265,7 @@
                 <span class="faq-icon">+</span>
               </button>
               <div class="faq-answer">
-                В среднем от 3 до 14 дней — срок зависит от типа сайта, количества страниц и сложности функционала.
+                В среднем от 3 до 14 дней. Точный срок зависит от типа сайта, количества разделов и сложности функционала.
               </div>
             </div>
 
@@ -1303,7 +1275,7 @@
                 <span class="faq-icon">+</span>
               </button>
               <div class="faq-answer">
-                Работа начинается после согласования ТЗ и внесения 50% предоплаты. Оставшаяся сумма оплачивается после завершения и проверки проекта.
+                Работа начинается после согласования ТЗ и внесения 50% предоплаты. Оставшаяся сумма оплачивается после демонстрации и проверки готового проекта. Оплата принимается прямым банковским переводом через Kaspi или Halyk Bank.
               </div>
             </div>
 
@@ -1313,7 +1285,7 @@
                 <span class="faq-icon">+</span>
               </button>
               <div class="faq-answer">
-                Исправление ошибок, небольшие изменения контента, техническая помощь и консультации после запуска сайта.
+                Исправление ошибок, небольшие изменения контента, консультации и техническая помощь после запуска сайта.
               </div>
             </div>
 
@@ -1323,19 +1295,29 @@
                 <span class="faq-icon">+</span>
               </button>
               <div class="faq-answer">
-                Если работа ещё не начата — предоплата возвращается в полном объёме. После начала разработки возврат рассчитывается с учётом уже выполненной работы.
+                Если работа ещё не начата — предоплата возвращается в полном объёме (100%). После начала разработки сумма возврата рассчитывается с учётом уже выполненных этапов.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                <span>Кому принадлежат права на созданный сайт?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                После полной оплаты все исключительные права на исходный код и созданные материалы передаются вам. Вы получаете чистый архив или доступ к репозиторию.
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Раздел: Давайте обсудим ваш проект -->
+      <!-- Раздел: Обсудить проект -->
       <section id="discuss">
         <div class="container">
           <div class="section-header">
             <h2>Давайте обсудим ваш проект</h2>
-            <p>Есть идея для сайта или уже готовое техническое задание? Свяжитесь со мной — обсудим задачу, подберём оптимальное решение и определим дальнейшие шаги.</p>
+            <p>Есть идея для сайта или уже готовое техническое задание? Свяжитесь со мной — обсудим задачу и определим дальнейшие шаги.</p>
           </div>
           
           <div class="form-wrapper">
@@ -1368,6 +1350,19 @@
                 <input type="text" id="userCompany" name="company" placeholder="ТОО / ИП / Бренд">
               </div>
 
+              <!-- Выбор тарифа -->
+              <div class="field">
+                <label for="userPlan">Интересующий тариф *</label>
+                <select id="userPlan" name="plan" required>
+                  <option value="" disabled selected>Выберите тариф...</option>
+                  <option value="Лендинг (20 700 ₸)">Лендинг — 20 700 ₸</option>
+                  <option value="Корпоративный (44 700 ₸)">Корпоративный — 44 700 ₸</option>
+                  <option value="Интернет-магазин (299 000 ₸)">Интернет-магазин — 299 000 ₸</option>
+                  <option value="Доработки (от 10 000 ₸)">Технические доработки — от 10 000 ₸</option>
+                  <option value="Индивидуальный проект">Индивидуальный проект / Другое</option>
+                </select>
+              </div>
+
               <div class="field">
                 <label for="userMessage">Описание проекта *</label>
                 <textarea id="userMessage" name="message" rows="4" required placeholder="Опишите задачу, примерные сроки или вопросы..."></textarea>
@@ -1376,7 +1371,7 @@
               <div class="checkbox-field">
                 <input type="checkbox" id="userConsent" name="consent" required>
                 <label for="userConsent">
-                  Я даю согласие на обработку контактных данных в соответствии с 
+                  Согласен на сбор и обработку моих данных исключительно для связи по проекту в соответствии с 
                   <button type="button" class="modal-link-btn" onclick="openModal('privacyModal')">Политикой конфиденциальности</button>.
                 </label>
               </div>
@@ -1393,7 +1388,7 @@
           <div class="contacts-box">
             <h2 style="font-size: 2rem; margin-bottom: 12px;">Связаться со мной</h2>
             <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 1.05rem;">
-              Если у вас есть идея, проект или вопрос — свяжитесь со мной удобным для вас способом. Буду рад обсудить ваш проект и ответить на любые вопросы.
+              Если у вас есть идея, проект или вопрос — свяжитесь со мной удобным для вас способом. Оплата принимается переводом через Kaspi или Halyk.
             </p>
             <div class="contact-links-grid">
               <a href="https://wa.me/77087273646" target="_blank" rel="noopener noreferrer" class="btn btn-main">
@@ -1416,9 +1411,10 @@
           <div class="footer-col">
             <h4>Реквизиты</h4>
             <p>
-              <strong>Исполнитель:</strong> Ибрагим Хайрола<br>
+              <strong>Исполнитель:</strong> Хайрола Ибрагим<br>
               <strong>Бренд:</strong> Auguxt Dev<br>
               <strong>Город:</strong> Алматы, Казахстан<br>
+              <strong>Оплата:</strong> Kaspi / Halyk<br>
               <strong>Email:</strong> <a href="mailto:ibrahimkhairulin@gmail.com">ibrahimkhairulin@gmail.com</a><br>
               <strong>WhatsApp:</strong> <a href="https://wa.me/77087273646" target="_blank" rel="noopener noreferrer">+7 (708) 727-36-46</a>
             </p>
@@ -1474,39 +1470,22 @@
       </div>
       <div class="modal-body">
         <p><strong>Дата вступления в силу:</strong> 14 марта 2026 г.</p>
-        <p>Настоящая политика описывает, как Ибрагим Хайрола, работающий под брендом <strong>Auguxt Dev</strong> (далее «мы»), собирает, использует и защищает персональные данные посетителей сайта <strong>auguxt.dev</strong> (далее «Сайт»).</p>
+        <p>Настоящая политика описывает порядок сбора и обработки персональных данных, осуществляемый разработчиком Ибрагимом Хайрола, работающим под брендом <strong>Auguxt Dev</strong> (далее «мы»), в отношении посетителей сайта <strong>auguxt.dev</strong>.</p>
         <p><strong>Контакты:</strong> ibrahimkhairulin@gmail.com, +7 (708) 727-36-46, г. Алматы, Республика Казахстан.</p>
 
         <h4>Какие данные мы собираем</h4>
-        <p><strong>Данные, которые вы передаёте сами:</strong> имя, email, номер телефона, название компании и описание проекта при заполнении формы обратной связи. Данные поступают на почту через защищенный шлюз Web3Forms.</p>
+        <p><strong>Данные, которые вы передаёте сами:</strong> имя, email, номер телефона, название компании, выбранный тариф и описание проекта при заполнении формы обратной связи. Данные поступают на почту через защищенный шлюз Web3Forms.</p>
         <p><strong>Технические данные:</strong> IP-адрес, тип браузера и устройства, посещённые страницы, время визита, фиксируемые сервером хостинга.</p>
-        <p>Мы не принимаем платёжные данные через Сайт и не собираем специальные категории данных.</p>
 
         <h4>Для чего мы используем данные</h4>
         <ul>
-          <li>Чтобы ответить на ваш запрос и обсудить создание сайта;</li>
-          <li>Чтобы подготовить коммерческое предложение и заключить договор;</li>
-          <li>Чтобы выполнять обязательства по разработке;</li>
-          <li>Соблюдать законы Республики Казахстан.</li>
+          <li>Для оперативной связи и ответа на ваш запрос по проекту;</li>
+          <li>Для подготовки технического задания и коммерческого предложения;</li>
+          <li>Для соблюдения законодательства Республики Казахстан «О персональных данных и их защите».</li>
         </ul>
 
-        <h4>Кому мы передаём данные</h4>
-        <p>Мы не продаём данные третьим лицам. Доступ к технической обработке имеют только:</p>
-        <ul>
-          <li>Хостинг GitHub Pages (GitHub Inc.);</li>
-          <li>Шлюз передачи формы Web3Forms;</li>
-          <li>Почтовый сервис Gmail (Google LLC);</li>
-          <li>Государственные органы РК строго по закону.</li>
-        </ul>
-
-        <h4>Cookie-файлы</h4>
-        <p>Сайт применяет исключительно технические cookie для базового функционирования интерфейса. Рекламные трекеры отсутствуют.</p>
-
-        <h4>Срок хранения</h4>
-        <p>Данные из заявок хранятся до 12 месяцев при отсутствии заключенного договора. По договорам — в течение срока действия обязательств и требований законодательства.</p>
-
-        <h4>Ваши права</h4>
-        <p>Вы имеете право запросить копию данных, потребовать их изменение или удаление, написав на <a href="mailto:ibrahimkhairulin@gmail.com">ibrahimkhairulin@gmail.com</a>.</p>
+        <h4>Права пользователя и удаление данных</h4>
+        <p>В соответствии с Законом РК «О персональных данных и их защите» вы вправе в любой момент отозвать согласие на обработку данных или потребовать их удаления из наших баз, направив запрос на <a href="mailto:ibrahimkhairulin@gmail.com">ibrahimkhairulin@gmail.com</a>.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-main" onclick="closeModal('privacyModal')">Закрыть</button>
@@ -1524,16 +1503,16 @@
       <div class="modal-body">
         <p><strong>Дата вступления в силу:</strong> 14 марта 2026 г.</p>
         <h4>1. Общие положения</h4>
-        <p>Настоящие условия регулируют порядок взаимодействия между заказчиком и разработчиком Ибрагимом Хайрола (Auguxt Dev). Оформление заявки на сайте означает согласие с данными условиями.</p>
+        <p>Исполнитель: Ибрагим Хайрола, бренд Auguxt Dev. Заполнение формы на сайте означает согласие с данными условиями.</p>
 
         <h4>2. Порядок работ и оплата</h4>
-        <p>Разработка осуществляется на основании согласованного технического задания (ТЗ). Стандартный порядок взаиморасчетов: предоплата 50% до начала проектирования, оставшиеся 50% — после завершения тестирования и демонстрации готового сайта.</p>
+        <p>Разработка осуществляется на основании согласованного технического задания (ТЗ). Оплата производится в два этапа: 50% предоплата до начала проектирования и 50% после демонстрации готового сайта. Оплата принимается переводом через Kaspi или Halyk Bank.</p>
 
         <h4>3. Интеллектуальная собственность</h4>
         <p>После полной оплаты проекта все исключительные права на разработанный исходный код и структуру сайта передаются заказчику.</p>
 
-        <h4>4. Гарантии и ответственность</h4>
-        <p>Разработчик предоставляет <strong>30 дней бесплатных технических исправлений</strong> со дня сдачи проекта при обнаружении любых дефектов в рамках утверждённого ТЗ.</p>
+        <h4>4. Гарантии</h4>
+        <p>Разработчик предоставляет 30 дней бесплатной технической поддержки со дня сдачи проекта для устранения любых дефектов в рамках утверждённого ТЗ.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-main" onclick="closeModal('termsModal')">Закрыть</button>
@@ -1550,14 +1529,7 @@
       </div>
       <div class="modal-body">
         <p><strong>Дата вступления в силу:</strong> 14 марта 2026 г.</p>
-        <h4>Что такое cookie?</h4>
-        <p>Cookie — небольшие текстовые файлы, сохраняемые на вашем устройстве для обеспечения корректной работы веб-сайта.</p>
-
-        <h4>Какие cookie мы используем?</h4>
-        <p>Auguxt Dev использует исключительно технические файлы cookie (например, отметку о закрытии плашки). Маркетинговые или следящие cookie сторонних сетей отсутствуют.</p>
-
-        <h4>Управление cookie</h4>
-        <p>Вы можете в любой момент заблокировать или удалить файлы cookie через настройки вашего браузера.</p>
+        <p>Auguxt Dev использует исключительно технические файлы cookie (например, отметку о согласии с уведомлением в браузере). Рекламные или следящие cookie сторонних сетей отсутствуют.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-main" onclick="closeModal('cookieModal')">Закрыть</button>
@@ -1565,7 +1537,7 @@
     </div>
   </div>
 
-  <!-- 4. Модалка: Политика возврата (Refund Policy) -->
+  <!-- 4. Модалка: Политика возврата -->
   <div class="modal-overlay" id="refundModal" role="dialog" aria-modal="true" aria-labelledby="refundTitle" onclick="handleOverlayClick(event, 'refundModal')">
     <div class="modal-window">
       <div class="modal-header">
@@ -1574,13 +1546,12 @@
       </div>
       <div class="modal-body">
         <p><strong>Дата вступления в силу:</strong> 14 марта 2026 г.</p>
-        <h4>Условия аннулирования и возврата</h4>
+        <h4>Условия возврата</h4>
         <ul>
-          <li><strong>До начала разработки:</strong> Если заказчик принимает решение отказаться от проекта до старта проектирования, сумма внесённой предоплаты возвращается в полном объёме (100%).</li>
-          <li><strong>В процессе разработки:</strong> При досрочном расторжении договора после утверждения ТЗ возврат рассчитывается за вычетом фактически понесённых расходов и стоимости уже выполненных этапов.</li>
+          <li><strong>До начала разработки:</strong> При отказе до старта проектирования сумма предоплаты возвращается в полном объёме (100%).</li>
+          <li><strong>В процессе разработки:</strong> Возврат рассчитывается за вычетом фактически понесённых расходов и стоимости уже сданных этапов.</li>
           <li><strong>После сдачи работ:</strong> После финального утверждения проекта и передачи исходных файлов возврат средств не производится.</li>
         </ul>
-        <p>Для подачи заявки на возврат направьте письмо на <a href="mailto:ibrahimkhairulin@gmail.com">ibrahimkhairulin@gmail.com</a>.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-main" onclick="closeModal('refundModal')">Закрыть</button>
@@ -1607,7 +1578,7 @@
       });
     });
 
-    // 2. FAQ с aria-expanded и индикатором
+    // 2. FAQ аккордеон
     function toggleFaq(btn) {
       const item = btn.parentElement;
       const isActive = item.classList.contains('active');
@@ -1630,7 +1601,7 @@
       }
     }
 
-    // 3. Cookie баннер с безопасным try/catch
+    // 3. Cookie баннер
     document.addEventListener('DOMContentLoaded', () => {
       try {
         if (!localStorage.getItem('auguxt_cookies_accepted')) {
@@ -1648,7 +1619,7 @@
       document.getElementById('cookieAlert').style.display = 'none';
     }
 
-    // 4. Доступные модалки с Focus Trap (скрывают и main-content-wrapper, и cookieAlert)
+    // 4. Модальные окна с Focus Trap
     let previousActiveElement = null;
     let currentModalFocusables = [];
 
@@ -1657,7 +1628,6 @@
       const modal = document.getElementById(id);
       modal.classList.add('active');
       
-      // Скрываем фон от скринридеров
       document.getElementById('main-content-wrapper').setAttribute('aria-hidden', 'true');
       const cookieBanner = document.getElementById('cookieAlert');
       if (cookieBanner) cookieBanner.setAttribute('aria-hidden', 'true');
@@ -1674,7 +1644,6 @@
       const modal = document.getElementById(id);
       modal.classList.remove('active');
       
-      // Возвращаем видимость фону
       document.getElementById('main-content-wrapper').removeAttribute('aria-hidden');
       const cookieBanner = document.getElementById('cookieAlert');
       if (cookieBanner) cookieBanner.removeAttribute('aria-hidden');
@@ -1690,7 +1659,6 @@
       }
     }
 
-    // Focus Trap & Escape
     document.addEventListener('keydown', (e) => {
       const activeModal = document.querySelector('.modal-overlay.active');
       if (!activeModal) return;
@@ -1719,7 +1687,7 @@
       }
     });
 
-    // 5. Отправка формы через Web3Forms AJAX
+    // 5. Отправка формы через AJAX
     const form = document.getElementById('contactForm');
     const statusDiv = document.getElementById('formStatus');
     const submitBtn = document.getElementById('submitBtn');
