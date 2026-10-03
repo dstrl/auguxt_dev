@@ -204,7 +204,7 @@
       cursor: pointer;
       text-align: center;
       border: 1px solid transparent;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: background 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
     }
 
     .btn-main {
@@ -214,7 +214,6 @@
     }
     .btn-main:hover {
       background: var(--brand-primary);
-      transform: translateY(-1px);
       box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
     }
 
@@ -227,7 +226,6 @@
     .btn-outline:hover {
       border-color: var(--border-hover);
       background: var(--bg-subtle);
-      transform: translateY(-1px);
     }
 
     /* Секции */
@@ -362,14 +360,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: all 0.25s ease;
       box-shadow: var(--shadow-sm);
-    }
-
-    .pricing-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-      border-color: var(--border-hover);
     }
 
     .pricing-card.featured {
@@ -431,11 +422,6 @@
       background: var(--bg-surface);
       position: relative;
       box-shadow: var(--shadow-sm);
-      transition: all 0.2s ease;
-    }
-    .step-item:hover {
-      border-color: var(--border-hover);
-      box-shadow: var(--shadow-md);
     }
 
     .step-number {
@@ -481,14 +467,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: all 0.25s ease;
       box-shadow: var(--shadow-sm);
-    }
-
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-md);
-      border-color: var(--border-hover);
     }
 
     .card-meta {
@@ -597,21 +576,21 @@
       font-size: 1.3rem;
       font-weight: 400;
       color: var(--brand-primary);
-      transition: transform 0.2s ease;
       display: inline-block;
       line-height: 1;
+    }
+
+    .faq-answer-wrapper {
+      overflow: hidden;
+      height: 0;
+      opacity: 0;
     }
 
     .faq-answer {
       padding: 0 24px 22px;
       color: var(--text-muted);
       font-size: 0.98rem;
-      display: none;
       line-height: 1.6;
-    }
-
-    .faq-item.active .faq-answer {
-      display: block;
     }
 
     /* Форма */
@@ -819,6 +798,7 @@
       justify-content: center;
       padding: 20px;
       z-index: 2000;
+      opacity: 0;
     }
 
     .modal-overlay.active {
@@ -836,6 +816,7 @@
       flex-direction: column;
       overflow: hidden;
       border: 1px solid var(--border-color);
+      transform-origin: center center;
     }
 
     .modal-header {
@@ -973,13 +954,13 @@
       <!-- Первый экран (Hero) -->
       <section class="hero-section">
         <div class="container">
-          <div class="hero-badge">
+          <div class="hero-badge motion-hero-item">
             <span class="pulse-dot"></span>
             Принимаю заказы на разработку сайтов
           </div>
-          <h1>Сайты для бизнеса в Казахстане и СНГ: от лендинга до портала</h1>
-          <p>Создаю чистые, скоростные и адаптивные веб-решения под задачи бизнеса. Индивидуальная разработка с акцентом на надежность, структуру и соблюдение сроков.</p>
-          <div class="hero-buttons">
+          <h1 class="motion-hero-item">Сайты для бизнеса в Казахстане и СНГ: от лендинга до портала</h1>
+          <p class="motion-hero-item">Создаю чистые, скоростные и адаптивные веб-решения под задачи бизнеса. Индивидуальная разработка с акцентом на надежность, структуру и соблюдение сроков.</p>
+          <div class="hero-buttons motion-hero-item">
             <a href="#discuss" class="btn btn-main">Обсудить проект</a>
             <a href="#projects" class="btn btn-outline">Посмотреть работы</a>
           </div>
@@ -989,20 +970,20 @@
       <!-- Раздел: Цены -->
       <section id="pricing" style="background-color: var(--bg-subtle);">
         <div class="container">
-          <div class="section-header">
+          <div class="section-header motion-fade">
             <h2>Стоимость разработки</h2>
             <p>Фиксированные и прозрачные тарифы без скрытых переплат</p>
           </div>
 
           <!-- Баннер стартовых цен -->
-          <div class="discount-banner">
+          <div class="discount-banner motion-fade">
             <span class="discount-badge-icon">СПЕЦПРЕДЛОЖЕНИЕ</span>
             <span>Специальный стартовый тариф для первых 3 проектов в портфолио — 20 700 ₸.</span>
           </div>
 
-          <div class="grid-4">
+          <div class="grid-4 motion-stagger-group">
             <!-- 1. Лендинг -->
-            <div class="pricing-card">
+            <div class="pricing-card motion-card">
               <div>
                 <h3 style="font-size: 1.25rem;">Лендинг</h3>
                 <p style="color: var(--text-muted); font-size: 0.92rem; margin-top: 6px;">Одностраничный сайт для презентации товара, услуги или промо-кампании.</p>
@@ -1015,7 +996,7 @@
             </div>
 
             <!-- 2. Корпоративный -->
-            <div class="pricing-card featured">
+            <div class="pricing-card featured motion-card">
               <span class="pricing-badge">Спецтариф</span>
               <div>
                 <h3 style="font-size: 1.25rem;">Корпоративный</h3>
@@ -1029,7 +1010,7 @@
             </div>
 
             <!-- 3. Интернет-магазин -->
-            <div class="pricing-card">
+            <div class="pricing-card motion-card">
               <div>
                 <h3 style="font-size: 1.25rem;">Интернет-магазин</h3>
                 <p style="color: var(--text-muted); font-size: 0.92rem; margin-top: 6px;">Полнофункциональный магазин: каталог, корзина, фильтры и приём заказов.</p>
@@ -1042,7 +1023,7 @@
             </div>
 
             <!-- 4. Доработки -->
-            <div class="pricing-card">
+            <div class="pricing-card motion-card">
               <div>
                 <h3 style="font-size: 1.25rem;">Доработки</h3>
                 <p style="color: var(--text-muted); font-size: 0.92rem; margin-top: 6px;">Устранение багов, оптимизация скорости, верстка новых блоков и интеграции.</p>
@@ -1060,39 +1041,39 @@
       <!-- Раздел: Процесс работы (1, 2, 3...) -->
       <section id="process">
         <div class="container">
-          <div class="section-header">
+          <div class="section-header motion-fade">
             <h2>Процесс работы</h2>
             <p>Понятные и предсказуемые этапы реализации каждого проекта</p>
           </div>
-          <div class="process-grid">
-            <div class="step-item">
+          <div class="process-grid motion-stagger-group">
+            <div class="step-item motion-card">
               <div class="step-number">1</div>
               <h3 style="font-size: 1.2rem; margin-bottom: 8px;">ТЗ</h3>
               <p style="color: var(--text-muted); font-size: 0.95rem;">Определяем задачи, структуру и требования сайта.</p>
             </div>
-            <div class="step-item">
+            <div class="step-item motion-card">
               <div class="step-number">2</div>
               <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Дизайн</h3>
               <p style="color: var(--text-muted); font-size: 0.95rem;">Создаём внешний вид и согласовываем его с вами.</p>
             </div>
-            <div class="step-item">
+            <div class="step-item motion-card">
               <div class="step-number">3</div>
               <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Разработка</h3>
               <p style="color: var(--text-muted); font-size: 0.95rem;">Верстаем и программируем адаптивный сайт.</p>
             </div>
-            <div class="step-item">
+            <div class="step-item motion-card">
               <div class="step-number">4</div>
               <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Сдача</h3>
               <p style="color: var(--text-muted); font-size: 0.95rem;">Тестируем, исправляем ошибки и передаём готовый сайт.</p>
             </div>
-            <div class="step-item">
+            <div class="step-item motion-card">
               <div class="step-number">5</div>
               <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Поддержка</h3>
               <p style="color: var(--text-muted); font-size: 0.95rem;">Обновления, исправления и дальнейшие доработки.</p>
             </div>
           </div>
 
-          <div style="margin-top: 64px; text-align: center;">
+          <div style="margin-top: 64px; text-align: center;" class="motion-fade">
             <h3 style="font-size: 1.3rem; margin-bottom: 8px;">Технологический стек</h3>
             <p style="color: var(--text-muted); font-size: 0.95rem;">Проверенные инструменты для надежной и быстрой работы</p>
             <div class="tech-stack">
@@ -1110,18 +1091,18 @@
       <!-- Раздел: Проекты -->
       <section id="projects" style="background-color: var(--bg-subtle);">
         <div class="container">
-          <div class="section-header">
+          <div class="section-header motion-fade">
             <h2>Реализованные проекты</h2>
             <p>Практический опыт разработки веб-систем для бизнеса и организаций в Казахстане и СНГ</p>
           </div>
 
           <!-- Казахстан -->
-          <div class="country-block">
+          <div class="country-block motion-fade">
             <div class="country-title">
               Проекты в Казахстане
             </div>
-            <div class="grid-2">
-              <div class="card">
+            <div class="grid-2 motion-stagger-group">
+              <div class="card motion-card">
                 <div>
                   <span class="card-meta">Сфера услуг • Алматы</span>
                   <h4>APAN BANYA</h4>
@@ -1142,7 +1123,7 @@
                 </div>
               </div>
 
-              <div class="card">
+              <div class="card motion-card">
                 <div>
                   <span class="card-meta">Образование • Алматы</span>
                   <h4>КРМУ</h4>
@@ -1166,12 +1147,12 @@
           </div>
 
           <!-- СНГ / Россия -->
-          <div class="country-block" style="margin-bottom: 0;">
+          <div class="country-block motion-fade" style="margin-bottom: 0;">
             <div class="country-title">
               Проекты в СНГ
             </div>
-            <div class="grid-2">
-              <div class="card">
+            <div class="grid-2 motion-stagger-group">
+              <div class="card motion-card">
                 <div>
                   <span class="card-meta">Автобизнес • Детейлинг</span>
                   <h4>CarBase</h4>
@@ -1192,7 +1173,7 @@
                 </div>
               </div>
 
-              <div class="card">
+              <div class="card motion-card">
                 <div>
                   <span class="card-meta">Творчество • Образование</span>
                   <h4>Академия Игоря Крутого</h4>
@@ -1221,7 +1202,7 @@
       <!-- Раздел: Обо мне -->
       <section id="about">
         <div class="container">
-          <div class="about-box">
+          <div class="about-box motion-fade">
             <div>
               <h2 style="font-size: 2rem; margin-bottom: 18px;">Обо мне</h2>
               <p style="color: var(--text-muted); margin-bottom: 14px;">
@@ -1254,58 +1235,68 @@
       <!-- Раздел: FAQ -->
       <section id="faq" style="background-color: var(--bg-subtle);">
         <div class="container">
-          <div class="section-header">
+          <div class="section-header motion-fade">
             <h2>Часто задаваемые вопросы</h2>
             <p>Ответы на ключевые моменты сотрудничества</p>
           </div>
-          <div class="faq-container">
+          <div class="faq-container motion-fade">
             <div class="faq-item">
-              <button type="button" class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+              <button type="button" class="faq-question" aria-expanded="false">
                 <span>Сколько занимает разработка сайта?</span>
                 <span class="faq-icon">+</span>
               </button>
-              <div class="faq-answer">
-                В среднем от 3 до 14 дней. Точный срок зависит от типа сайта, количества разделов и сложности функционала.
+              <div class="faq-answer-wrapper">
+                <div class="faq-answer">
+                  В среднем от 3 до 14 дней. Точный срок зависит от типа сайта, количества разделов и сложности функционала.
+                </div>
               </div>
             </div>
 
             <div class="faq-item">
-              <button type="button" class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+              <button type="button" class="faq-question" aria-expanded="false">
                 <span>Как проходит оплата?</span>
                 <span class="faq-icon">+</span>
               </button>
-              <div class="faq-answer">
-                Работа начинается после согласования ТЗ и внесения 50% предоплаты. Оставшаяся сумма оплачивается после демонстрации и проверки готового проекта. Оплата принимается прямым банковским переводом через Kaspi или Halyk Bank.
+              <div class="faq-answer-wrapper">
+                <div class="faq-answer">
+                  Работа начинается после согласования ТЗ и внесения 50% предоплаты. Оставшаяся сумма оплачивается после демонстрации и проверки готового проекта. Оплата принимается прямым банковским переводом через Kaspi или Halyk Bank.
+                </div>
               </div>
             </div>
 
             <div class="faq-item">
-              <button type="button" class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+              <button type="button" class="faq-question" aria-expanded="false">
                 <span>Что входит в поддержку?</span>
                 <span class="faq-icon">+</span>
               </button>
-              <div class="faq-answer">
-                Исправление ошибок, небольшие изменения контента, консультации и техническая помощь после запуска сайта.
+              <div class="faq-answer-wrapper">
+                <div class="faq-answer">
+                  Исправление ошибок, небольшие изменения контента, консультации и техническая помощь после запуска сайта.
+                </div>
               </div>
             </div>
 
             <div class="faq-item">
-              <button type="button" class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+              <button type="button" class="faq-question" aria-expanded="false">
                 <span>Как проходит возврат?</span>
                 <span class="faq-icon">+</span>
               </button>
-              <div class="faq-answer">
-                Если работа ещё не начата — предоплата возвращается в полном объёме (100%). После начала разработки сумма возврата рассчитывается с учётом уже выполненных этапов.
+              <div class="faq-answer-wrapper">
+                <div class="faq-answer">
+                  Если работа ещё не начата — предоплата возвращается в полном объёме (100%). После начала разработки сумма возврата рассчитывается с учётом уже выполненных этапов.
+                </div>
               </div>
             </div>
 
             <div class="faq-item">
-              <button type="button" class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+              <button type="button" class="faq-question" aria-expanded="false">
                 <span>Кому принадлежат права на созданный сайт?</span>
                 <span class="faq-icon">+</span>
               </button>
-              <div class="faq-answer">
-                После полной оплаты все исключительные права на исходный код и созданные материалы передаются вам. Вы получаете чистый архив или доступ к репозиторию.
+              <div class="faq-answer-wrapper">
+                <div class="faq-answer">
+                  После полной оплаты все исключительные права на исходный код и созданные материалы передаются вам. Вы получаете чистый архив или доступ к репозиторию.
+                </div>
               </div>
             </div>
           </div>
@@ -1315,12 +1306,12 @@
       <!-- Раздел: Обсудить проект -->
       <section id="discuss">
         <div class="container">
-          <div class="section-header">
+          <div class="section-header motion-fade">
             <h2>Давайте обсудим ваш проект</h2>
             <p>Есть идея для сайта или уже готовое техническое задание? Свяжитесь со мной — обсудим задачу и определим дальнейшие шаги.</p>
           </div>
           
-          <div class="form-wrapper">
+          <div class="form-wrapper motion-fade">
             <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
               <input type="hidden" name="access_key" value="2c28b566-fe4c-4818-ba5c-5c5da5dd8e7a">
               <input type="hidden" name="subject" value="Новая заявка с сайта Auguxt Dev">
@@ -1385,7 +1376,7 @@
       <!-- Раздел: Связаться со мной -->
       <section id="contact-me" style="background-color: var(--bg-subtle);">
         <div class="container">
-          <div class="contacts-box">
+          <div class="contacts-box motion-fade">
             <h2 style="font-size: 2rem; margin-bottom: 12px;">Связаться со мной</h2>
             <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 1.05rem;">
               Если у вас есть идея, проект или вопрос — свяжитесь со мной удобным для вас способом. Оплата принимается переводом через Kaspi или Halyk.
@@ -1559,9 +1550,62 @@
     </div>
   </div>
 
-  <!-- Скрипты -->
+  <!-- 1. Motion CDN Module -->
+  <script type="module">
+    import { animate, inView, stagger, spring } from "https://cdn.jsdelivr.net/npm/motion@11.11.13/+esm";
+
+    // Анимация Hero блока
+    const heroElements = document.querySelectorAll('.motion-hero-item');
+    if (heroElements.length) {
+      animate(heroElements, 
+        { opacity: [0, 1], y: [24, 0] }, 
+        { delay: stagger(0.12), duration: 0.65, easing: [0.16, 1, 0.3, 1] }
+      );
+    }
+
+    // Scroll Animations: Одиночные блоки
+    document.querySelectorAll('.motion-fade').forEach(el => {
+      inView(el, () => {
+        animate(el, { opacity: [0, 1], y: [24, 0] }, { duration: 0.6, easing: [0.16, 1, 0.3, 1] });
+      }, { margin: "-40px 0px" });
+    });
+
+    // Scroll Animations: Группы карточек с каскадом (stagger)
+    document.querySelectorAll('.motion-stagger-group').forEach(group => {
+      inView(group, () => {
+        const cards = group.querySelectorAll('.motion-card');
+        animate(cards, 
+          { opacity: [0, 1], y: [30, 0] }, 
+          { delay: stagger(0.1), duration: 0.55, easing: [0.16, 1, 0.3, 1] }
+        );
+      }, { margin: "-40px 0px" });
+    });
+
+    // Микровзаимодействия для кнопок и карточек
+    document.querySelectorAll('.btn, .pricing-card, .step-item, .card').forEach(el => {
+      el.addEventListener('pointerenter', () => {
+        if (el.classList.contains('pricing-card') || el.classList.contains('card') || el.classList.contains('step-item')) {
+          animate(el, { y: -4 }, { duration: 0.25, easing: "ease-out" });
+        }
+      });
+      el.addEventListener('pointerleave', () => {
+        animate(el, { y: 0, scale: 1 }, { duration: 0.25, easing: "ease-out" });
+      });
+      el.addEventListener('pointerdown', () => {
+        animate(el, { scale: 0.98 }, { duration: 0.1 });
+      });
+      el.addEventListener('pointerup', () => {
+        animate(el, { scale: 1 }, { duration: 0.15 });
+      });
+    });
+
+    // Экспорт Motion animate для аккордеона и модалок
+    window.motionAnimate = animate;
+  </script>
+
+  <!-- 2. Логика сайта (Аккордеон, Модалки, Форма) -->
   <script>
-    // 1. Мобильное меню
+    // Мобильное меню
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
 
@@ -1578,34 +1622,66 @@
       });
     });
 
-    // 2. FAQ аккордеон
-    function toggleFaq(btn) {
-      const item = btn.parentElement;
-      const isActive = item.classList.contains('active');
+    // FAQ аккордеон с плавной высотой
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const wrapper = item.querySelector('.faq-answer-wrapper');
+        const content = item.querySelector('.faq-answer');
+        const icon = btn.querySelector('.faq-icon');
+        const isActive = item.classList.contains('active');
 
-      document.querySelectorAll('.faq-item').forEach(el => {
-        el.classList.remove('active');
-        const qBtn = el.querySelector('.faq-question');
-        if (qBtn) {
-          qBtn.setAttribute('aria-expanded', 'false');
-          const ic = qBtn.querySelector('.faq-icon');
-          if (ic) ic.textContent = '+';
+        // Закрываем другие открытые вопросы
+        document.querySelectorAll('.faq-item.active').forEach(openItem => {
+          if (openItem !== item) {
+            openItem.classList.remove('active');
+            const openBtn = openItem.querySelector('.faq-question');
+            openBtn.setAttribute('aria-expanded', 'false');
+            openItem.querySelector('.faq-icon').textContent = '+';
+            const openWrap = openItem.querySelector('.faq-answer-wrapper');
+            if (window.motionAnimate) {
+              window.motionAnimate(openWrap, { height: 0, opacity: 0 }, { duration: 0.25 });
+            } else {
+              openWrap.style.height = '0px';
+              openWrap.style.opacity = '0';
+            }
+          }
+        });
+
+        if (!isActive) {
+          item.classList.add('active');
+          btn.setAttribute('aria-expanded', 'true');
+          icon.textContent = '−';
+          const fullHeight = content.offsetHeight;
+          if (window.motionAnimate) {
+            window.motionAnimate(wrapper, { height: [0, fullHeight], opacity: [0, 1] }, { duration: 0.3, easing: [0.16, 1, 0.3, 1] });
+          } else {
+            wrapper.style.height = fullHeight + 'px';
+            wrapper.style.opacity = '1';
+          }
+        } else {
+          item.classList.remove('active');
+          btn.setAttribute('aria-expanded', 'false');
+          icon.textContent = '+';
+          if (window.motionAnimate) {
+            window.motionAnimate(wrapper, { height: 0, opacity: 0 }, { duration: 0.25 });
+          } else {
+            wrapper.style.height = '0px';
+            wrapper.style.opacity = '0';
+          }
         }
       });
+    });
 
-      if (!isActive) {
-        item.classList.add('active');
-        btn.setAttribute('aria-expanded', 'true');
-        const icon = btn.querySelector('.faq-icon');
-        if (icon) icon.textContent = '−';
-      }
-    }
-
-    // 3. Cookie баннер
+    // Cookie баннер
     document.addEventListener('DOMContentLoaded', () => {
       try {
         if (!localStorage.getItem('auguxt_cookies_accepted')) {
-          document.getElementById('cookieAlert').style.display = 'block';
+          const cookieAlert = document.getElementById('cookieAlert');
+          cookieAlert.style.display = 'block';
+          if (window.motionAnimate) {
+            window.motionAnimate(cookieAlert, { opacity: [0, 1], y: [20, 0] }, { duration: 0.4 });
+          }
         }
       } catch (e) {
         document.getElementById('cookieAlert').style.display = 'block';
@@ -1616,23 +1692,38 @@
       try {
         localStorage.setItem('auguxt_cookies_accepted', 'true');
       } catch (e) {}
-      document.getElementById('cookieAlert').style.display = 'none';
+      const alertBox = document.getElementById('cookieAlert');
+      if (window.motionAnimate) {
+        window.motionAnimate(alertBox, { opacity: 0, y: 15 }, { duration: 0.25 }).then(() => {
+          alertBox.style.display = 'none';
+        });
+      } else {
+        alertBox.style.display = 'none';
+      }
     }
 
-    // 4. Модальные окна с Focus Trap
+    // Модальные окна с Motion анимацией и Focus Trap
     let previousActiveElement = null;
     let currentModalFocusables = [];
 
     function openModal(id) {
       previousActiveElement = document.activeElement;
       const modal = document.getElementById(id);
-      modal.classList.add('active');
+      const modalWindow = modal.querySelector('.modal-window');
       
+      modal.classList.add('active');
       document.getElementById('main-content-wrapper').setAttribute('aria-hidden', 'true');
       const cookieBanner = document.getElementById('cookieAlert');
       if (cookieBanner) cookieBanner.setAttribute('aria-hidden', 'true');
 
       document.body.style.overflow = 'hidden';
+
+      if (window.motionAnimate) {
+        window.motionAnimate(modal, { opacity: [0, 1] }, { duration: 0.25 });
+        window.motionAnimate(modalWindow, { scale: [0.94, 1], opacity: [0, 1] }, { duration: 0.3, easing: [0.16, 1, 0.3, 1] });
+      } else {
+        modal.style.opacity = '1';
+      }
 
       currentModalFocusables = Array.from(modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'));
       if (currentModalFocusables.length) {
@@ -1642,12 +1733,26 @@
 
     function closeModal(id) {
       const modal = document.getElementById(id);
-      modal.classList.remove('active');
-      
+      const modalWindow = modal.querySelector('.modal-window');
+
+      if (window.motionAnimate) {
+        Promise.all([
+          window.motionAnimate(modal, { opacity: 0 }, { duration: 0.2 }),
+          window.motionAnimate(modalWindow, { scale: 0.95, opacity: 0 }, { duration: 0.2 })
+        ]).then(() => {
+          modal.classList.remove('active');
+          restoreBackground();
+        });
+      } else {
+        modal.classList.remove('active');
+        restoreBackground();
+      }
+    }
+
+    function restoreBackground() {
       document.getElementById('main-content-wrapper').removeAttribute('aria-hidden');
       const cookieBanner = document.getElementById('cookieAlert');
       if (cookieBanner) cookieBanner.removeAttribute('aria-hidden');
-
       document.body.style.overflow = '';
       currentModalFocusables = [];
       if (previousActiveElement) previousActiveElement.focus();
@@ -1687,7 +1792,7 @@
       }
     });
 
-    // 5. Отправка формы через AJAX
+    // Отправка формы через AJAX
     const form = document.getElementById('contactForm');
     const statusDiv = document.getElementById('formStatus');
     const submitBtn = document.getElementById('submitBtn');
