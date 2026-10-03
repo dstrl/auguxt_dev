@@ -3,28 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Security Headers -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://auguxt.dev; connect-src 'self' https://api.web3forms.com; frame-ancestors 'none';">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+
   <title>Auguxt Dev — Разработка сайтов для бизнеса в Казахстане и СНГ</title>
   <meta name="description" content="Разработка современных, быстрых и адаптивных сайтов от лендинга до корпоративного портала. Ибрагим Хайрола — веб-разработчик из Алматы.">
   <link rel="canonical" href="https://auguxt.dev/">
 
-  <!-- Hreflang -->
-  <link rel="alternate" hreflang="ru" href="https://auguxt.dev/">
-  <link rel="alternate" hreflang="x-default" href="https://auguxt.dev/">
+  <!-- Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Open Graph -->
+  <!-- Open Graph & Twitter -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Auguxt Dev — Разработка сайтов для бизнеса">
   <meta property="og:description" content="Создание сайтов в Алматы и по СНГ: лендинги, корпоративные порталы, интернет-магазины.">
   <meta property="og:image" content="https://auguxt.dev/assets/og-preview.png">
   <meta property="og:url" content="https://auguxt.dev/">
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Auguxt Dev — Разработка сайтов">
-  <meta name="twitter:description" content="Создание сайтов в Казахстане и СНГ.">
-  <meta name="twitter:image" content="https://auguxt.dev/assets/og-preview.png">
-
-  <!-- Favicon (SVG) -->
+  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231E3A8A'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' fill='%23FFFFFF' font-family='sans-serif' font-weight='800' font-size='16'>A</text></svg>">
 
   <!-- Schema.org JSON-LD -->
@@ -47,7 +48,7 @@
     },
     "founder": {
       "@type": "Person",
-      "name": "Ибрагим Хайрола",
+      "name": "Хайрола Ибрагим Санжарұлы",
       "jobTitle": "Веб-разработчик"
     }
   }
@@ -55,23 +56,31 @@
 
   <style>
     :root {
-      --bg-canvas: #FAFAFC;
-      --bg-surface: #FFFFFF;
-      --bg-subtle: #F3F4F8;
-      --text-main: #0F172A;
-      --text-muted: #475569;
-      --brand-primary: #1E3A8A;
-      --brand-gradient: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%);
-      --brand-hover: #172554;
-      --brand-focus: #3B82F6;
-      --border-color: #E2E8F0;
-      --border-hover: #CBD5E1;
-      --radius: 12px;
-      --radius-sm: 6px;
-      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
-      --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
-      --shadow-lg: 0 20px 30px -10px rgba(15, 23, 42, 0.1);
-      --font-stack: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --bg-canvas: #060911;
+      --bg-subtle: rgba(15, 23, 42, 0.45);
+      --bg-surface: rgba(19, 29, 49, 0.65);
+      --bg-surface-elevated: rgba(26, 39, 66, 0.85);
+      
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-dim: #64748B;
+      
+      --brand-primary: #3B82F6;
+      --brand-light: #60A5FA;
+      --brand-gradient: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);
+      --accent-cyan-gradient: linear-gradient(135deg, #0EA5E9 0%, #2563EB 100%);
+      
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(59, 130, 246, 0.45);
+      
+      --radius: 16px;
+      --radius-sm: 8px;
+      --shadow-subtle: 0 4px 24px -2px rgba(0, 0, 0, 0.5);
+      --shadow-glow: 0 10px 32px -8px rgba(59, 130, 246, 0.45);
+      --shadow-glow-cyan: 0 10px 32px -8px rgba(14, 165, 233, 0.45);
+      
+      --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
     }
 
     * {
@@ -85,11 +94,40 @@
     }
 
     body {
-      font-family: var(--font-stack);
+      font-family: var(--font-sans);
       background-color: var(--bg-canvas);
       color: var(--text-main);
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .cosmos-background {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    #cosmosCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .cosmos-overlay {
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(circle at 50% 15%, rgba(59, 130, 246, 0.12) 0%, transparent 65%),
+        radial-gradient(circle at 85% 80%, rgba(99, 102, 241, 0.08) 0%, transparent 55%),
+        linear-gradient(180deg, rgba(6, 9, 17, 0.4) 0%, rgba(6, 9, 17, 0.85) 100%);
+      pointer-events: none;
     }
 
     .skip-link {
@@ -110,7 +148,7 @@
     }
 
     a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
-      outline: 3px solid var(--brand-focus);
+      outline: 2px solid var(--brand-light);
       outline-offset: 3px;
     }
 
@@ -118,13 +156,15 @@
       max-width: 1140px;
       margin: 0 auto;
       padding: 0 24px;
+      position: relative;
+      z-index: 2;
     }
 
-    /* Навигация */
     header {
       border-bottom: 1px solid var(--border-color);
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(12px);
+      background: rgba(6, 9, 17, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       position: sticky;
       top: 0;
       z-index: 100;
@@ -146,7 +186,7 @@
       letter-spacing: -0.03em;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
     .brand-logo span {
       background: var(--brand-gradient);
@@ -157,7 +197,7 @@
     .nav-links {
       display: flex;
       list-style: none;
-      gap: 28px;
+      gap: 32px;
     }
 
     .nav-links a {
@@ -165,10 +205,10 @@
       text-decoration: none;
       font-weight: 500;
       font-size: 0.95rem;
-      transition: color 0.15s ease;
+      transition: color 0.2s ease;
     }
     .nav-links a:hover {
-      color: var(--brand-primary);
+      color: var(--brand-light);
     }
 
     .menu-toggle {
@@ -196,6 +236,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      gap: 8px;
       padding: 12px 24px;
       border-radius: var(--radius);
       font-size: 0.95rem;
@@ -204,55 +245,62 @@
       cursor: pointer;
       text-align: center;
       border: 1px solid transparent;
-      transition: background 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, transform 0.15s ease;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .btn-main {
       background: var(--brand-gradient);
       color: #FFFFFF;
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+      box-shadow: 0 4px 16px rgba(59, 130, 246, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.15);
     }
     .btn-main:hover {
-      background: var(--brand-primary);
-      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.5);
     }
 
     .btn-outline {
-      border-color: var(--border-color);
-      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      background: rgba(255, 255, 255, 0.04);
       color: var(--text-main);
-      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(8px);
     }
     .btn-outline:hover {
-      border-color: var(--border-hover);
-      background: var(--bg-subtle);
+      border-color: var(--brand-light);
+      background: rgba(59, 130, 246, 0.1);
+      color: #FFFFFF;
+      transform: translateY(-2px);
     }
 
-    /* Секции */
+    #main-content-wrapper {
+      position: relative;
+      z-index: 10;
+    }
+
     section {
-      padding: 96px 0;
+      padding: 104px 0;
       scroll-margin-top: 80px;
       position: relative;
     }
 
     .hero-section {
-      padding: 120px 0 100px;
+      padding: 140px 0 110px;
       text-align: center;
-      background: radial-gradient(circle at 50% 20%, rgba(37, 99, 235, 0.08) 0%, transparent 60%);
     }
 
     .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      background: rgba(30, 58, 138, 0.06);
-      border: 1px solid rgba(30, 58, 138, 0.15);
-      border-radius: 30px;
+      gap: 10px;
+      padding: 6px 16px;
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.25);
+      border-radius: 9999px;
       font-size: 0.85rem;
       font-weight: 600;
-      color: var(--brand-primary);
-      margin-bottom: 24px;
+      font-family: var(--font-mono);
+      color: var(--brand-light);
+      margin-bottom: 28px;
     }
 
     .pulse-dot {
@@ -260,34 +308,29 @@
       height: 8px;
       background: #10B981;
       border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
       animation: pulse 2s infinite;
     }
 
     @keyframes pulse {
-      0% {
-        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-      }
-      70% {
-        box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
-      }
-      100% {
-        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
-      }
+      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
     }
 
     .hero-section h1 {
-      font-size: clamp(2.3rem, 5vw, 3.8rem);
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
       line-height: 1.15;
       font-weight: 800;
       margin-bottom: 24px;
-      letter-spacing: -0.03em;
-      color: var(--text-main);
+      letter-spacing: -0.04em;
+      color: #FFFFFF;
     }
 
     .hero-section p {
-      max-width: 680px;
+      max-width: 660px;
       margin: 0 auto 40px;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       color: var(--text-muted);
     }
 
@@ -304,9 +347,10 @@
     }
 
     .section-header h2 {
-      font-size: 2.2rem;
+      font-size: 2.3rem;
       font-weight: 800;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
+      color: #FFFFFF;
     }
 
     .section-header p {
@@ -315,23 +359,24 @@
       font-size: 1.05rem;
     }
 
-    /* Баннер стартовых цен */
     .discount-banner {
-      background: #EFF6FF;
-      border: 1px solid #BFDBFE;
+      background: rgba(30, 58, 138, 0.3);
+      border: 1px solid rgba(59, 130, 246, 0.35);
       border-radius: var(--radius);
       padding: 16px 24px;
       max-width: 800px;
       margin: -24px auto 48px;
       text-align: center;
-      color: #1E40AF;
+      color: var(--brand-light);
       font-weight: 600;
-      font-size: 1rem;
+      font-size: 0.98rem;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 12px;
-      box-shadow: var(--shadow-sm);
+      box-shadow: var(--shadow-glow);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
 
     .discount-badge-icon {
@@ -339,16 +384,17 @@
       color: #FFFFFF;
       padding: 4px 10px;
       border-radius: 6px;
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       font-weight: 700;
-      letter-spacing: 0.02em;
+      font-family: var(--font-mono);
+      letter-spacing: 0.05em;
     }
 
-    /* Карточки цен */
     .grid-4 {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
       gap: 24px;
+      align-items: stretch;
     }
 
     .pricing-card {
@@ -356,19 +402,33 @@
       border-radius: var(--radius);
       padding: 36px 24px;
       background: var(--bg-surface);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       text-align: center;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: var(--shadow-sm);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: var(--shadow-subtle);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .pricing-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px -8px rgba(59, 130, 246, 0.25);
+    }
+
+    .pricing-card.featured-cyan {
+      border: 2px solid #0EA5E9;
+      background: var(--bg-surface-elevated);
+      box-shadow: var(--shadow-glow-cyan);
     }
 
     .pricing-card.featured {
       border: 2px solid var(--brand-primary);
-      position: relative;
-      box-shadow: var(--shadow-lg);
-      background: #FFFFFF;
+      background: var(--bg-surface-elevated);
+      box-shadow: var(--shadow-glow);
     }
 
     .pricing-badge {
@@ -380,33 +440,42 @@
       color: #FFFFFF;
       font-size: 0.75rem;
       font-weight: 700;
-      padding: 5px 14px;
-      border-radius: 20px;
-      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 14px;
+      border-radius: 9999px;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+      white-space: nowrap;
+    }
+
+    .pricing-badge.cyan {
+      background: var(--accent-cyan-gradient);
+      box-shadow: 0 4px 12px rgba(14, 165, 233, 0.4);
     }
 
     .price-box {
-      margin: 20px 0 24px;
+      margin: 22px 0 24px;
     }
 
     .price-tag-sub {
       font-size: 0.85rem;
-      color: var(--text-muted);
+      color: var(--text-dim);
       font-weight: 500;
+      font-family: var(--font-mono);
     }
 
     .price-value {
       font-size: 2.2rem;
-      font-weight: 900;
-      color: var(--text-main);
+      font-weight: 800;
+      color: #FFFFFF;
       letter-spacing: -0.03em;
       margin-top: 4px;
     }
 
-    /* Сетка процесса */
     .process-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
       gap: 20px;
     }
 
@@ -421,36 +490,37 @@
       border: 1px solid var(--border-color);
       border-radius: var(--radius);
       background: var(--bg-surface);
-      position: relative;
-      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: var(--shadow-subtle);
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      transition: all 0.25s ease;
+    }
+
+    .step-item:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
     }
 
     .step-illustration {
       width: 100%;
-      height: 140px;
+      height: 130px;
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 20px;
-      background: #F8FAFC;
-      border: 1px solid #EEF2F6;
-      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
       overflow: hidden;
     }
 
-    .step-illustration svg {
-      width: 100%;
-      height: 100%;
-      max-height: 130px;
-    }
-
     .step-number {
-      font-size: 1.8rem;
-      font-weight: 900;
+      font-size: 1.6rem;
+      font-weight: 800;
+      font-family: var(--font-mono);
       background: var(--brand-gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -458,7 +528,6 @@
       line-height: 1;
     }
 
-    /* Карточки проектов */
     .grid-2 {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
@@ -470,18 +539,19 @@
     }
 
     .country-title {
-      font-size: 1.3rem;
+      font-size: 1.15rem;
       font-weight: 700;
-      color: var(--text-main);
+      color: #FFFFFF;
       margin-bottom: 24px;
       display: inline-flex;
       align-items: center;
       gap: 10px;
       background: var(--bg-surface);
+      backdrop-filter: blur(12px);
       border: 1px solid var(--border-color);
       padding: 8px 18px;
-      border-radius: 30px;
-      box-shadow: var(--shadow-sm);
+      border-radius: 9999px;
+      font-family: var(--font-mono);
     }
 
     .card {
@@ -489,23 +559,32 @@
       border-radius: var(--radius);
       padding: 32px;
       background: var(--bg-surface);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: var(--shadow-sm);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: var(--shadow-subtle);
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-3px);
     }
 
     .card-meta {
       font-size: 0.8rem;
       font-weight: 700;
-      color: var(--brand-primary);
+      font-family: var(--font-mono);
+      color: var(--brand-light);
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
 
     .card h4 {
-      font-size: 1.35rem;
+      font-size: 1.4rem;
+      color: #FFFFFF;
       margin: 10px 0 14px;
     }
 
@@ -515,42 +594,45 @@
       line-height: 1.65;
     }
 
-    /* Технологии */
     .tech-stack {
       display: flex;
       justify-content: center;
-      gap: 14px;
+      gap: 12px;
       flex-wrap: wrap;
       margin-top: 28px;
     }
 
     .tech-chip {
       background: var(--bg-surface);
+      backdrop-filter: blur(12px);
       border: 1px solid var(--border-color);
       padding: 10px 22px;
-      border-radius: 40px;
+      border-radius: 9999px;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
+      font-family: var(--font-mono);
       color: var(--text-main);
-      box-shadow: var(--shadow-sm);
-      transition: all 0.15s ease;
+      box-shadow: var(--shadow-subtle);
+      transition: all 0.2s ease;
     }
     .tech-chip:hover {
-      border-color: var(--brand-focus);
-      color: var(--brand-primary);
+      border-color: var(--brand-light);
+      color: var(--brand-light);
+      transform: translateY(-2px);
     }
 
-    /* Обо мне */
     .about-box {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 56px;
       align-items: center;
       background: var(--bg-surface);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       padding: 56px;
       border-radius: var(--radius);
       border: 1px solid var(--border-color);
-      box-shadow: var(--shadow-md);
+      box-shadow: var(--shadow-subtle);
     }
 
     .about-box img {
@@ -559,10 +641,13 @@
       object-fit: cover;
       border-radius: var(--radius);
       border: 1px solid var(--border-color);
-      background: #E2E8F0;
+      filter: saturate(0.9);
+      transition: filter 0.3s ease;
+    }
+    .about-box img:hover {
+      filter: saturate(1.05);
     }
 
-    /* FAQ */
     .faq-container {
       max-width: 800px;
       margin: 0 auto;
@@ -575,9 +660,11 @@
       border: 1px solid var(--border-color);
       border-radius: var(--radius);
       background: var(--bg-surface);
-      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: var(--shadow-subtle);
       overflow: hidden;
-      transition: border-color 0.15s ease;
+      transition: border-color 0.2s ease;
     }
     .faq-item:hover {
       border-color: var(--border-hover);
@@ -586,7 +673,7 @@
     .faq-question {
       width: 100%;
       text-align: left;
-      padding: 20px 24px;
+      padding: 22px 26px;
       font-weight: 600;
       font-size: 1.05rem;
       background: transparent;
@@ -595,15 +682,15 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      color: var(--text-main);
+      color: #FFFFFF;
+      font-family: inherit;
     }
 
     .faq-icon {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
+      font-family: var(--font-mono);
       font-weight: 400;
-      color: var(--brand-primary);
-      display: inline-block;
-      line-height: 1;
+      color: var(--brand-light);
     }
 
     .faq-answer-wrapper {
@@ -613,21 +700,22 @@
     }
 
     .faq-answer {
-      padding: 0 24px 22px;
+      padding: 0 26px 22px;
       color: var(--text-muted);
       font-size: 0.98rem;
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
-    /* Форма */
     .form-wrapper {
       max-width: 580px;
       margin: 0 auto;
       border: 1px solid var(--border-color);
-      padding: 40px;
+      padding: 44px 36px;
       border-radius: var(--radius);
       background: var(--bg-surface);
-      box-shadow: var(--shadow-md);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: var(--shadow-subtle);
     }
 
     .field {
@@ -638,23 +726,24 @@
       display: block;
       font-weight: 600;
       font-size: 0.9rem;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
+      color: var(--text-main);
     }
 
     .field input, .field select, .field textarea {
       width: 100%;
-      padding: 12px 16px;
+      padding: 13px 16px;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-sm);
       font-size: 0.98rem;
       font-family: inherit;
-      color: var(--text-main);
-      background-color: #FFFFFF;
-      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      color: #FFFFFF;
+      background-color: rgba(9, 13, 22, 0.7);
+      transition: all 0.2s ease;
     }
     .field input:focus, .field select:focus, .field textarea:focus {
-      border-color: var(--brand-focus);
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+      border-color: var(--brand-light);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
       outline: none;
     }
 
@@ -676,35 +765,37 @@
 
     .form-status {
       display: none;
-      padding: 12px;
+      padding: 14px;
       border-radius: var(--radius-sm);
       font-size: 0.9rem;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
       text-align: center;
     }
     .form-status.success {
       display: block;
-      background: #DEF7EC;
-      color: #03543F;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #34D399;
     }
     .form-status.error {
       display: block;
-      background: #FDE8E8;
-      color: #9B1C1C;
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #F87171;
     }
 
     .modal-link-btn {
       background: none;
       border: none;
       padding: 0;
-      color: var(--brand-primary);
+      color: var(--brand-light);
       text-decoration: underline;
       font: inherit;
       cursor: pointer;
       font-weight: 600;
     }
     .modal-link-btn:hover {
-      color: var(--brand-hover);
+      color: #FFFFFF;
     }
 
     .contacts-box {
@@ -712,10 +803,12 @@
       margin: 0 auto;
       text-align: center;
       background: var(--bg-surface);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border: 1px solid var(--border-color);
       border-radius: var(--radius);
-      padding: 48px 32px;
-      box-shadow: var(--shadow-sm);
+      padding: 52px 32px;
+      box-shadow: var(--shadow-subtle);
     }
 
     .contact-links-grid {
@@ -729,7 +822,8 @@
     footer {
       border-top: 1px solid var(--border-color);
       padding: 64px 0 32px;
-      background: var(--bg-subtle);
+      background: rgba(6, 9, 17, 0.85);
+      backdrop-filter: blur(16px);
     }
 
     .footer-content {
@@ -742,8 +836,11 @@
     .footer-col h4 {
       font-size: 0.95rem;
       font-weight: 700;
-      margin-bottom: 14px;
-      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+      color: #FFFFFF;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
     .footer-col p, .footer-col ul {
@@ -756,10 +853,10 @@
     .footer-col a {
       color: var(--text-muted);
       text-decoration: none;
+      transition: color 0.15s ease;
     }
     .footer-col a:hover {
-      text-decoration: underline;
-      color: var(--text-main);
+      color: var(--brand-light);
     }
 
     .footer-bottom {
@@ -767,58 +864,16 @@
       padding-top: 28px;
       text-align: center;
       font-size: 0.85rem;
-      color: var(--text-muted);
+      color: var(--text-dim);
+      font-family: var(--font-mono);
     }
 
-    /* Cookie Banner */
-    .cookie-alert {
-      position: fixed;
-      bottom: 24px;
-      left: 24px;
-      right: 24px;
-      max-width: 460px;
-      background: #0F172A;
-      color: #FFFFFF;
-      padding: 22px;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-lg);
-      z-index: 1000;
-      display: none;
-    }
-
-    .cookie-alert p {
-      font-size: 0.88rem;
-      line-height: 1.5;
-      margin-bottom: 14px;
-      color: #CBD5E1;
-    }
-
-    .cookie-alert button.modal-link-btn {
-      color: #93C5FD;
-    }
-
-    .cookie-buttons {
-      display: flex;
-      justify-content: flex-end;
-    }
-
-    .cookie-buttons button {
-      padding: 8px 18px;
-      border-radius: var(--radius-sm);
-      font-size: 0.85rem;
-      font-weight: 600;
-      cursor: pointer;
-      background: #FFFFFF;
-      color: #0F172A;
-      border: 1px solid #FFFFFF;
-    }
-
-    /* Модальные окна */
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(15, 23, 42, 0.7);
-      backdrop-filter: blur(6px);
+      background: rgba(6, 9, 17, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       display: none;
       align-items: center;
       justify-content: center;
@@ -832,30 +887,32 @@
     }
 
     .modal-window {
-      background: #FFFFFF;
+      background: #0D1424;
       width: 100%;
-      max-width: 760px;
-      max-height: 85vh;
+      max-width: 820px;
+      max-height: 88vh;
       border-radius: var(--radius);
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.85);
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      border: 1px solid var(--border-color);
-      transform-origin: center center;
+      border: 1px solid rgba(59, 130, 246, 0.25);
     }
 
     .modal-header {
-      padding: 20px 28px;
+      padding: 22px 30px;
       border-bottom: 1px solid var(--border-color);
       display: flex;
       justify-content: space-between;
       align-items: center;
+      background: rgba(13, 20, 36, 0.95);
     }
 
     .modal-header h3 {
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
     }
 
     .modal-close-btn {
@@ -866,42 +923,61 @@
       color: var(--text-muted);
       padding: 4px 8px;
       border-radius: var(--radius-sm);
+      transition: color 0.15s ease;
+    }
+    .modal-close-btn:hover {
+      color: #FFFFFF;
     }
 
     .modal-body {
-      padding: 28px;
+      padding: 30px;
       overflow-y: auto;
       font-size: 0.95rem;
       color: var(--text-main);
-      line-height: 1.65;
+      line-height: 1.7;
     }
 
     .modal-body h4 {
       font-size: 1rem;
       font-weight: 700;
-      margin: 20px 0 8px;
+      margin: 24px 0 10px;
       text-transform: uppercase;
-      color: var(--brand-primary);
+      font-family: var(--font-mono);
+      color: var(--brand-light);
+      letter-spacing: 0.03em;
     }
 
     .modal-body p {
-      margin-bottom: 12px;
       color: var(--text-muted);
+      margin-bottom: 14px;
     }
 
     .modal-body ul {
-      margin: 0 0 16px 20px;
       color: var(--text-muted);
+      margin-bottom: 16px;
+      padding-left: 20px;
     }
 
     .modal-body li {
       margin-bottom: 6px;
     }
 
+    .law-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      color: #93C5FD;
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      margin-bottom: 16px;
+    }
+
     .modal-footer {
-      padding: 16px 28px;
+      padding: 18px 30px;
       border-top: 1px solid var(--border-color);
-      background: var(--bg-subtle);
+      background: rgba(6, 9, 17, 0.7);
       display: flex;
       justify-content: flex-end;
     }
@@ -918,10 +994,10 @@
         top: 76px;
         left: 0;
         right: 0;
-        background: #FFFFFF;
+        background: #0E1626;
         padding: 20px 24px;
         border-bottom: 1px solid var(--border-color);
-        box-shadow: var(--shadow-md);
+        box-shadow: var(--shadow-subtle);
       }
 
       .nav-links.active {
@@ -945,6 +1021,12 @@
   </style>
 </head>
 <body>
+
+  <!-- Фон: Интерактивный Canvas Космоса -->
+  <div class="cosmos-background" aria-hidden="true">
+    <canvas id="cosmosCanvas"></canvas>
+    <div class="cosmos-overlay"></div>
+  </div>
 
   <a href="#main-content" class="skip-link">Перейти к основному содержимому</a>
 
@@ -984,7 +1066,7 @@
             <span class="pulse-dot"></span>
             Принимаю заказы на разработку сайтов
           </div>
-          <h1 class="motion-hero-item">Сайты для бизнеса в Казахстане и СНГ: от лендинга до портала</h1>
+          <h1 class="motion-hero-item">Инженерная веб-разработка для бизнеса в Казахстане и СНГ</h1>
           <p class="motion-hero-item">Создаю чистые, скоростные и адаптивные веб-решения под задачи бизнеса. Индивидуальная разработка с акцентом на надежность, структуру и соблюдение сроков.</p>
           <div class="hero-buttons motion-hero-item">
             <a href="#discuss" class="btn btn-main">Обсудить проект</a>
@@ -994,7 +1076,7 @@
       </section>
 
       <!-- Раздел: Цены -->
-      <section id="pricing" style="background-color: var(--bg-subtle);">
+      <section id="pricing">
         <div class="container">
           <div class="section-header motion-fade">
             <h2>Стоимость разработки</h2>
@@ -1003,29 +1085,30 @@
 
           <!-- Баннер стартовых цен -->
           <div class="discount-banner motion-fade">
-            <span class="discount-badge-icon">СПЕЦПРЕДЛОЖЕНИЕ</span>
-            <span>Специальный стартовый тариф для первых 3 проектов в портфолио — 20 700 ₸.</span>
+            <span class="discount-badge-icon">SPECIAL OFFER</span>
+            <span>Специальный промо-тариф для первых 3 проектов в портфолио — 20 700 ₸.</span>
           </div>
 
           <div class="grid-4 motion-stagger-group">
-            <!-- 1. Лендинг -->
-            <div class="pricing-card motion-card">
+            <!-- 1. Лендинг (Спецтариф с неоновым выделением) -->
+            <div class="pricing-card featured-cyan motion-card">
+              <span class="pricing-badge cyan">Спецпредложение</span>
               <div>
-                <h3 style="font-size: 1.25rem;">Лендинг</h3>
-                <p style="color: var(--text-muted); font-size: 0.92rem; margin-top: 6px;">Одностраничный сайт для презентации товара, услуги или промо-кампании.</p>
+                <h3 style="font-size: 1.25rem; color: #FFFFFF;">Лендинг</h3>
+                <p style="color: var(--text-muted); font-size: 0.92rem; margin-top: 6px;">Одностраничный промо-сайт для высокой конверсии, презентации продукта или услуги.</p>
                 <div class="price-box">
                   <div class="price-tag-sub">Стартовый тариф</div>
                   <div class="price-value">20 700 ₸</div>
                 </div>
               </div>
-              <a href="#discuss" class="btn btn-outline" style="width: 100%;">Заказать лендинг</a>
+              <a href="#discuss" class="btn btn-main" style="width: 100%; background: var(--accent-cyan-gradient);">Заказать лендинг</a>
             </div>
 
-            <!-- 2. Корпоративный -->
+            <!-- 2. Корпоративный (Спецтариф) -->
             <div class="pricing-card featured motion-card">
               <span class="pricing-badge">Спецтариф</span>
               <div>
-                <h3 style="font-size: 1.25rem;">Корпоративный</h3>
+                <h3 style="font-size: 1.25rem; color: #FFFFFF;">Корпоративный</h3>
                 <p style="color: var(--text-muted); font-size: 0.92rem; margin-top: 6px;">Многостраничный сайт компании с каталогом услуг, разделами и историей бренда.</p>
                 <div class="price-box">
                   <div class="price-tag-sub">Стартовый тариф</div>
@@ -1038,7 +1121,7 @@
             <!-- 3. Интернет-магазин -->
             <div class="pricing-card motion-card">
               <div>
-                <h3 style="font-size: 1.25rem;">Интернет-магазин</h3>
+                <h3 style="font-size: 1.25rem; color: #FFFFFF;">Интернет-магазин</h3>
                 <p style="color: var(--text-muted); font-size: 0.92rem; margin-top: 6px;">Полнофункциональный магазин: каталог, корзина, фильтры и приём заказов.</p>
                 <div class="price-box">
                   <div class="price-tag-sub">Базовая цена</div>
@@ -1051,7 +1134,7 @@
             <!-- 4. Доработки -->
             <div class="pricing-card motion-card">
               <div>
-                <h3 style="font-size: 1.25rem;">Доработки</h3>
+                <h3 style="font-size: 1.25rem; color: #FFFFFF;">Доработки</h3>
                 <p style="color: var(--text-muted); font-size: 0.92rem; margin-top: 6px;">Устранение багов, оптимизация скорости, верстка новых блоков и интеграции.</p>
                 <div class="price-box">
                   <div class="price-tag-sub">Почасовая ставка</div>
@@ -1064,7 +1147,7 @@
         </div>
       </section>
 
-      <!-- Раздел: Процесс работы с иллюстрациями -->
+      <!-- Раздел: Процесс работы -->
       <section id="process">
         <div class="container">
           <div class="section-header motion-fade">
@@ -1073,178 +1156,105 @@
           </div>
           <div class="process-grid motion-stagger-group">
             
-            <!-- Этап 1: ТЗ -->
             <div class="step-item motion-card">
               <div class="step-illustration">
                 <svg viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <!-- Планшет -->
-                  <rect x="35" y="16" width="70" height="92" rx="7" fill="#FFFFFF" stroke="#0F172A" stroke-width="2.5"/>
-                  <rect x="52" y="10" width="36" height="12" rx="3" fill="#10B981" stroke="#0F172A" stroke-width="2"/>
-                  <!-- Пункты чеклиста -->
+                  <rect x="35" y="16" width="70" height="92" rx="7" fill="#0C1424" stroke="#3B82F6" stroke-width="1.8"/>
+                  <rect x="52" y="10" width="36" height="12" rx="3" fill="#10B981"/>
                   <circle cx="48" cy="36" r="3.5" fill="#3B82F6"/>
-                  <line x1="57" y1="36" x2="92" y2="36" stroke="#0F172A" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="57" y1="36" x2="92" y2="36" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
                   <circle cx="48" cy="48" r="3.5" fill="#3B82F6"/>
-                  <line x1="57" y1="48" x2="88" y2="48" stroke="#0F172A" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="57" y1="48" x2="88" y2="48" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
                   <circle cx="48" cy="60" r="3.5" fill="#3B82F6"/>
-                  <line x1="57" y1="60" x2="90" y2="60" stroke="#0F172A" stroke-width="2.5" stroke-linecap="round"/>
-                  <!-- График на заднем плане -->
-                  <rect x="110" y="24" width="40" height="34" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.8"/>
-                  <rect x="116" y="42" width="5" height="12" fill="#3B82F6"/>
-                  <rect x="125" y="34" width="5" height="20" fill="#10B981"/>
-                  <rect x="134" y="38" width="5" height="16" fill="#1E3A8A"/>
-                  <circle cx="128" cy="80" r="14" stroke="#CBD5E1" stroke-width="5" stroke-dasharray="32 18"/>
-                  <!-- Рука с ручкой -->
-                  <path d="M72 82L102 70L96 66L66 78Z" fill="#1E3A8A" stroke="#0F172A" stroke-width="2"/>
-                  <path d="M64 79L58 83L66 84Z" fill="#F8FAFC" stroke="#0F172A" stroke-width="1.5"/>
-                  <path d="M98 68C106 63 116 75 110 82L98 94L84 86L96 72" fill="#FBCFE8" stroke="#0F172A" stroke-width="2"/>
-                  <path d="M94 90L114 116H136L110 82" fill="#1E3A8A" stroke="#0F172A" stroke-width="2"/>
+                  <line x1="57" y1="60" x2="90" y2="60" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
                 </svg>
               </div>
-              <div class="step-number">1</div>
-              <h3 style="font-size: 1.2rem; margin-bottom: 8px;">ТЗ</h3>
-              <p style="color: var(--text-muted); font-size: 0.95rem;">Определяем задачи, структуру и требования сайта.</p>
+              <div class="step-number">01</div>
+              <h3 style="font-size: 1.15rem; margin-bottom: 8px; color: #FFFFFF;">ТЗ</h3>
+              <p style="color: var(--text-muted); font-size: 0.92rem;">Определяем задачи, структуру и требования сайта.</p>
             </div>
 
-            <!-- Этап 2: Дизайн -->
             <div class="step-item motion-card">
               <div class="step-illustration">
                 <svg viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <!-- Палитра цветов слева -->
-                  <rect x="16" y="24" width="16" height="32" rx="3" transform="rotate(-15 16 24)" fill="#34D399" stroke="#0F172A" stroke-width="1.8"/>
-                  <rect x="22" y="20" width="16" height="32" rx="3" transform="rotate(-5 22 20)" fill="#60A5FA" stroke="#0F172A" stroke-width="1.8"/>
-                  <!-- Окно макета (Desktop) -->
-                  <rect x="36" y="26" width="90" height="66" rx="5" fill="#FFFFFF" stroke="#0F172A" stroke-width="2.5"/>
-                  <path d="M36 38H126" stroke="#0F172A" stroke-width="2"/>
+                  <rect x="36" y="26" width="90" height="66" rx="5" fill="#0C1424" stroke="#3B82F6" stroke-width="1.8"/>
+                  <path d="M36 38H126" stroke="#3B82F6" stroke-width="1.5"/>
                   <circle cx="43" cy="32" r="2.2" fill="#EF4444"/>
                   <circle cx="49" cy="32" r="2.2" fill="#F59E0B"/>
                   <circle cx="55" cy="32" r="2.2" fill="#10B981"/>
-                  <!-- Блоки прототипа -->
-                  <rect x="44" y="44" width="34" height="20" rx="3" fill="#BBF7D0" stroke="#0F172A" stroke-width="1.5"/>
-                  <rect x="84" y="44" width="34" height="8" rx="2" fill="#E2E8F0"/>
-                  <rect x="84" y="56" width="34" height="8" rx="2" fill="#E2E8F0"/>
-                  <!-- Карточки с крестиками (wireframe) -->
-                  <rect x="44" y="70" width="22" height="16" fill="#F1F5F9" stroke="#0F172A" stroke-width="1.2"/>
-                  <line x1="44" y1="70" x2="66" y2="86" stroke="#CBD5E1" stroke-width="1.2"/>
-                  <line x1="66" y1="70" x2="44" y2="86" stroke="#CBD5E1" stroke-width="1.2"/>
-                  <rect x="70" y="70" width="22" height="16" fill="#F1F5F9" stroke="#0F172A" stroke-width="1.2"/>
-                  <line x1="70" y1="70" x2="92" y2="86" stroke="#CBD5E1" stroke-width="1.2"/>
-                  <line x1="92" y1="70" x2="70" y2="86" stroke="#CBD5E1" stroke-width="1.2"/>
-                  <!-- Шестеренка настроек -->
-                  <circle cx="134" cy="72" r="8" stroke="#1E3A8A" stroke-width="2.5" stroke-dasharray="4 2"/>
+                  <rect x="44" y="46" width="34" height="18" rx="2" fill="rgba(59,130,246,0.2)"/>
+                  <rect x="84" y="46" width="34" height="6" rx="1" fill="#334155"/>
+                  <rect x="84" y="56" width="34" height="6" rx="1" fill="#334155"/>
                 </svg>
               </div>
-              <div class="step-number">2</div>
-              <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Дизайн</h3>
-              <p style="color: var(--text-muted); font-size: 0.95rem;">Создаём внешний вид и согласовываем его с вами.</p>
+              <div class="step-number">02</div>
+              <h3 style="font-size: 1.15rem; margin-bottom: 8px; color: #FFFFFF;">Дизайн</h3>
+              <p style="color: var(--text-muted); font-size: 0.92rem;">Создаём внешний вид и согласовываем его с вами.</p>
             </div>
 
-            <!-- Этап 3: Разработка -->
             <div class="step-item motion-card">
               <div class="step-illustration">
                 <svg viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <!-- Бейдж кода -->
-                  <rect x="110" y="10" width="28" height="18" rx="4" fill="#BBF7D0" stroke="#0F172A" stroke-width="1.8"/>
-                  <path d="M117 19L114 22L117 25M131 19L134 22L131 25" stroke="#0F172A" stroke-width="1.5" stroke-linecap="round"/>
-                  <!-- Монитор программиста -->
-                  <rect x="66" y="24" width="76" height="54" rx="4" fill="#1E293B" stroke="#0F172A" stroke-width="2.5"/>
-                  <path d="M96 78L92 90H116L112 78" stroke="#0F172A" stroke-width="2.5" fill="#CBD5E1"/>
-                  <line x1="84" y1="90" x2="124" y2="90" stroke="#0F172A" stroke-width="3" stroke-linecap="round"/>
-                  <!-- Строки кода на экране -->
-                  <path d="M78 38L74 42L78 46M122 38L126 42L122 46" stroke="#38BDF8" stroke-width="2" stroke-linecap="round"/>
-                  <line x1="84" y1="42" x2="114" y2="42" stroke="#34D399" stroke-width="2" stroke-linecap="round"/>
-                  <line x1="80" y1="52" x2="108" y2="52" stroke="#FBBF24" stroke-width="2" stroke-linecap="round"/>
-                  <line x1="80" y1="62" x2="118" y2="62" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
-                  <!-- Разработчик -->
-                  <circle cx="44" cy="30" r="10" fill="#FBCFE8" stroke="#0F172A" stroke-width="2"/>
-                  <path d="M38 24C38 20 48 18 52 24C54 26 50 30 50 30" stroke="#0F172A" stroke-width="2" fill="#0F172A"/>
-                  <path d="M26 68L36 44H54L64 68H26Z" fill="#1E3A8A" stroke="#0F172A" stroke-width="2"/>
-                  <!-- Руки к клавиатуре -->
-                  <path d="M50 56L68 66L66 72L48 62" fill="#FBCFE8" stroke="#0F172A" stroke-width="1.8"/>
+                  <rect x="42" y="24" width="76" height="54" rx="4" fill="#0C1424" stroke="#3B82F6" stroke-width="1.8"/>
+                  <path d="M72 78L68 90H92L88 78" stroke="#3B82F6" stroke-width="1.5" fill="#1E293B"/>
+                  <line x1="60" y1="90" x2="100" y2="90" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M54 38L50 42L54 46M98 38L102 42L98 46" stroke="#38BDF8" stroke-width="1.8" stroke-linecap="round"/>
+                  <line x1="60" y1="42" x2="90" y2="42" stroke="#34D399" stroke-width="1.8" stroke-linecap="round"/>
+                  <line x1="56" y1="52" x2="84" y2="52" stroke="#FBBF24" stroke-width="1.8" stroke-linecap="round"/>
                 </svg>
               </div>
-              <div class="step-number">3</div>
-              <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Разработка</h3>
-              <p style="color: var(--text-muted); font-size: 0.95rem;">Верстаем и программируем адаптивный сайт.</p>
+              <div class="step-number">03</div>
+              <h3 style="font-size: 1.15rem; margin-bottom: 8px; color: #FFFFFF;">Разработка</h3>
+              <p style="color: var(--text-muted); font-size: 0.92rem;">Верстаем и программируем быстрый адаптивный сайт.</p>
             </div>
 
-            <!-- Этап 4: Сдача -->
             <div class="step-item motion-card">
               <div class="step-illustration">
                 <svg viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <!-- Документы сдачи (Final Report) -->
-                  <rect x="74" y="20" width="46" height="62" rx="4" fill="#FFFFFF" stroke="#0F172A" stroke-width="2"/>
-                  <rect x="86" y="14" width="22" height="8" rx="2" fill="#64748B"/>
-                  <circle cx="83" cy="32" r="3" fill="#10B981"/>
-                  <line x1="90" y1="32" x2="110" y2="32" stroke="#CBD5E1" stroke-width="2"/>
-                  <circle cx="83" cy="42" r="3" fill="#10B981"/>
-                  <line x1="90" y1="42" x2="110" y2="42" stroke="#CBD5E1" stroke-width="2"/>
-                  <!-- Синяя папка с отчетом -->
-                  <rect x="100" y="34" width="42" height="58" rx="4" fill="#1E3A8A" stroke="#0F172A" stroke-width="2"/>
-                  <line x1="108" y1="44" x2="134" y2="44" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
-                  <line x1="108" y1="52" x2="128" y2="52" stroke="#93C5FD" stroke-width="2" stroke-linecap="round"/>
-                  <circle cx="130" cy="74" r="7" fill="#F59E0B" stroke="#0F172A" stroke-width="1.5"/>
-                  <!-- Кнопка Launch -->
-                  <rect x="20" y="34" width="56" height="24" rx="5" fill="#1E3A8A" stroke="#0F172A" stroke-width="2"/>
-                  <text x="48" y="50" fill="#FFFFFF" font-size="10" font-weight="800" text-anchor="middle" font-family="sans-serif">Launch</text>
-                  <!-- Рука, нажимающая на кнопку -->
-                  <path d="M54 56L54 44L48 44L48 58L42 62L46 76L64 74L68 62L54 56Z" fill="#FBCFE8" stroke="#0F172A" stroke-width="2"/>
-                  <path d="M48 76L36 102H62L68 76" fill="#1E3A8A" stroke="#0F172A" stroke-width="2"/>
+                  <rect x="57" y="24" width="46" height="62" rx="4" fill="#0C1424" stroke="#3B82F6" stroke-width="1.8"/>
+                  <circle cx="66" cy="38" r="3" fill="#10B981"/>
+                  <line x1="73" y1="38" x2="93" y2="38" stroke="#94A3B8" stroke-width="1.5"/>
+                  <circle cx="66" cy="48" r="3" fill="#10B981"/>
+                  <line x1="73" y1="48" x2="93" y2="48" stroke="#94A3B8" stroke-width="1.5"/>
+                  <rect x="52" y="68" width="56" height="20" rx="4" fill="#3B82F6"/>
+                  <text x="80" y="82" fill="#FFFFFF" font-size="9" font-weight="700" text-anchor="middle" font-family="sans-serif">LAUNCH</text>
                 </svg>
               </div>
-              <div class="step-number">4</div>
-              <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Сдача</h3>
-              <p style="color: var(--text-muted); font-size: 0.95rem;">Тестируем, исправляем ошибки и передаём готовый сайт.</p>
+              <div class="step-number">04</div>
+              <h3 style="font-size: 1.15rem; margin-bottom: 8px; color: #FFFFFF;">Сдача</h3>
+              <p style="color: var(--text-muted); font-size: 0.92rem;">Тестируем, исправляем ошибки и передаём сайт.</p>
             </div>
 
-            <!-- Этап 5: Поддержка -->
             <div class="step-item motion-card">
               <div class="step-illustration">
                 <svg viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <!-- Облачко связи -->
-                  <rect x="80" y="10" width="20" height="14" rx="4" fill="#BBF7D0" stroke="#0F172A" stroke-width="1.5"/>
-                  <circle cx="86" cy="17" r="1" fill="#0F172A"/>
-                  <circle cx="90" cy="17" r="1" fill="#0F172A"/>
-                  <circle cx="94" cy="17" r="1" fill="#0F172A"/>
-                  <!-- Специалист с гарнитурой -->
-                  <circle cx="56" cy="38" r="10" fill="#FBCFE8" stroke="#0F172A" stroke-width="2"/>
-                  <path d="M52 46C52 46 54 48 58 48C62 48 64 46 64 46" stroke="#0F172A" stroke-width="1.5"/>
-                  <!-- Гарнитура (Headset) -->
-                  <path d="M46 38C46 30 66 30 66 38" stroke="#0F172A" stroke-width="2.5" fill="none"/>
-                  <rect x="44" y="34" width="4" height="8" rx="2" fill="#0F172A"/>
-                  <path d="M46 40L54 46" stroke="#0F172A" stroke-width="1.5"/>
-                  <path d="M38 78L46 56H68L76 78H38Z" fill="#1E3A8A" stroke="#0F172A" stroke-width="2"/>
-                  <!-- Ноутбук -->
-                  <path d="M40 76L54 76L60 70L46 70Z" fill="#CBD5E1" stroke="#0F172A" stroke-width="1.5"/>
-                  <!-- Серверная стойка -->
-                  <rect x="104" y="18" width="44" height="84" rx="5" fill="#1E293B" stroke="#0F172A" stroke-width="2.5"/>
-                  <!-- Серверные юниты со светодиодами -->
-                  <rect x="110" y="26" width="32" height="14" rx="2" fill="#334155"/>
-                  <line x1="114" y1="33" x2="128" y2="33" stroke="#34D399" stroke-width="2.5" stroke-linecap="round"/>
-                  <circle cx="136" cy="33" r="1.5" fill="#38BDF8"/>
-                  <rect x="110" y="46" width="32" height="14" rx="2" fill="#334155"/>
-                  <line x1="114" y1="53" x2="128" y2="53" stroke="#34D399" stroke-width="2.5" stroke-linecap="round"/>
-                  <circle cx="136" cy="53" r="1.5" fill="#38BDF8"/>
-                  <rect x="110" y="66" width="32" height="14" rx="2" fill="#334155"/>
-                  <line x1="114" y1="73" x2="124" y2="73" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"/>
-                  <circle cx="136" cy="73" r="1.5" fill="#10B981"/>
-                  <circle cx="114" cy="90" r="2" fill="#64748B"/>
-                  <circle cx="122" cy="90" r="2" fill="#64748B"/>
+                  <rect x="58" y="20" width="44" height="80" rx="4" fill="#0C1424" stroke="#3B82F6" stroke-width="1.8"/>
+                  <rect x="64" y="28" width="32" height="12" rx="2" fill="#1E293B"/>
+                  <line x1="68" y1="34" x2="82" y2="34" stroke="#34D399" stroke-width="2" stroke-linecap="round"/>
+                  <circle cx="90" cy="34" r="1.5" fill="#38BDF8"/>
+                  <rect x="64" y="46" width="32" height="12" rx="2" fill="#1E293B"/>
+                  <line x1="68" y1="52" x2="82" y2="52" stroke="#34D399" stroke-width="2" stroke-linecap="round"/>
+                  <circle cx="90" cy="52" r="1.5" fill="#38BDF8"/>
+                  <rect x="64" y="64" width="32" height="12" rx="2" fill="#1E293B"/>
+                  <line x1="68" y1="70" x2="78" y2="70" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/>
+                  <circle cx="90" cy="70" r="1.5" fill="#10B981"/>
                 </svg>
               </div>
-              <div class="step-number">5</div>
-              <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Поддержка</h3>
-              <p style="color: var(--text-muted); font-size: 0.95rem;">Обновления, исправления и дальнейшие доработки.</p>
+              <div class="step-number">05</div>
+              <h3 style="font-size: 1.15rem; margin-bottom: 8px; color: #FFFFFF;">Поддержка</h3>
+              <p style="color: var(--text-muted); font-size: 0.92rem;">Обновления, исправления и дальнейшие доработки.</p>
             </div>
 
           </div>
 
+          <!-- Технологический стек -->
           <div style="margin-top: 64px; text-align: center;" class="motion-fade">
-            <h3 style="font-size: 1.3rem; margin-bottom: 8px;">Технологический стек</h3>
+            <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #FFFFFF;">Технологический стек</h3>
             <p style="color: var(--text-muted); font-size: 0.95rem;">Проверенные инструменты для надежной и быстрой работы</p>
             <div class="tech-stack">
               <span class="tech-chip">HTML5</span>
               <span class="tech-chip">CSS3</span>
-              <span class="tech-chip">JavaScript</span>
+              <span class="tech-chip">JavaScript / TypeScript</span>
               <span class="tech-chip">Python</span>
               <span class="tech-chip">PostgreSQL</span>
               <span class="tech-chip">Git</span>
@@ -1254,7 +1264,7 @@
       </section>
 
       <!-- Раздел: Проекты -->
-      <section id="projects" style="background-color: var(--bg-subtle);">
+      <section id="projects">
         <div class="container">
           <div class="section-header motion-fade">
             <h2>Реализованные проекты</h2>
@@ -1281,7 +1291,6 @@
                     target="_blank" 
                     rel="noopener noreferrer" 
                     class="modal-link-btn"
-                    aria-label="Посмотреть проект APAN BANYA (откроется в новой вкладке)"
                   >
                     Посмотреть проект APAN BANYA &rarr;
                   </a>
@@ -1302,7 +1311,6 @@
                     target="_blank" 
                     rel="noopener noreferrer" 
                     class="modal-link-btn"
-                    aria-label="Перейти на сайт КРМУ (откроется в новой вкладке)"
                   >
                     Перейти на сайт new.krmu.edu.kz &rarr;
                   </a>
@@ -1331,7 +1339,6 @@
                     target="_blank" 
                     rel="noopener noreferrer" 
                     class="modal-link-btn"
-                    aria-label="Перейти на сайт CarBase (откроется в новой вкладке)"
                   >
                     Перейти на сайт carbase-dc.ru &rarr;
                   </a>
@@ -1352,7 +1359,6 @@
                     target="_blank" 
                     rel="noopener noreferrer" 
                     class="modal-link-btn"
-                    aria-label="Перейти на сайт Академии Игоря Крутого (откроется в новой вкладке)"
                   >
                     Перейти на сайт academy-ik-spb.ru &rarr;
                   </a>
@@ -1369,18 +1375,18 @@
         <div class="container">
           <div class="about-box motion-fade">
             <div>
-              <h2 style="font-size: 2rem; margin-bottom: 18px;">Обо мне</h2>
+              <h2 style="font-size: 2.1rem; margin-bottom: 18px; color: #FFFFFF;">Обо мне</h2>
               <p style="color: var(--text-muted); margin-bottom: 14px;">
                 Я — разработчик из Алматы, занимаюсь веб-разработкой с 2021 года. Создаю современные, функциональные и удобные сайты под задачи бизнеса в Казахстане и СНГ.
               </p>
               <p style="color: var(--text-muted); margin-bottom: 14px;">
-                Свободно владею английским языком на уровне C1 (IELTS Academic), что позволяет мне работать с передовой документацией и международными инженерными практиками.
+                Свободно владею английским языком на уровне C1 (IELTS Academic), что позволяет мне работать с передовой документацией и международными инженерными стандартами.
               </p>
               <p style="color: var(--text-muted); margin-bottom: 14px;">
-                Обучаюсь в одном из ведущих технических вузов Казахстана — <strong>Satbayev University</strong>, по специальности <strong>Computer Science</strong>, на полном образовательном гранте.
+                Обучаюсь в одном из ведущих технических вузов Казахстана — <strong>Satbayev University</strong>, по направлению <strong>Computer Science</strong>, на полном государственном гранте.
               </p>
               <p style="color: var(--text-muted);">
-                Постоянно развиваю свои навыки и создаю качественные цифровые решения, которые действительно работают на результат бизнеса.
+                Постоянно совершенствую инженерный стек и создаю надежные цифровые решения, которые приносят измеримую пользу бизнесу.
               </p>
             </div>
             <div>
@@ -1398,7 +1404,7 @@
       </section>
 
       <!-- Раздел: FAQ -->
-      <section id="faq" style="background-color: var(--bg-subtle);">
+      <section id="faq">
         <div class="container">
           <div class="section-header motion-fade">
             <h2>Часто задаваемые вопросы</h2>
@@ -1473,7 +1479,7 @@
         <div class="container">
           <div class="section-header motion-fade">
             <h2>Давайте обсудим ваш проект</h2>
-            <p>Есть идея для сайта или уже готовое техническое задание? Свяжитесь со мной — обсудим задачу и определим дальнейшие шаги.</p>
+            <p>Есть идея для сайта или готовое ТЗ? Свяжитесь со мной — рассчитаем точные сроки и стоимость.</p>
           </div>
           
           <div class="form-wrapper motion-fade">
@@ -1482,37 +1488,37 @@
               <input type="hidden" name="subject" value="Новая заявка с сайта Auguxt Dev">
               <input type="hidden" name="from_name" value="Auguxt Dev Site">
               
-              <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+              <!-- Защита от ботов (Honeypot) -->
+              <input type="checkbox" name="botcheck" class="hidden" style="display: none !important;" tabindex="-1" autocomplete="off">
 
               <div id="formStatus" class="form-status"></div>
 
               <div class="field">
                 <label for="userName">Ваше имя *</label>
-                <input type="text" id="userName" name="name" required autocomplete="name" placeholder="Иван">
+                <input type="text" id="userName" name="name" required autocomplete="name" maxlength="70" placeholder="Иван">
               </div>
 
               <div class="field">
                 <label for="userEmail">Электронная почта *</label>
-                <input type="email" id="userEmail" name="email" required autocomplete="email" placeholder="example@domain.com">
+                <input type="email" id="userEmail" name="email" required autocomplete="email" maxlength="100" placeholder="example@domain.com">
               </div>
 
               <div class="field">
                 <label for="userPhone">Номер телефона / WhatsApp</label>
-                <input type="tel" id="userPhone" name="phone" placeholder="+7 (___) ___-__-__">
+                <input type="tel" id="userPhone" name="phone" maxlength="30" placeholder="+7 (___) ___-__-__">
               </div>
 
               <div class="field">
                 <label for="userCompany">Название компании</label>
-                <input type="text" id="userCompany" name="company" placeholder="ТОО / ИП / Бренд">
+                <input type="text" id="userCompany" name="company" maxlength="100" placeholder="ТОО / ИП / Бренд">
               </div>
 
-              <!-- Выбор тарифа -->
               <div class="field">
                 <label for="userPlan">Интересующий тариф *</label>
                 <select id="userPlan" name="plan" required>
                   <option value="" disabled selected>Выберите тариф...</option>
-                  <option value="Лендинг (20 700 ₸)">Лендинг — 20 700 ₸</option>
-                  <option value="Корпоративный (44 700 ₸)">Корпоративный — 44 700 ₸</option>
+                  <option value="Лендинг (20 700 ₸)">Лендинг (Спецтариф) — 20 700 ₸</option>
+                  <option value="Корпоративный (44 700 ₸)">Корпоративный (Спецтариф) — 44 700 ₸</option>
                   <option value="Интернет-магазин (299 000 ₸)">Интернет-магазин — 299 000 ₸</option>
                   <option value="Доработки (от 10 000 ₸)">Технические доработки — от 10 000 ₸</option>
                   <option value="Индивидуальный проект">Индивидуальный проект / Другое</option>
@@ -1521,14 +1527,14 @@
 
               <div class="field">
                 <label for="userMessage">Описание проекта *</label>
-                <textarea id="userMessage" name="message" rows="4" required placeholder="Опишите задачу, примерные сроки или вопросы..."></textarea>
+                <textarea id="userMessage" name="message" rows="4" required maxlength="2500" placeholder="Опишите задачу, примерные сроки или вопросы..."></textarea>
               </div>
 
               <div class="checkbox-field">
                 <input type="checkbox" id="userConsent" name="consent" required>
                 <label for="userConsent">
-                  Согласен на сбор и обработку моих данных исключительно для связи по проекту в соответствии с 
-                  <button type="button" class="modal-link-btn" onclick="openModal('privacyModal')">Политикой конфиденциальности</button>.
+                  Даю согласие на сбор и обработку персональных данных в соответствии с 
+                  <button type="button" class="modal-link-btn" onclick="openModal('privacyModal')">Политикой конфиденциальности (Закон РК № 94-V)</button>.
                 </label>
               </div>
 
@@ -1538,20 +1544,23 @@
         </div>
       </section>
 
-      <!-- Раздел: Связаться со мной -->
-      <section id="contact-me" style="background-color: var(--bg-subtle);">
+      <!-- Раздел: Связаться со мной (Только WhatsApp) -->
+      <section id="contact-me">
         <div class="container">
           <div class="contacts-box motion-fade">
-            <h2 style="font-size: 2rem; margin-bottom: 12px;">Связаться со мной</h2>
+            <h2 style="font-size: 2rem; margin-bottom: 12px; color: #FFFFFF;">Связаться со мной</h2>
             <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 1.05rem;">
-              Если у вас есть идея, проект или вопрос — свяжитесь со мной удобным для вас способом. Оплата принимается переводом через Kaspi или Halyk.
+              Если у вас есть идея, проект или вопрос — напишите мне в WhatsApp. Обсудим задачи, сроки и детали реализации.
             </p>
             <div class="contact-links-grid">
-              <a href="https://wa.me/77087273646" target="_blank" rel="noopener noreferrer" class="btn btn-main">
-                WhatsApp: +7 (708) 727-36-46
-              </a>
-              <a href="mailto:ibrahimkhairulin@gmail.com" class="btn btn-outline">
-                ibrahimkhairulin@gmail.com
+              <a 
+                href="https://api.whatsapp.com/send/?phone=77087273646&text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82." 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="btn btn-main"
+                style="padding: 14px 32px; font-size: 1rem;"
+              >
+                Написать в WhatsApp: +7 (708) 727-36-46
               </a>
             </div>
           </div>
@@ -1567,12 +1576,12 @@
           <div class="footer-col">
             <h4>Реквизиты</h4>
             <p>
-              <strong>Исполнитель:</strong> Хайрола Ибрагим<br>
+              <strong>Исполнитель:</strong> Хайрола И.С.<br>
               <strong>Бренд:</strong> Auguxt Dev<br>
-              <strong>Город:</strong> Алматы, Казахстан<br>
-              <strong>Оплата:</strong> Kaspi / Halyk<br>
+              <strong>Город:</strong> Алматы, Республика Казахстан<br>
+              <strong>Оплата:</strong> Kaspi / Halyk Bank<br>
               <strong>Email:</strong> <a href="mailto:ibrahimkhairulin@gmail.com">ibrahimkhairulin@gmail.com</a><br>
-              <strong>WhatsApp:</strong> <a href="https://wa.me/77087273646" target="_blank" rel="noopener noreferrer">+7 (708) 727-36-46</a>
+              <strong>WhatsApp:</strong> <a href="https://api.whatsapp.com/send/?phone=77087273646" target="_blank" rel="noopener noreferrer">+7 (708) 727-36-46</a>
             </p>
           </div>
 
@@ -1606,42 +1615,75 @@
     </footer>
   </div>
 
-  <!-- Cookie Banner -->
-  <aside class="cookie-alert" id="cookieAlert" role="region" aria-label="Согласие на использование файлов cookie">
-    <p>
-      Сайт использует только технические файлы cookie для корректной навигации. Подробнее в 
-      <button type="button" class="modal-link-btn" onclick="openModal('cookieModal')">Политике cookie</button>.
-    </p>
-    <div class="cookie-buttons">
-      <button type="button" onclick="acceptCookies()">Понятно</button>
-    </div>
-  </aside>
-
-  <!-- 1. Модалка: Политика конфиденциальности -->
+  <!-- 1. Модалка: Политика конфиденциальности (соответствие Закону РК № 94-V) -->
   <div class="modal-overlay" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyTitle" onclick="handleOverlayClick(event, 'privacyModal')">
     <div class="modal-window">
       <div class="modal-header">
-        <h3 id="privacyTitle">Политика конфиденциальности</h3>
+        <h3 id="privacyTitle">Политика конфиденциальности и обработки персональных данных</h3>
         <button type="button" class="modal-close-btn" onclick="closeModal('privacyModal')" aria-label="Закрыть">&times;</button>
       </div>
       <div class="modal-body">
-        <p><strong>Дата вступления в силу:</strong> 14 марта 2026 г.</p>
-        <p>Настоящая политика описывает порядок сбора и обработки персональных данных, осуществляемый разработчиком Ибрагимом Хайрола, работающим под брендом <strong>Auguxt Dev</strong> (далее «мы»), в отношении посетителей сайта <strong>auguxt.dev</strong>.</p>
-        <p><strong>Контакты:</strong> ibrahimkhairulin@gmail.com, +7 (708) 727-36-46, г. Алматы, Республика Казахстан.</p>
+        <span class="law-badge">Закон Республики Казахстан № 94-V «О персональных данных и их защите»</span>
+        <p><strong>Дата вступления в силу:</strong> 14 марта 2026 года</p>
+        
+        <h4>1. Общие положения и оператор данных</h4>
+        <p>
+          Настоящая Политика определяет порядок сбора, накопления, хранения, использования и защиты персональных данных, осуществляемый физическим лицом, осуществляющим частную профессиональную деятельность — <strong>Хайрола Ибрагим Санжарұлы</strong> (ИИН: <strong>081203551543</strong>), выступающим под коммерческим обозначением <strong>Auguxt Dev</strong> (далее — «Оператор»), в отношении пользователей веб-ресурса <strong>auguxt.dev</strong>.
+        </p>
+        <p>
+          Оператор действует в строгом соответствии с Конституцией Республики Казахстан, Законом РК от 21 мая 2013 года № 94-V «О персональных данных и их защите» и нормативными правовыми актами РК в сфере информационной безопасности.
+        </p>
 
-        <h4>Какие данные мы собираем</h4>
-        <p><strong>Данные, которые вы передаёте сами:</strong> имя, email, номер телефона, название компании, выбранный тариф и описание проекта при заполнении формы обратной связи. Данные поступают на почту через защищенный шлюз Web3Forms.</p>
-        <p><strong>Технические данные:</strong> IP-адрес, тип браузера и устройства, посещённые страницы, время визита, фиксируемые сервером хостинга.</p>
-
-        <h4>Для чего мы используем данные</h4>
+        <h4>2. Контактная информация Оператора</h4>
         <ul>
-          <li>Для оперативной связи и ответа на ваш запрос по проекту;</li>
-          <li>Для подготовки технического задания и коммерческого предложения;</li>
-          <li>Для соблюдения законодательства Республики Казахстан «О персональных данных и их защите».</li>
+          <li><strong>ФИО:</strong> Хайрола Ибрагим Санжарұлы</li>
+          <li><strong>ИИН:</strong> 081203551543</li>
+          <li><strong>Город:</strong> г. Алматы, Республика Казахстан</li>
+          <li><strong>Контактный телефон / WhatsApp:</strong> +7 (708) 727-36-46</li>
+          <li><strong>Официальный Email:</strong> ibrahimkhairulin@gmail.com</li>
         </ul>
 
-        <h4>Права пользователя и удаление данных</h4>
-        <p>В соответствии с Законом РК «О персональных данных и их защите» вы вправе в любой момент отозвать согласие на обработку данных или потребовать их удаления из наших баз, направив запрос на <a href="mailto:ibrahimkhairulin@gmail.com">ibrahimkhairulin@gmail.com</a>.</p>
+        <h4>3. Состав и категории собираемых данных</h4>
+        <p>Оператор собирает исключительно те данные, которые необходимы для установления делового контакта и формирования коммерческого предложения:</p>
+        <ul>
+          <li>Имя заявителя или контактного лица;</li>
+          <li>Адрес электронной почты (email);</li>
+          <li>Номер мобильного телефона (включая контакты в мессенджере WhatsApp);</li>
+          <li>Наименование компании / юридического лица / ИП (при указании);</li>
+          <li>Выбранный тариф и исходное техническое описание проекта;</li>
+          <li>Технические обезличенные сведения (IP-адрес, тип браузера, файлы cookie для сессии), фиксируемые веб-сервером.</li>
+        </ul>
+
+        <h4>4. Правовые основания и цели обработки данных</h4>
+        <p>Обработка данных осуществляется на основании прямого, информированного и добровольного согласия субъекта персональных данных, выражаемого путём заполнения формы обратной связи на сайте.</p>
+        <ul>
+          <li>Обработка входящих клиентских запросов и предварительный расчет сметы на разработку сайтов;</li>
+          <li>Проведение переговоров, заключение договоров на оказание услуг по веб-разработке и составление технических заданий;</li>
+          <li>Обеспечение оперативной коммуникации в рамках согласования прототипов и сдачи проектов;</li>
+          <li>Исполнение налоговых и юридических обязательств в соответствии с законодательством Республики Казахстан.</li>
+        </ul>
+
+        <h4>5. Порядок сбора, передачи и защита информации</h4>
+        <p>
+          Для безопасной передачи заявок используется защищённое шифрованное SSL/TLS соединение и шлюз Web3Forms. Оператор гарантирует конфиденциальность и обязуется не продавать, не сдавать в аренду и не передавать данные третьим лицам, за исключением случаев, прямо предусмотренных действующим законодательством Республики Казахстан.
+        </p>
+
+        <h4>6. Сроки хранения и локализация данных</h4>
+        <p>
+          Персональные данные хранятся не дольше, чем этого требуют цели их обработки, либо до момента отзыва согласия субъектом. Персональные данные хранятся на защищённых электронных носителях с применением организационных и технических мер защиты.
+        </p>
+
+        <h4>7. Права субъекта персональных данных и порядок отзыва согласия</h4>
+        <p>В соответствии со статьёй 24 Закона РК «О персональных данных и их защите» субъект данных вправе:</p>
+        <ul>
+          <li>Знать о наличии у Оператора своих персональных данных и получать информацию о порядке их обработки;</li>
+          <li>Требовать изменения или дополнения своих персональных данных при наличии законных оснований;</li>
+          <li>Требовать уничтожения (блокирования) своих персональных данных;</li>
+          <li>Отозвать согласие на сбор и обработку данных в любой момент.</li>
+        </ul>
+        <p>
+          Для реализации своих прав или отзыва согласия направьте письменное обращение на адрес электронной почты <strong>ibrahimkhairulin@gmail.com</strong> с темой «Запрос по персональным данным». Запрос обрабатывается Оператором в срок не более 3 (трёх) рабочих дней.
+        </p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-main" onclick="closeModal('privacyModal')">Закрыть</button>
@@ -1649,26 +1691,18 @@
     </div>
   </div>
 
-  <!-- 2. Модалка: Условия обслуживания (T&C) -->
+  <!-- 2. Модалка: Условия обслуживания -->
   <div class="modal-overlay" id="termsModal" role="dialog" aria-modal="true" aria-labelledby="termsTitle" onclick="handleOverlayClick(event, 'termsModal')">
     <div class="modal-window">
       <div class="modal-header">
-        <h3 id="termsTitle">Условия обслуживания (Terms & Conditions)</h3>
+        <h3 id="termsTitle">Условия обслуживания</h3>
         <button type="button" class="modal-close-btn" onclick="closeModal('termsModal')" aria-label="Закрыть">&times;</button>
       </div>
       <div class="modal-body">
-        <p><strong>Дата вступления в силу:</strong> 14 марта 2026 г.</p>
-        <h4>1. Общие положения</h4>
-        <p>Исполнитель: Ибрагим Хайрола, бренд Auguxt Dev. Заполнение формы на сайте означает согласие с данными условиями.</p>
-
-        <h4>2. Порядок работ и оплата</h4>
-        <p>Разработка осуществляется на основании согласованного технического задания (ТЗ). Оплата производится в два этапа: 50% предоплата до начала проектирования и 50% после демонстрации готового сайта. Оплата принимается переводом через Kaspi или Halyk Bank.</p>
-
-        <h4>3. Интеллектуальная собственность</h4>
-        <p>После полной оплаты проекта все исключительные права на разработанный исходный код и структуру сайта передаются заказчику.</p>
-
-        <h4>4. Гарантии</h4>
-        <p>Разработчик предоставляет 30 дней бесплатной технической поддержки со дня сдачи проекта для устранения любых дефектов в рамках утверждённого ТЗ.</p>
+        <h4>1. Оплата</h4>
+        <p>50% авансовый платёж до старта работ, 50% после утверждения проекта на демо-стенде. Оплата принимается переводом через Kaspi или Halyk Bank.</p>
+        <h4>2. Права</h4>
+        <p>Все исключительные права на исходный код полностью переходят к заказчику после финального расчёта.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-main" onclick="closeModal('termsModal')">Закрыть</button>
@@ -1676,16 +1710,15 @@
     </div>
   </div>
 
-  <!-- 3. Модалка: Политика Cookie -->
+  <!-- 3. Модалка: Cookie -->
   <div class="modal-overlay" id="cookieModal" role="dialog" aria-modal="true" aria-labelledby="cookieTitle" onclick="handleOverlayClick(event, 'cookieModal')">
     <div class="modal-window">
       <div class="modal-header">
-        <h3 id="cookieTitle">Политика использования cookie</h3>
+        <h3 id="cookieTitle">Файлы Cookie</h3>
         <button type="button" class="modal-close-btn" onclick="closeModal('cookieModal')" aria-label="Закрыть">&times;</button>
       </div>
       <div class="modal-body">
-        <p><strong>Дата вступления в силу:</strong> 14 марта 2026 г.</p>
-        <p>Auguxt Dev использует исключительно технические файлы cookie (например, отметку о согласии с уведомлением в браузере). Рекламные или следящие cookie сторонних сетей отсутствуют.</p>
+        <p>Сайт использует строго технические cookie для корректной навигации и сохранения состояния сессии. Маркетинговые трекеры отсутствуют.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-main" onclick="closeModal('cookieModal')">Закрыть</button>
@@ -1693,21 +1726,15 @@
     </div>
   </div>
 
-  <!-- 4. Модалка: Политика возврата -->
+  <!-- 4. Модалка: Возврат -->
   <div class="modal-overlay" id="refundModal" role="dialog" aria-modal="true" aria-labelledby="refundTitle" onclick="handleOverlayClick(event, 'refundModal')">
     <div class="modal-window">
       <div class="modal-header">
-        <h3 id="refundTitle">Политика возврата средств (Refund Policy)</h3>
+        <h3 id="refundTitle">Политика возврата средств</h3>
         <button type="button" class="modal-close-btn" onclick="closeModal('refundModal')" aria-label="Закрыть">&times;</button>
       </div>
       <div class="modal-body">
-        <p><strong>Дата вступления в силу:</strong> 14 марта 2026 г.</p>
-        <h4>Условия возврата</h4>
-        <ul>
-          <li><strong>До начала разработки:</strong> При отказе до старта проектирования сумма предоплаты возвращается в полном объёме (100%).</li>
-          <li><strong>В процессе разработки:</strong> Возврат рассчитывается за вычетом фактически понесённых расходов и стоимости уже сданных этапов.</li>
-          <li><strong>После сдачи работ:</strong> После финального утверждения проекта и передачи исходных файлов возврат средств не производится.</li>
-        </ul>
+        <p>100% возврат средств при отказе до начала работ по проектированию. При отказе во время разработки возврат осуществляется за вычетом фактически закрытых этапов.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-main" onclick="closeModal('refundModal')">Закрыть</button>
@@ -1715,62 +1742,201 @@
     </div>
   </div>
 
-  <!-- 1. Motion CDN Module -->
+  <!-- Скрипт 1: Движок Живого Плавного Космоса -->
+  <script>
+    (function initCosmos() {
+      const canvas = document.getElementById('cosmosCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      let width = (canvas.width = window.innerWidth);
+      let height = (canvas.height = window.innerHeight);
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+        initStars();
+      });
+
+      let mouseX = width / 2;
+      let mouseY = height / 2;
+      let targetMouseX = mouseX;
+      let targetMouseY = mouseY;
+      let scrollY = window.scrollY;
+
+      window.addEventListener('mousemove', (e) => {
+        targetMouseX = e.clientX;
+        targetMouseY = e.clientY;
+      });
+
+      window.addEventListener('scroll', () => {
+        scrollY = window.scrollY;
+      }, { passive: true });
+
+      const STAR_COUNT = Math.floor((width * height) / 3800);
+      let stars = [];
+
+      function initStars() {
+        stars = [];
+        for (let i = 0; i < STAR_COUNT; i++) {
+          const depth = Math.random();
+          stars.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            baseSize: depth < 0.65 ? Math.random() * 1.1 + 0.3 : Math.random() * 2.2 + 0.8,
+            depth: depth + 0.15,
+            driftSpeedX: (Math.random() * 0.12 + 0.04) * (depth + 0.2),
+            driftSpeedY: (Math.random() * 0.08 + 0.02) * (depth + 0.2),
+            alpha: Math.random() * 0.6 + 0.25,
+            twinkleSpeed: Math.random() * 0.025 + 0.008,
+            twinklePhase: Math.random() * Math.PI * 2,
+            color: Math.random() > 0.4 ? '#F0F4FF' : (Math.random() > 0.5 ? '#93C5FD' : '#C7D2FE')
+          });
+        }
+      }
+      initStars();
+
+      let meteors = [];
+      function spawnMeteor() {
+        meteors.push({
+          x: Math.random() * width * 1.3,
+          y: Math.random() * height * 0.35,
+          length: Math.random() * 90 + 50,
+          speed: Math.random() * 9 + 11,
+          angle: Math.PI / 4.2 + (Math.random() - 0.5) * 0.15,
+          opacity: 1
+        });
+      }
+
+      let isVisible = true;
+      document.addEventListener('visibilitychange', () => {
+        isVisible = !document.hidden;
+      });
+
+      function render() {
+        if (!isVisible) {
+          requestAnimationFrame(render);
+          return;
+        }
+
+        mouseX += (targetMouseX - mouseX) * 0.035;
+        mouseY += (targetMouseY - mouseY) * 0.035;
+
+        const normX = (mouseX / width - 0.5) * 2;
+        const normY = (mouseY / height - 0.5) * 2;
+
+        ctx.clearRect(0, 0, width, height);
+
+        for (let i = 0; i < stars.length; i++) {
+          const s = stars[i];
+
+          s.x -= s.driftSpeedX;
+          s.y -= s.driftSpeedY;
+
+          if (s.x < 0) s.x += width;
+          if (s.x > width) s.x -= width;
+          if (s.y < 0) s.y += height;
+          if (s.y > height) s.y -= height;
+
+          s.twinklePhase += s.twinkleSpeed;
+          const currentAlpha = s.alpha * (0.55 + 0.45 * Math.sin(s.twinklePhase));
+
+          const offsetX = normX * 24 * s.depth;
+          const offsetY = (normY * 16 - (scrollY * 0.12)) * s.depth;
+
+          let renderX = (s.x + offsetX) % width;
+          let renderY = (s.y + offsetY) % height;
+          if (renderX < 0) renderX += width;
+          if (renderY < 0) renderY += height;
+
+          const sizePulse = s.baseSize > 1.4 ? s.baseSize * (0.9 + 0.1 * Math.sin(s.twinklePhase * 0.7)) : s.baseSize;
+
+          ctx.fillStyle = s.color;
+          ctx.globalAlpha = Math.max(currentAlpha, 0.05);
+          ctx.beginPath();
+          ctx.arc(renderX, renderY, sizePulse, 0, Math.PI * 2);
+          ctx.fill();
+
+          if (s.baseSize > 1.6) {
+            ctx.fillStyle = 'rgba(96, 165, 250, 0.18)';
+            ctx.beginPath();
+            ctx.arc(renderX, renderY, sizePulse * 2.6, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+
+        if (Math.random() < 0.007 && meteors.length < 2) {
+          spawnMeteor();
+        }
+
+        for (let i = meteors.length - 1; i >= 0; i--) {
+          const m = meteors[i];
+          m.x -= Math.cos(m.angle) * m.speed;
+          m.y += Math.sin(m.angle) * m.speed;
+          m.opacity -= 0.014;
+
+          if (m.opacity <= 0) {
+            meteors.splice(i, 1);
+            continue;
+          }
+
+          const tailX = m.x + Math.cos(m.angle) * m.length;
+          const tailY = m.y - Math.sin(m.angle) * m.length;
+
+          const grad = ctx.createLinearGradient(m.x, m.y, tailX, tailY);
+          grad.addColorStop(0, `rgba(255, 255, 255, ${m.opacity})`);
+          grad.addColorStop(0.35, `rgba(147, 197, 253, ${m.opacity * 0.8})`);
+          grad.addColorStop(1, 'rgba(59, 130, 246, 0)');
+
+          ctx.strokeStyle = grad;
+          ctx.lineWidth = 1.4;
+          ctx.beginPath();
+          ctx.moveTo(m.x, m.y);
+          ctx.lineTo(tailX, tailY);
+          ctx.stroke();
+        }
+
+        ctx.globalAlpha = 1;
+        requestAnimationFrame(render);
+      }
+
+      requestAnimationFrame(render);
+    })();
+  </script>
+
+  <!-- Скрипт 2: Motion CDN Module -->
   <script type="module">
     import { animate, inView, stagger } from "https://cdn.jsdelivr.net/npm/motion@11.11.13/+esm";
 
-    // Анимация Hero блока
     const heroElements = document.querySelectorAll('.motion-hero-item');
     if (heroElements.length) {
       animate(heroElements, 
-        { opacity: [0, 1], y: [24, 0] }, 
-        { delay: stagger(0.12), duration: 0.65, easing: [0.16, 1, 0.3, 1] }
+        { opacity: [0, 1], y: [20, 0] }, 
+        { delay: stagger(0.1), duration: 0.6, easing: [0.16, 1, 0.3, 1] }
       );
     }
 
-    // Scroll Animations: Одиночные блоки
     document.querySelectorAll('.motion-fade').forEach(el => {
       inView(el, () => {
-        animate(el, { opacity: [0, 1], y: [24, 0] }, { duration: 0.6, easing: [0.16, 1, 0.3, 1] });
-      }, { margin: "-40px 0px" });
+        animate(el, { opacity: [0, 1], y: [24, 0] }, { duration: 0.55, easing: [0.16, 1, 0.3, 1] });
+      }, { margin: "-30px 0px" });
     });
 
-    // Scroll Animations: Группы карточек с каскадом (stagger)
     document.querySelectorAll('.motion-stagger-group').forEach(group => {
       inView(group, () => {
         const cards = group.querySelectorAll('.motion-card');
         animate(cards, 
-          { opacity: [0, 1], y: [30, 0] }, 
-          { delay: stagger(0.1), duration: 0.55, easing: [0.16, 1, 0.3, 1] }
+          { opacity: [0, 1], y: [28, 0] }, 
+          { delay: stagger(0.08), duration: 0.5, easing: [0.16, 1, 0.3, 1] }
         );
-      }, { margin: "-40px 0px" });
+      }, { margin: "-30px 0px" });
     });
 
-    // Микровзаимодействия для кнопок и карточек
-    document.querySelectorAll('.btn, .pricing-card, .step-item, .card').forEach(el => {
-      el.addEventListener('pointerenter', () => {
-        if (el.classList.contains('pricing-card') || el.classList.contains('card') || el.classList.contains('step-item')) {
-          animate(el, { y: -4 }, { duration: 0.25, easing: "ease-out" });
-        }
-      });
-      el.addEventListener('pointerleave', () => {
-        animate(el, { y: 0, scale: 1 }, { duration: 0.25, easing: "ease-out" });
-      });
-      el.addEventListener('pointerdown', () => {
-        animate(el, { scale: 0.98 }, { duration: 0.1 });
-      });
-      el.addEventListener('pointerup', () => {
-        animate(el, { scale: 1 }, { duration: 0.15 });
-      });
-    });
-
-    // Экспорт Motion animate для аккордеона и модалок
     window.motionAnimate = animate;
   </script>
 
-  <!-- 2. Логика сайта (Аккордеон, Модалки, Форма) -->
+  <!-- Скрипт 3: Интерактивность и безопасность формы -->
   <script>
-    // Мобильное меню
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
 
@@ -1787,7 +1953,7 @@
       });
     });
 
-    // FAQ аккордеон с плавной высотой
+    // FAQ Аккордеон
     document.querySelectorAll('.faq-question').forEach(btn => {
       btn.addEventListener('click', () => {
         const item = btn.closest('.faq-item');
@@ -1796,16 +1962,14 @@
         const icon = btn.querySelector('.faq-icon');
         const isActive = item.classList.contains('active');
 
-        // Закрываем другие открытые вопросы
         document.querySelectorAll('.faq-item.active').forEach(openItem => {
           if (openItem !== item) {
             openItem.classList.remove('active');
-            const openBtn = openItem.querySelector('.faq-question');
-            openBtn.setAttribute('aria-expanded', 'false');
+            openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
             openItem.querySelector('.faq-icon').textContent = '+';
             const openWrap = openItem.querySelector('.faq-answer-wrapper');
             if (window.motionAnimate) {
-              window.motionAnimate(openWrap, { height: 0, opacity: 0 }, { duration: 0.25 });
+              window.motionAnimate(openWrap, { height: 0, opacity: 0 }, { duration: 0.2 });
             } else {
               openWrap.style.height = '0px';
               openWrap.style.opacity = '0';
@@ -1819,7 +1983,7 @@
           icon.textContent = '−';
           const fullHeight = content.offsetHeight;
           if (window.motionAnimate) {
-            window.motionAnimate(wrapper, { height: [0, fullHeight], opacity: [0, 1] }, { duration: 0.3, easing: [0.16, 1, 0.3, 1] });
+            window.motionAnimate(wrapper, { height: [0, fullHeight], opacity: [0, 1] }, { duration: 0.25, easing: [0.16, 1, 0.3, 1] });
           } else {
             wrapper.style.height = fullHeight + 'px';
             wrapper.style.opacity = '1';
@@ -1829,7 +1993,7 @@
           btn.setAttribute('aria-expanded', 'false');
           icon.textContent = '+';
           if (window.motionAnimate) {
-            window.motionAnimate(wrapper, { height: 0, opacity: 0 }, { duration: 0.25 });
+            window.motionAnimate(wrapper, { height: 0, opacity: 0 }, { duration: 0.2 });
           } else {
             wrapper.style.height = '0px';
             wrapper.style.opacity = '0';
@@ -1838,38 +2002,8 @@
       });
     });
 
-    // Cookie баннер
-    document.addEventListener('DOMContentLoaded', () => {
-      try {
-        if (!localStorage.getItem('auguxt_cookies_accepted')) {
-          const cookieAlert = document.getElementById('cookieAlert');
-          cookieAlert.style.display = 'block';
-          if (window.motionAnimate) {
-            window.motionAnimate(cookieAlert, { opacity: [0, 1], y: [20, 0] }, { duration: 0.4 });
-          }
-        }
-      } catch (e) {
-        document.getElementById('cookieAlert').style.display = 'block';
-      }
-    });
-
-    function acceptCookies() {
-      try {
-        localStorage.setItem('auguxt_cookies_accepted', 'true');
-      } catch (e) {}
-      const alertBox = document.getElementById('cookieAlert');
-      if (window.motionAnimate) {
-        window.motionAnimate(alertBox, { opacity: 0, y: 15 }, { duration: 0.25 }).then(() => {
-          alertBox.style.display = 'none';
-        });
-      } else {
-        alertBox.style.display = 'none';
-      }
-    }
-
-    // Модальные окна с Motion анимацией и Focus Trap
+    // Модальные окна
     let previousActiveElement = null;
-    let currentModalFocusables = [];
 
     function openModal(id) {
       previousActiveElement = document.activeElement;
@@ -1877,22 +2011,13 @@
       const modalWindow = modal.querySelector('.modal-window');
       
       modal.classList.add('active');
-      document.getElementById('main-content-wrapper').setAttribute('aria-hidden', 'true');
-      const cookieBanner = document.getElementById('cookieAlert');
-      if (cookieBanner) cookieBanner.setAttribute('aria-hidden', 'true');
-
       document.body.style.overflow = 'hidden';
 
       if (window.motionAnimate) {
-        window.motionAnimate(modal, { opacity: [0, 1] }, { duration: 0.25 });
-        window.motionAnimate(modalWindow, { scale: [0.94, 1], opacity: [0, 1] }, { duration: 0.3, easing: [0.16, 1, 0.3, 1] });
+        window.motionAnimate(modal, { opacity: [0, 1] }, { duration: 0.2 });
+        window.motionAnimate(modalWindow, { scale: [0.95, 1], opacity: [0, 1] }, { duration: 0.25, easing: [0.16, 1, 0.3, 1] });
       } else {
         modal.style.opacity = '1';
-      }
-
-      currentModalFocusables = Array.from(modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'));
-      if (currentModalFocusables.length) {
-        currentModalFocusables[0].focus();
       }
     }
 
@@ -1902,25 +2027,17 @@
 
       if (window.motionAnimate) {
         Promise.all([
-          window.motionAnimate(modal, { opacity: 0 }, { duration: 0.2 }),
-          window.motionAnimate(modalWindow, { scale: 0.95, opacity: 0 }, { duration: 0.2 })
+          window.motionAnimate(modal, { opacity: 0 }, { duration: 0.18 }),
+          window.motionAnimate(modalWindow, { scale: 0.95, opacity: 0 }, { duration: 0.18 })
         ]).then(() => {
           modal.classList.remove('active');
-          restoreBackground();
+          document.body.style.overflow = '';
+          if (previousActiveElement) previousActiveElement.focus();
         });
       } else {
         modal.classList.remove('active');
-        restoreBackground();
+        document.body.style.overflow = '';
       }
-    }
-
-    function restoreBackground() {
-      document.getElementById('main-content-wrapper').removeAttribute('aria-hidden');
-      const cookieBanner = document.getElementById('cookieAlert');
-      if (cookieBanner) cookieBanner.removeAttribute('aria-hidden');
-      document.body.style.overflow = '';
-      currentModalFocusables = [];
-      if (previousActiveElement) previousActiveElement.focus();
     }
 
     function handleOverlayClick(event, id) {
@@ -1930,40 +2047,36 @@
     }
 
     document.addEventListener('keydown', (e) => {
-      const activeModal = document.querySelector('.modal-overlay.active');
-      if (!activeModal) return;
-
       if (e.key === 'Escape') {
-        closeModal(activeModal.id);
-        return;
-      }
-
-      if (e.key === 'Tab') {
-        if (!currentModalFocusables.length) return;
-        const firstElement = currentModalFocusables[0];
-        const lastElement = currentModalFocusables[currentModalFocusables.length - 1];
-
-        if (e.shiftKey) {
-          if (document.activeElement === firstElement) {
-            e.preventDefault();
-            lastElement.focus();
-          }
-        } else {
-          if (document.activeElement === lastElement) {
-            e.preventDefault();
-            firstElement.focus();
-          }
-        }
+        const activeModal = document.querySelector('.modal-overlay.active');
+        if (activeModal) closeModal(activeModal.id);
       }
     });
 
-    // Отправка формы через AJAX
+    // Форма: Валидация, Honeypot и Rate-Limiter (защита от спама)
     const form = document.getElementById('contactForm');
     const statusDiv = document.getElementById('formStatus');
     const submitBtn = document.getElementById('submitBtn');
+    let lastSubmissionTime = 0;
 
     form.addEventListener('submit', function(e) {
       e.preventDefault();
+
+      // Rate limiting: не чаще 1 раза в 60 секунд
+      const now = Date.now();
+      if (now - lastSubmissionTime < 60000) {
+        const waitSec = Math.ceil((60000 - (now - lastSubmissionTime)) / 1000);
+        statusDiv.textContent = `Пожалуйста, подождите ${waitSec} сек. перед повторной отправкой.`;
+        statusDiv.className = 'form-status error';
+        return;
+      }
+
+      // Проверка бота (honeypot)
+      const botCheck = form.querySelector('input[name="botcheck"]');
+      if (botCheck && botCheck.checked) {
+        return; // Бот пойман, тихо игнорируем
+      }
+
       submitBtn.disabled = true;
       submitBtn.textContent = 'Отправка...';
       statusDiv.className = 'form-status';
@@ -1977,16 +2090,17 @@
       .then(async (response) => {
         let json = await response.json();
         if (response.status === 200) {
+          lastSubmissionTime = Date.now();
           statusDiv.textContent = 'Спасибо! Ваша заявка успешно отправлена. Я свяжусь с вами в ближайшее время.';
           statusDiv.className = 'form-status success';
           form.reset();
         } else {
-          statusDiv.textContent = json.message || 'Ошибка отправки. Напишите напрямую в WhatsApp или на почту.';
+          statusDiv.textContent = json.message || 'Ошибка отправки. Пожалуйста, напишите напрямую в WhatsApp.';
           statusDiv.className = 'form-status error';
         }
       })
-      .catch(error => {
-        statusDiv.textContent = 'Не удалось отправить форму. Пожалуйста, напишите мне напрямую в WhatsApp или на почту.';
+      .catch(() => {
+        statusDiv.textContent = 'Не удалось отправить форму. Пожалуйста, напишите мне напрямую в WhatsApp.';
         statusDiv.className = 'form-status error';
       })
       .finally(() => {
@@ -1995,6 +2109,5 @@
       });
     });
   </script>
-
 </body>
 </html>
