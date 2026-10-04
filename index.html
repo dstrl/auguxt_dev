@@ -4,10 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- Security Headers -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://auguxt.github.io; connect-src 'self' https://api.web3forms.com; frame-ancestors 'none';">
+  <!-- Security Headers (Только поддерживаемые браузером директивы в meta) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://auguxt.github.io; connect-src 'self' https://api.web3forms.com https://formspree.io;">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
 
   <title>Auguxt Dev — Разработка сайтов для бизнеса в Казахстане и СНГ</title>
   <meta name="description" content="Разработка современных, быстрых и адаптивных сайтов от лендинга до корпоративного портала. Ибрагим Хайрола — веб-разработчик из Алматы.">
@@ -255,7 +254,7 @@
       cursor: pointer;
       text-align: center;
       border: 1px solid transparent;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
     }
 
     .btn-main {
@@ -419,7 +418,7 @@
       flex-direction: column;
       justify-content: space-between;
       box-shadow: var(--shadow-subtle);
-      transition: all 0.3s ease;
+      transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
       position: relative;
     }
 
@@ -506,7 +505,7 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      transition: all 0.25s ease;
+      transition: border-color 0.25s ease, transform 0.25s ease;
     }
 
     .step-item:hover {
@@ -575,7 +574,7 @@
       flex-direction: column;
       justify-content: space-between;
       box-shadow: var(--shadow-subtle);
-      transition: all 0.3s ease;
+      transition: border-color 0.3s ease, transform 0.3s ease;
     }
 
     .card:hover {
@@ -623,7 +622,7 @@
       font-family: var(--font-mono);
       color: var(--text-main);
       box-shadow: var(--shadow-subtle);
-      transition: all 0.2s ease;
+      transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
     }
     .tech-chip:hover {
       border-color: var(--brand-light);
@@ -716,82 +715,270 @@
       line-height: 1.65;
     }
 
-    .form-wrapper {
-      max-width: 580px;
+    /* ========================================================
+       QUIZ CARD СТИЛИ (Ширина до 420px, полная адаптивность)
+       ======================================================== */
+    .quiz-card {
+      max-width: 420px;
       margin: 0 auto;
       border: 1px solid var(--border-color);
-      padding: 44px 36px;
+      padding: 30px 24px 28px;
       border-radius: var(--radius);
       background: var(--bg-surface);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       box-shadow: var(--shadow-subtle);
+      position: relative;
     }
 
-    .field {
+    /* Верхняя панель навигации квиза (Кнопка Назад + Точки) */
+    .quiz-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       margin-bottom: 22px;
+      min-height: 28px;
     }
 
-    .field label {
-      display: block;
-      font-weight: 600;
-      font-size: 0.9rem;
-      margin-bottom: 8px;
-      color: var(--text-main);
-    }
-
-    .field input, .field select, .field textarea {
-      width: 100%;
-      padding: 13px 16px;
+    .quiz-back-btn {
+      background: transparent;
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-sm);
-      font-size: 0.98rem;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-weight: 600;
       font-family: inherit;
-      color: #FFFFFF;
-      background-color: rgba(9, 13, 22, 0.7);
+      padding: 4px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
       transition: all 0.2s ease;
+      visibility: hidden; /* Скрыта на шаге 1 */
     }
-    .field input:focus, .field select:focus, .field textarea:focus {
+
+    .quiz-back-btn.visible {
+      visibility: visible;
+    }
+
+    .quiz-back-btn:hover {
       border-color: var(--brand-light);
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+      color: #FFFFFF;
+      background: rgba(59, 130, 246, 0.1);
+    }
+
+    .quiz-progress {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin: 0 auto;
+    }
+
+    .quiz-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #475569;
+      transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .quiz-dot.completed {
+      background: #10B981;
+      transform: scale(1.05);
+    }
+
+    .quiz-dot.current {
+      background: #F59E0B;
+      transform: scale(1.25);
+      box-shadow: 0 0 10px rgba(245, 158, 11, 0.65);
+    }
+
+    /* Шаги и плавная анимация появления без прыжков */
+    .quiz-step {
+      display: none;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .quiz-step.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .quiz-question-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 6px;
+      text-align: center;
       outline: none;
     }
 
-    .checkbox-field {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 24px;
-      font-size: 0.85rem;
+    .quiz-question-sub {
+      font-size: 0.88rem;
       color: var(--text-muted);
-    }
-
-    .checkbox-field input {
-      margin-top: 4px;
-      width: 18px;
-      height: 18px;
-      accent-color: var(--brand-primary);
-    }
-
-    .form-status {
-      display: none;
-      padding: 14px;
-      border-radius: var(--radius-sm);
-      font-size: 0.9rem;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
       text-align: center;
     }
-    .form-status.success {
-      display: block;
-      background: rgba(16, 185, 129, 0.15);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      color: #34D399;
+
+    /* Варианты ответов */
+    .quiz-options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
-    .form-status.error {
+
+    .quiz-option-btn {
+      width: 100%;
+      padding: 14px 16px;
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      color: var(--text-main);
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-family: inherit;
+      text-align: left;
+      cursor: pointer;
+      transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      outline: none;
+    }
+
+    .quiz-option-btn:hover {
+      background: rgba(59, 130, 246, 0.14);
+      border-color: var(--brand-light);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(59, 130, 246, 0.2);
+    }
+
+    .quiz-option-btn:active {
+      transform: scale(0.98);
+    }
+
+    .quiz-option-price {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--brand-light);
+    }
+
+    /* Инпуты на шаге 3 */
+    .quiz-input-field {
+      margin-bottom: 16px;
+    }
+
+    .quiz-input-field label {
       display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--text-main);
+    }
+
+    .quiz-input-field label .req {
+      color: #EF4444;
+    }
+
+    .quiz-input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: #FFFFFF;
+      background-color: rgba(9, 13, 22, 0.7);
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .quiz-input:focus {
+      border-color: var(--brand-light);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    }
+
+    .quiz-input.error {
+      border-color: #EF4444;
+      box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.3);
+    }
+
+    .quiz-error-text {
+      display: none;
+      color: #F87171;
+      font-size: 0.82rem;
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+
+    .quiz-error-text.show {
+      display: block;
+    }
+
+    .quiz-consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      cursor: pointer;
+      line-height: 1.45;
+    }
+
+    .quiz-consent input {
+      margin-top: 3px;
+      width: 16px;
+      height: 16px;
+      accent-color: var(--brand-primary);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .quiz-consent.has-error {
+      color: #F87171;
+    }
+
+    /* Экран успешной отправки */
+    .quiz-success-box {
+      text-align: center;
+      padding: 24px 8px;
+    }
+
+    .quiz-success-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: rgba(16, 185, 129, 0.15);
+      border: 2px solid #10B981;
+      color: #10B981;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin: 0 auto 16px;
+    }
+
+    /* Блок ошибки отправки с кнопкой WhatsApp */
+    .quiz-send-error {
+      display: none;
       background: rgba(239, 68, 68, 0.15);
       border: 1px solid rgba(239, 68, 68, 0.3);
-      color: #F87171;
+      padding: 14px;
+      border-radius: var(--radius-sm);
+      margin-bottom: 16px;
+      font-size: 0.88rem;
+      color: #FCA5A5;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .quiz-send-error.show {
+      display: block;
     }
 
     .modal-link-btn {
@@ -890,10 +1077,12 @@
       padding: 20px;
       z-index: 2000;
       opacity: 0;
+      transition: opacity 0.2s ease;
     }
 
     .modal-overlay.active {
       display: flex;
+      opacity: 1;
     }
 
     .modal-window {
@@ -907,6 +1096,12 @@
       flex-direction: column;
       overflow: hidden;
       border: 1px solid rgba(59, 130, 246, 0.25);
+      transform: scale(0.96);
+      transition: transform 0.2s ease;
+    }
+
+    .modal-overlay.active .modal-window {
+      transform: scale(1);
     }
 
     .modal-header {
@@ -992,6 +1187,35 @@
       justify-content: flex-end;
     }
 
+    /* Устранение мигания (FOUC): начальное состояние элементов с анимацией */
+    .motion-hero-item, .motion-fade, .motion-card {
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    /* Запасной вариант, если CDN не загрузился или скрипты отключены */
+    .motion-ready .motion-hero-item,
+    .motion-ready .motion-fade,
+    .motion-ready .motion-card {
+      opacity: 1;
+    }
+
+    /* Поддержка режима пониженного движения (prefers-reduced-motion) */
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+      .motion-hero-item, .motion-fade, .motion-card {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      .pulse-dot {
+        animation: none !important;
+      }
+    }
+
     @media (max-width: 768px) {
       .menu-toggle {
         display: block;
@@ -1020,12 +1244,12 @@
         gap: 28px;
       }
 
-      .form-wrapper {
-        padding: 28px 20px;
-      }
-
       .footer-content {
         grid-template-columns: 1fr;
+      }
+
+      .quiz-card {
+        padding: 24px 16px;
       }
     }
   </style>
@@ -1062,7 +1286,7 @@
         </ul>
       </nav>
       
-      <a href="#discuss" class="btn btn-main header-cta">Оставить заявку</a>
+      <a href="#discuss" class="btn btn-main header-cta">Рассчитать проект</a>
     </div>
   </header>
 
@@ -1079,7 +1303,7 @@
           <h1 class="motion-hero-item">Инженерная веб-разработка для бизнеса в Казахстане и СНГ</h1>
           <p class="motion-hero-item">Создаю чистые, скоростные и адаптивные веб-решения под задачи бизнеса. Индивидуальная разработка с акцентом на надежность, структуру и соблюдение сроков.</p>
           <div class="hero-buttons motion-hero-item">
-            <a href="#discuss" class="btn btn-main">Обсудить проект</a>
+            <a href="#discuss" class="btn btn-main">Рассчитать проект</a>
             <a href="#projects" class="btn btn-outline">Посмотреть работы</a>
           </div>
         </div>
@@ -1100,7 +1324,7 @@
           </div>
 
           <div class="grid-4 motion-stagger-group">
-            <!-- 1. Лендинг (Спецтариф с неоновым выделением) -->
+            <!-- 1. Лендинг -->
             <div class="pricing-card featured-cyan motion-card">
               <span class="pricing-badge cyan">Спецпредложение</span>
               <div>
@@ -1114,7 +1338,7 @@
               <a href="#discuss" class="btn btn-main" style="width: 100%; background: var(--accent-cyan-gradient);">Заказать лендинг</a>
             </div>
 
-            <!-- 2. Корпоративный (Спецтариф) -->
+            <!-- 2. Корпоративный -->
             <div class="pricing-card featured motion-card">
               <span class="pricing-badge">Спецтариф</span>
               <div>
@@ -1165,7 +1389,6 @@
             <p>Понятные и предсказуемые этапы реализации каждого проекта</p>
           </div>
           <div class="process-grid motion-stagger-group">
-            
             <div class="step-item motion-card">
               <div class="step-illustration">
                 <svg viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1254,7 +1477,6 @@
               <h3 style="font-size: 1.15rem; margin-bottom: 8px; color: #FFFFFF;">Поддержка</h3>
               <p style="color: var(--text-muted); font-size: 0.92rem;">Обновления, исправления и дальнейшие доработки.</p>
             </div>
-
           </div>
 
           <!-- Технологический стек -->
@@ -1283,25 +1505,16 @@
 
           <!-- Казахстан -->
           <div class="country-block motion-fade">
-            <div class="country-title">
-              Проекты в Казахстане
-            </div>
+            <div class="country-title">Проекты в Казахстане</div>
             <div class="grid-2 motion-stagger-group">
               <div class="card motion-card">
                 <div>
                   <span class="card-meta">Сфера услуг • Алматы</span>
                   <h4>APAN BANYA</h4>
-                  <p>
-                    Для проекта APAN BANYA я разработал цифровое представление бренда в интернете: от продуманной структуры страниц до финальной реализации интерфейса. Выстроил подачу услуг так, чтобы посетитель мог быстро ознакомиться с предложением и перейти к бронированию. Отдельное внимание уделил мобильной адаптации и удобству навигации.
-                  </p>
+                  <p>Для проекта APAN BANYA я разработал цифровое представление бренда в интернете: от продуманной структуры страниц до финальной реализации интерфейса. Выстроил подачу услуг так, чтобы посетитель мог быстро ознакомиться с предложением и перейти к бронированию. Отдельное внимание уделил мобильной адаптации и удобству навигации.</p>
                 </div>
                 <div style="margin-top: 24px;">
-                  <a 
-                    href="https://ooon.ai/kz/almaty/banya/apan.banya/ru/" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    class="modal-link-btn"
-                  >
+                  <a href="https://ooon.ai/kz/almaty/banya/apan.banya/ru/" target="_blank" rel="noopener noreferrer" class="modal-link-btn">
                     Посмотреть проект APAN BANYA &rarr;
                   </a>
                 </div>
@@ -1311,17 +1524,10 @@
                 <div>
                   <span class="card-meta">Образование • Алматы</span>
                   <h4>КРМУ</h4>
-                  <p>
-                    В рамках проекта КРМУ была разработана масштабная структура университетского сайта с большим объёмом информации. Я спроектировал логику расположения контента, навигацию и адаптивную вёрстку для удобной работы с сайтом на любых мобильных и десктопных устройствах.
-                  </p>
+                  <p>В рамках проекта КРМУ была разработана масштабная структура университетского сайта с большим объёмом информации. Я спроектировал логику расположения контента, навигацию и адаптивную вёрстку для удобной работы с сайтом на любых мобильных и десктопных устройствах.</p>
                 </div>
                 <div style="margin-top: 24px;">
-                  <a 
-                    href="https://new.krmu.edu.kz/" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    class="modal-link-btn"
-                  >
+                  <a href="https://new.krmu.edu.kz/" target="_blank" rel="noopener noreferrer" class="modal-link-btn">
                     Перейти на сайт new.krmu.edu.kz &rarr;
                   </a>
                 </div>
@@ -1331,25 +1537,16 @@
 
           <!-- СНГ / Россия -->
           <div class="country-block motion-fade" style="margin-bottom: 0;">
-            <div class="country-title">
-              Проекты в СНГ
-            </div>
+            <div class="country-title">Проекты в СНГ</div>
             <div class="grid-2 motion-stagger-group">
               <div class="card motion-card">
                 <div>
                   <span class="card-meta">Автобизнес • Детейлинг</span>
                   <h4>CarBase</h4>
-                  <p>
-                    Разработка веб-сайта для детейлинг-центра и автомойки CarBase. Продуманный каталог услуг по уходу за автомобилями, детализированные прайс-листы, примеры работ и удобный интерфейс записи на обслуживание.
-                  </p>
+                  <p>Разработка веб-сайта для детейлинг-центра и автомойки CarBase. Продуманный каталог услуг по уходу за автомобилями, детализированные прайс-листы, примеры работ и удобный интерфейс записи на обслуживание.</p>
                 </div>
                 <div style="margin-top: 24px;">
-                  <a 
-                    href="https://carbase-dc.ru/" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    class="modal-link-btn"
-                  >
+                  <a href="https://carbase-dc.ru/" target="_blank" rel="noopener noreferrer" class="modal-link-btn">
                     Перейти на сайт carbase-dc.ru &rarr;
                   </a>
                 </div>
@@ -1359,17 +1556,10 @@
                 <div>
                   <span class="card-meta">Творчество • Образование</span>
                   <h4>Академия Игоря Крутого</h4>
-                  <p>
-                    Веб-ресурс для филиала Академии Игоря Крутого в Санкт-Петербурге. Презентация творческих направлений обучения (вокал, хореография, актерское мастерство), расписания, событий и запись на прослушивания.
-                  </p>
+                  <p>Веб-ресурс для филиала Академии Игоря Крутого в Санкт-Петербурге. Презентация творческих направлений обучения (вокал, хореография, актерское мастерство), расписания, событий и запись на прослушивания.</p>
                 </div>
                 <div style="margin-top: 24px;">
-                  <a 
-                    href="https://academy-ik-spb.ru/" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    class="modal-link-btn"
-                  >
+                  <a href="https://academy-ik-spb.ru/" target="_blank" rel="noopener noreferrer" class="modal-link-btn">
                     Перейти на сайт academy-ik-spb.ru &rarr;
                   </a>
                 </div>
@@ -1484,77 +1674,143 @@
         </div>
       </section>
 
-      <!-- Раздел: Обсудить проект -->
+      <!-- ========================================================
+           РАЗДЕЛ: QUIZ ФОРМА РАСЧЕТА ПРОЕКТА
+           ======================================================== -->
       <section id="discuss">
         <div class="container">
           <div class="section-header motion-fade">
             <h2>Давайте обсудим ваш проект</h2>
-            <p>Есть идея для сайта или готовое ТЗ? Свяжитесь со мной — рассчитаем точные сроки и стоимость.</p>
+            <p>Ответьте на 3 простых вопроса — рассчитаем сроки и стоимость под вашу задачу</p>
           </div>
           
-          <div class="form-wrapper motion-fade">
-            <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-              <input type="hidden" name="access_key" value="2c28b566-fe4c-4818-ba5c-5c5da5dd8e7a">
-              <input type="hidden" name="subject" value="Новая заявка с сайта Auguxt Dev">
-              <input type="hidden" name="from_name" value="Auguxt Dev Site">
+          <div class="quiz-card motion-fade">
+            <!-- Верхняя панель: Кнопка "Назад" и точки прогресса -->
+            <div class="quiz-top-bar">
+              <button type="button" class="quiz-back-btn" id="quizBackBtn" aria-label="Вернуться к предыдущему вопросу">
+                &larr; Назад
+              </button>
+              <div class="quiz-progress" id="quizProgressDots" aria-label="Прогресс опроса">
+                <span class="quiz-dot current" data-step-dot="1"></span>
+                <span class="quiz-dot" data-step-dot="2"></span>
+                <span class="quiz-dot" data-step-dot="3"></span>
+              </div>
+              <div style="width: 54px;" aria-hidden="true"></div> <!-- Балансир для центрирования точек -->
+            </div>
+
+            <!-- Шаг 1: Выбор тарифа / задачи -->
+            <div class="quiz-step active" data-quiz-step="1">
+              <h3 class="quiz-question-title" tabindex="-1">Что нужно сделать?</h3>
+              <p class="quiz-question-sub">Выберите интересующий тариф или тип работы</p>
               
-              <!-- Защита от ботов (Honeypot) -->
-              <input type="checkbox" name="botcheck" class="hidden" style="display: none !important;" tabindex="-1" autocomplete="off">
+              <div class="quiz-options-list">
+                <button type="button" class="quiz-option-btn" data-key="service" data-value="Лендинг (20 700 ₸)">
+                  <span>🚀 Лендинг</span>
+                  <span class="quiz-option-price">20 700 ₸</span>
+                </button>
 
-              <div id="formStatus" class="form-status"></div>
+                <button type="button" class="quiz-option-btn" data-key="service" data-value="Корпоративный сайт (44 700 ₸)">
+                  <span>🏢 Корпоративный сайт</span>
+                  <span class="quiz-option-price">44 700 ₸</span>
+                </button>
 
-              <div class="field">
-                <label for="userName">Ваше имя *</label>
-                <input type="text" id="userName" name="name" required autocomplete="name" maxlength="70" placeholder="Иван">
+                <button type="button" class="quiz-option-btn" data-key="service" data-value="Интернет-магазин (299 000 ₸)">
+                  <span>🛍️️ Интернет-магазин</span>
+                  <span class="quiz-option-price">299 000 ₸</span>
+                </button>
+
+                <button type="button" class="quiz-option-btn" data-key="service" data-value="Доработки (от 10 000 ₸)">
+                  <span>🛠️ Доработки / Редизайн</span>
+                  <span class="quiz-option-price">от 10 000 ₸</span>
+                </button>
+
+                <button type="button" class="quiz-option-btn" data-key="service" data-value="Индивидуальный проект">
+                  <span>⚡ Индивидуальное решение</span>
+                  <span class="quiz-option-price">по ТЗ</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Шаг 2: Бюджет -->
+            <div class="quiz-step" data-quiz-step="2">
+              <h3 class="quiz-question-title" tabindex="-1">Какой бюджет?</h3>
+              <p class="quiz-question-sub">Ориентировочная сумма инвестиций в проект</p>
+              
+              <div class="quiz-options-list">
+                <button type="button" class="quiz-option-btn" data-key="budget" data-value="До 100 000 ₸">
+                  <span>До 100 000 ₸</span>
+                  <span class="quiz-option-price">Старт</span>
+                </button>
+
+                <button type="button" class="quiz-option-btn" data-key="budget" data-value="100 000 – 300 000 ₸">
+                  <span>100 000 – 300 000 ₸</span>
+                  <span class="quiz-option-price">Оптимум</span>
+                </button>
+
+                <button type="button" class="quiz-option-btn" data-key="budget" data-value="300 000 ₸+">
+                  <span>300 000 ₸+</span>
+                  <span class="quiz-option-price">PRO</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Шаг 3: Контактные данные -->
+            <div class="quiz-step" data-quiz-step="3">
+              <h3 class="quiz-question-title" tabindex="-1">Куда написать?</h3>
+              <p class="quiz-question-sub">Оставьте контакты для отправки сметы и обсуждения</p>
+              
+              <div id="quizSendError" class="quiz-send-error">
+                Не удалось отправить заявку. Пожалуйста, 
+                <a href="https://api.whatsapp.com/send/?phone=77087273646" target="_blank" rel="noopener noreferrer" style="color: #FFFFFF; text-decoration: underline; font-weight: 700;">напишите напрямую в WhatsApp</a>.
               </div>
 
-              <div class="field">
-                <label for="userEmail">Электронная почта *</label>
-                <input type="email" id="userEmail" name="email" required autocomplete="email" maxlength="100" placeholder="example@domain.com">
-              </div>
+              <form id="quizContactForm" novalidate>
+                <!-- Защита от спам-ботов Web3Forms -->
+                <input type="checkbox" name="botcheck" id="quizBotCheck" style="display: none !important;" tabindex="-1" autocomplete="off">
 
-              <div class="field">
-                <label for="userPhone">Номер телефона / WhatsApp</label>
-                <input type="tel" id="userPhone" name="phone" maxlength="30" placeholder="+7 (___) ___-__-__">
-              </div>
+                <div class="quiz-input-field">
+                  <label for="quizName">Ваше имя</label>
+                  <input type="text" id="quizName" class="quiz-input" placeholder="Иван" autocomplete="name" maxlength="70">
+                </div>
 
-              <div class="field">
-                <label for="userCompany">Название компании</label>
-                <input type="text" id="userCompany" name="company" maxlength="100" placeholder="ТОО / ИП / Бренд">
-              </div>
+                <div class="quiz-input-field">
+                  <label for="quizContact">Телефон / WhatsApp <span class="req">*</span></label>
+                  <input type="tel" id="quizContact" class="quiz-input" placeholder="+7 (___) ___-__-__" autocomplete="tel" required maxlength="30">
+                  <div class="quiz-error-text" id="quizContactError">Введите корректный номер телефона (минимум 10 цифр)</div>
+                </div>
 
-              <div class="field">
-                <label for="userPlan">Интересующий тариф *</label>
-                <select id="userPlan" name="plan" required>
-                  <option value="" disabled selected>Выберите тариф...</option>
-                  <option value="Лендинг (20 700 ₸)">Лендинг (Спецтариф) — 20 700 ₸</option>
-                  <option value="Корпоративный (44 700 ₸)">Корпоративный (Спецтариф) — 44 700 ₸</option>
-                  <option value="Интернет-магазин (299 000 ₸)">Интернет-магазин — 299 000 ₸</option>
-                  <option value="Доработки (от 10 000 ₸)">Технические доработки — от 10 000 ₸</option>
-                  <option value="Индивидуальный проект">Индивидуальный проект / Другое</option>
-                </select>
-              </div>
-
-              <div class="field">
-                <label for="userMessage">Описание проекта *</label>
-                <textarea id="userMessage" name="message" rows="4" required maxlength="2500" placeholder="Опишите задачу, примерные сроки или вопросы..."></textarea>
-              </div>
-
-              <div class="checkbox-field">
-                <input type="checkbox" id="userConsent" name="consent" required>
-                <label for="userConsent">
-                  Даю согласие на сбор и обработку персональных данных в соответствии с 
-                  <button type="button" class="modal-link-btn" onclick="openModal('privacyModal')">Политикой конфиденциальности (Закон РК № 94-V)</button>.
+                <label class="quiz-consent" id="quizConsentContainer">
+                  <!-- Галочка изначально СНЯТА для осознанного согласия -->
+                  <input type="checkbox" id="quizConsentCheck" required>
+                  <span>
+                    Даю согласие на обработку персональных данных (Закон РК № 94-V) в соответствии с 
+                    <button type="button" class="modal-link-btn" onclick="openModal('privacyModal')">Политикой конфиденциальности</button>.
+                  </span>
                 </label>
-              </div>
+                <div class="quiz-error-text" id="quizConsentError" style="margin-top: -12px; margin-bottom: 14px;">Для отправки необходимо подтвердить согласие с политикой</div>
 
-              <button type="submit" id="submitBtn" class="btn btn-main" style="width: 100%;">Отправить заявку</button>
-            </form>
+                <button type="submit" id="quizSubmitBtn" class="btn btn-main" style="width: 100%;">
+                  Отправить заявку
+                </button>
+              </form>
+            </div>
+
+            <!-- Экран благодарности после подтверждённой успешной отправки -->
+            <div class="quiz-step" id="quizSuccessStep">
+              <div class="quiz-success-box">
+                <div class="quiz-success-icon">✓</div>
+                <h3 class="quiz-question-title" tabindex="-1">Спасибо!</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 8px;">
+                  Мы скоро с вами свяжемся для презентации расчета и обсуждения деталей!
+                </p>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
-      <!-- Раздел: Связаться со мной (Только WhatsApp) -->
+      <!-- Раздел: Связаться со мной -->
       <section id="contact-me">
         <div class="container">
           <div class="contacts-box motion-fade">
@@ -1625,12 +1881,12 @@
     </footer>
   </div>
 
-  <!-- 1. Модалка: Политика конфиденциальности (Закон РК № 94-V) -->
+  <!-- 1. Модалка: Политика конфиденциальности -->
   <div class="modal-overlay" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyTitle" onclick="handleOverlayClick(event, 'privacyModal')">
     <div class="modal-window">
       <div class="modal-header">
         <h3 id="privacyTitle">Политика конфиденциальности и обработки персональных данных</h3>
-        <button type="button" class="modal-close-btn" onclick="closeModal('privacyModal')" aria-label="Закрыть">&times;</button>
+        <button type="button" class="modal-close-btn" onclick="closeModal('privacyModal')" aria-label="Закрыть модальное окно">&times;</button>
       </div>
       <div class="modal-body">
         <span class="law-badge">Закон Республики Казахстан № 94-V «О персональных данных и их защите»</span>
@@ -1638,10 +1894,7 @@
         
         <h4>1. Общие положения и оператор данных</h4>
         <p>
-          Настоящая Политика определяет порядок сбора, накопления, хранения, использования и защиты персональных данных, осуществляемый физическим лицом, осуществляющим частную профессиональную деятельность — <strong>Хайрола Ибрагим Санжарұлы</strong> (ИИН: <strong>081203551543</strong>), выступающим под коммерческим обозначением <strong>Auguxt Dev</strong> (далее — «Оператор»), в отношении пользователей веб-ресурса <strong>auguxt.github.io</strong>.
-        </p>
-        <p>
-          Оператор действует в строгом соответствии с Конституцией Республики Казахстан, Законом РК от 21 мая 2013 года № 94-V «О персональных данных и их защите» и нормативными правовыми актами РК в сфере информационной безопасности.
+          Настоящая Политика определяет порядок сбора, накопления, хранения, использования и защиты персональных данных, осуществляемый физическим лицом — <strong>Хайрола Ибрагим Санжарұлы</strong> (ИИН: <strong>081203551543</strong>), выступающим под коммерческим обозначением <strong>Auguxt Dev</strong> (далее — «Оператор»), в отношении пользователей веб-ресурса <strong>auguxt.github.io</strong>.
         </p>
 
         <h4>2. Контактная информация Оператора</h4>
@@ -1649,50 +1902,26 @@
           <li><strong>ФИО:</strong> Хайрола Ибрагим Санжарұлы</li>
           <li><strong>ИИН:</strong> 081203551543</li>
           <li><strong>Город:</strong> г. Алматы, Республика Казахстан</li>
-          <li><strong>Контактный телефон / WhatsApp:</strong> +7 (708) 727-36-46</li>
+          <li><strong>Телефон / WhatsApp:</strong> +7 (708) 727-36-46</li>
           <li><strong>Официальный Email:</strong> ibrahimkhairulin@gmail.com</li>
         </ul>
 
-        <h4>3. Состав и категории собираемых данных</h4>
-        <p>Оператор собирает исключительно те данные, которые необходимы для установления делового контакта и формирования коммерческого предложения:</p>
+        <h4>3. Состав собираемых данных</h4>
+        <p>Оператор собирает исключительно сведения, необходимые для формирования коммерческого предложения:</p>
         <ul>
           <li>Имя заявителя или контактного лица;</li>
-          <li>Адрес электронной почты (email);</li>
-          <li>Номер мобильного телефона (включая контакты в мессенджере WhatsApp);</li>
-          <li>Наименование компании / юридического лица / ИП (при указании);</li>
-          <li>Выбранный тариф и исходное техническое описание проекта;</li>
-          <li>Технические обезличенные сведения (IP-адрес, тип браузера, файлы cookie для сессии), фиксируемые веб-сервером.</li>
+          <li>Номер мобильного телефона (включая привязанный аккаунт в WhatsApp);</li>
+          <li>Выбранный тариф, ориентировочный бюджет и исходное описание задачи.</li>
         </ul>
 
-        <h4>4. Правовые основания и цели обработки данных</h4>
-        <p>Обработка данных осуществляется на основании прямого, информированного и добровольного согласия субъекта персональных данных, выражаемого путём заполнения формы обратной связи на сайте.</p>
-        <ul>
-          <li>Обработка входящих клиентских запросов и предварительный расчет сметы на разработку сайтов;</li>
-          <li>Проведение переговоров, заключение договоров на оказание услуг по веб-разработке и составление технических заданий;</li>
-          <li>Обеспечение оперативной коммуникации в рамках согласования прототипов и сдачи проектов;</li>
-          <li>Исполнение налоговых и юридических обязательств в соответствии с законодательством Республики Казахстан.</li>
-        </ul>
-
-        <h4>5. Порядок сбора, передачи и защита информации</h4>
+        <h4>4. Трансграничная передача и сторонние обработчики (Web3Forms)</h4>
         <p>
-          Для безопасной передачи заявок используется защищённое шифрованное SSL/TLS соединение и шлюз Web3Forms. Оператор гарантирует конфиденциальность и обязуется не продавать, не сдавать в аренду и не передавать данные третьим лицам, за исключением случаев, прямо предусмотренных действующим законодательством Республики Казахстан.
+          Для технической доставки и шифрования клиентских заявок Оператор использует сторонний облачный шлюз <strong>Web3Forms</strong>. Заполняя форму квиза, пользователь выражает информированное согласие на трансграничную передачу введённых данных на сервера шлюза исключительно для моментальной доставки уведомления на защищённый email Оператора. Передача данных третьим лицам в рекламных, аналитических или коммерческих целях категорически исключена.
         </p>
 
-        <h4>6. Сроки хранения и локализация данных</h4>
+        <h4>5. Права субъекта персональных данных</h4>
         <p>
-          Персональные данные хранятся не дольше, чем этого требуют цели их обработки, либо до момента отзыва согласия субъектом. Персональные данные хранятся на защищённых электронных носителях с применением организационных и технических мер защиты.
-        </p>
-
-        <h4>7. Права субъекта персональных данных и порядок отзыва согласия</h4>
-        <p>В соответствии со статьёй 24 Закона РК «О персональных данных и их защите» субъект данных вправе:</p>
-        <ul>
-          <li>Знать о наличии у Оператора своих персональных данных и получать информацию о порядке их обработки;</li>
-          <li>Требовать изменения или дополнения своих персональных данных при наличии законных оснований;</li>
-          <li>Требовать уничтожения (блокирования) своих персональных данных;</li>
-          <li>Отозвать согласие на сбор и обработку данных в любой момент.</li>
-        </ul>
-        <p>
-          Для реализации своих прав или отзыва согласия направьте письменное обращение на адрес электронной почты <strong>ibrahimkhairulin@gmail.com</strong> с темой «Запрос по персональным данным». Запрос обрабатывается Оператором в срок не более 3 (трёх) рабочих дней.
+          В соответствии со ст. 24 Закона РК № 94-V вы вправе в любой момент отозвать своё согласие или потребовать уничтожения данных, направив письмо на <strong>ibrahimkhairulin@gmail.com</strong>. Запрос исполняется в срок не более 3 рабочих дней.
         </p>
       </div>
       <div class="modal-footer">
@@ -1706,7 +1935,7 @@
     <div class="modal-window">
       <div class="modal-header">
         <h3 id="termsTitle">Условия обслуживания</h3>
-        <button type="button" class="modal-close-btn" onclick="closeModal('termsModal')" aria-label="Закрыть">&times;</button>
+        <button type="button" class="modal-close-btn" onclick="closeModal('termsModal')" aria-label="Закрыть модальное окно">&times;</button>
       </div>
       <div class="modal-body">
         <h4>1. Оплата</h4>
@@ -1725,10 +1954,10 @@
     <div class="modal-window">
       <div class="modal-header">
         <h3 id="cookieTitle">Файлы Cookie</h3>
-        <button type="button" class="modal-close-btn" onclick="closeModal('cookieModal')" aria-label="Закрыть">&times;</button>
+        <button type="button" class="modal-close-btn" onclick="closeModal('cookieModal')" aria-label="Закрыть модальное окно">&times;</button>
       </div>
       <div class="modal-body">
-        <p>Сайт использует строго технические cookie для корректной навигации и сохранения состояния сессии. Маркетинговые трекеры отсутствуют.</p>
+        <p>Сайт использует только базовые технические cookie сессии. Маркетинговые и шпионские трекеры отсутствуют.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-main" onclick="closeModal('cookieModal')">Закрыть</button>
@@ -1741,10 +1970,10 @@
     <div class="modal-window">
       <div class="modal-header">
         <h3 id="refundTitle">Политика возврата средств</h3>
-        <button type="button" class="modal-close-btn" onclick="closeModal('refundModal')" aria-label="Закрыть">&times;</button>
+        <button type="button" class="modal-close-btn" onclick="closeModal('refundModal')" aria-label="Закрыть модальное окно">&times;</button>
       </div>
       <div class="modal-body">
-        <p>100% возврат средств при отказе до начала работ по проектированию. При отказе во время разработки возврат осуществляется за вычетом фактически закрытых этапов.</p>
+        <p>100% возврат средств при отказе до начала проектных работ. При отказе во время разработки возврат рассчитывается за вычетом фактически закрытых этапов.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-main" onclick="closeModal('refundModal')">Закрыть</button>
@@ -1752,9 +1981,13 @@
     </div>
   </div>
 
-  <!-- Скрипт 1: Движок Живого Плавного Космоса -->
+  <!-- Скрипт 1: Движок Космоса с проверкой prefers-reduced-motion -->
   <script>
     (function initCosmos() {
+      // Проверяем prefers-reduced-motion: если включен — не нагружаем процессор и аккумулятор
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced) return;
+
       const canvas = document.getElementById('cosmosCanvas');
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
@@ -1783,7 +2016,10 @@
         scrollY = window.scrollY;
       }, { passive: true });
 
-      const STAR_COUNT = Math.floor((width * height) / 3800);
+      // Оптимизация: на мобильных экранах уменьшаем количество звезд в 2 раза
+      const isMobile = window.innerWidth < 768;
+      const densityDivider = isMobile ? 7000 : 3800;
+      const STAR_COUNT = Math.floor((width * height) / densityDivider);
       let stars = [];
 
       function initStars() {
@@ -1793,12 +2029,12 @@
           stars.push({
             x: Math.random() * width,
             y: Math.random() * height,
-            baseSize: depth < 0.65 ? Math.random() * 1.1 + 0.3 : Math.random() * 2.2 + 0.8,
+            baseSize: depth < 0.65 ? Math.random() * 1.1 + 0.3 : Math.random() * 2.0 + 0.6,
             depth: depth + 0.15,
-            driftSpeedX: (Math.random() * 0.12 + 0.04) * (depth + 0.2),
-            driftSpeedY: (Math.random() * 0.08 + 0.02) * (depth + 0.2),
+            driftSpeedX: (Math.random() * 0.10 + 0.03) * (depth + 0.2),
+            driftSpeedY: (Math.random() * 0.06 + 0.02) * (depth + 0.2),
             alpha: Math.random() * 0.6 + 0.25,
-            twinkleSpeed: Math.random() * 0.025 + 0.008,
+            twinkleSpeed: Math.random() * 0.02 + 0.008,
             twinklePhase: Math.random() * Math.PI * 2,
             color: Math.random() > 0.4 ? '#F0F4FF' : (Math.random() > 0.5 ? '#93C5FD' : '#C7D2FE')
           });
@@ -1811,8 +2047,8 @@
         meteors.push({
           x: Math.random() * width * 1.3,
           y: Math.random() * height * 0.35,
-          length: Math.random() * 90 + 50,
-          speed: Math.random() * 9 + 11,
+          length: Math.random() * 80 + 40,
+          speed: Math.random() * 8 + 10,
           angle: Math.PI / 4.2 + (Math.random() - 0.5) * 0.15,
           opacity: 1
         });
@@ -1851,8 +2087,8 @@
           s.twinklePhase += s.twinkleSpeed;
           const currentAlpha = s.alpha * (0.55 + 0.45 * Math.sin(s.twinklePhase));
 
-          const offsetX = normX * 24 * s.depth;
-          const offsetY = (normY * 16 - (scrollY * 0.12)) * s.depth;
+          const offsetX = normX * 20 * s.depth;
+          const offsetY = (normY * 14 - (scrollY * 0.08)) * s.depth;
 
           let renderX = (s.x + offsetX) % width;
           let renderY = (s.y + offsetY) % height;
@@ -1866,16 +2102,10 @@
           ctx.beginPath();
           ctx.arc(renderX, renderY, sizePulse, 0, Math.PI * 2);
           ctx.fill();
-
-          if (s.baseSize > 1.6) {
-            ctx.fillStyle = 'rgba(96, 165, 250, 0.18)';
-            ctx.beginPath();
-            ctx.arc(renderX, renderY, sizePulse * 2.6, 0, Math.PI * 2);
-            ctx.fill();
-          }
         }
 
-        if (Math.random() < 0.007 && meteors.length < 2) {
+        // Метеоры спавнятся реже, только на десктопах
+        if (!isMobile && Math.random() < 0.005 && meteors.length < 2) {
           spawnMeteor();
         }
 
@@ -1883,7 +2113,7 @@
           const m = meteors[i];
           m.x -= Math.cos(m.angle) * m.speed;
           m.y += Math.sin(m.angle) * m.speed;
-          m.opacity -= 0.014;
+          m.opacity -= 0.015;
 
           if (m.opacity <= 0) {
             meteors.splice(i, 1);
@@ -1895,7 +2125,7 @@
 
           const grad = ctx.createLinearGradient(m.x, m.y, tailX, tailY);
           grad.addColorStop(0, `rgba(255, 255, 255, ${m.opacity})`);
-          grad.addColorStop(0.35, `rgba(147, 197, 253, ${m.opacity * 0.8})`);
+          grad.addColorStop(0.4, `rgba(147, 197, 253, ${m.opacity * 0.8})`);
           grad.addColorStop(1, 'rgba(59, 130, 246, 0)');
 
           ctx.strokeStyle = grad;
@@ -1914,39 +2144,57 @@
     })();
   </script>
 
-  <!-- Скрипт 2: Motion CDN Module -->
+  <!-- Скрипт 2: Анимации (С защитой от мигания и без конфликта с :hover transform) -->
   <script type="module">
-    import { animate, inView, stagger } from "https://cdn.jsdelivr.net/npm/motion@11.11.13/+esm";
+    // Запасной таймер: если CDN недоступен, через 150мс принудительно отображаем контент
+    const fallbackTimer = setTimeout(() => {
+      document.body.classList.add('motion-ready');
+    }, 150);
 
-    const heroElements = document.querySelectorAll('.motion-hero-item');
-    if (heroElements.length) {
-      animate(heroElements, 
-        { opacity: [0, 1], y: [20, 0] }, 
-        { delay: stagger(0.1), duration: 0.6, easing: [0.16, 1, 0.3, 1] }
-      );
+    try {
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const { animate, inView, stagger } = await import("https://cdn.jsdelivr.net/npm/motion@11.11.13/+esm");
+        clearTimeout(fallbackTimer);
+
+        // Hero
+        const heroElements = document.querySelectorAll('.motion-hero-item');
+        if (heroElements.length) {
+          animate(heroElements, 
+            { opacity: [0, 1] }, 
+            { delay: stagger(0.1), duration: 0.5, easing: [0.16, 1, 0.3, 1] }
+          );
+        }
+
+        // Fade секций
+        document.querySelectorAll('.motion-fade').forEach(el => {
+          inView(el, () => {
+            animate(el, { opacity: [0, 1] }, { duration: 0.5, easing: [0.16, 1, 0.3, 1] });
+          }, { margin: "-20px 0px" });
+        });
+
+        // Карточки: анимируем ТОЛЬКО opacity, чтобы inline transform не ломал hover-подъём карточек
+        document.querySelectorAll('.motion-stagger-group').forEach(group => {
+          inView(group, () => {
+            const cards = group.querySelectorAll('.motion-card');
+            animate(cards, 
+              { opacity: [0, 1] }, 
+              { delay: stagger(0.06), duration: 0.45, easing: [0.16, 1, 0.3, 1] }
+            );
+          }, { margin: "-20px 0px" });
+        });
+      } else {
+        clearTimeout(fallbackTimer);
+        document.body.classList.add('motion-ready');
+      }
+    } catch (e) {
+      clearTimeout(fallbackTimer);
+      document.body.classList.add('motion-ready');
     }
-
-    document.querySelectorAll('.motion-fade').forEach(el => {
-      inView(el, () => {
-        animate(el, { opacity: [0, 1], y: [24, 0] }, { duration: 0.55, easing: [0.16, 1, 0.3, 1] });
-      }, { margin: "-30px 0px" });
-    });
-
-    document.querySelectorAll('.motion-stagger-group').forEach(group => {
-      inView(group, () => {
-        const cards = group.querySelectorAll('.motion-card');
-        animate(cards, 
-          { opacity: [0, 1], y: [28, 0] }, 
-          { delay: stagger(0.08), duration: 0.5, easing: [0.16, 1, 0.3, 1] }
-        );
-      }, { margin: "-30px 0px" });
-    });
-
-    window.motionAnimate = animate;
   </script>
 
-  <!-- Скрипт 3: Интерактивность и безопасность формы -->
+  <!-- Скрипт 3: Меню, Модалки (с управлением фокусом) и Логика Quiz-формы -->
   <script>
+    // Мобильное меню
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
 
@@ -1978,12 +2226,8 @@
             openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
             openItem.querySelector('.faq-icon').textContent = '+';
             const openWrap = openItem.querySelector('.faq-answer-wrapper');
-            if (window.motionAnimate) {
-              window.motionAnimate(openWrap, { height: 0, opacity: 0 }, { duration: 0.2 });
-            } else {
-              openWrap.style.height = '0px';
-              openWrap.style.opacity = '0';
-            }
+            openWrap.style.height = '0px';
+            openWrap.style.opacity = '0';
           }
         });
 
@@ -1991,63 +2235,37 @@
           item.classList.add('active');
           btn.setAttribute('aria-expanded', 'true');
           icon.textContent = '−';
-          const fullHeight = content.offsetHeight;
-          if (window.motionAnimate) {
-            window.motionAnimate(wrapper, { height: [0, fullHeight], opacity: [0, 1] }, { duration: 0.25, easing: [0.16, 1, 0.3, 1] });
-          } else {
-            wrapper.style.height = fullHeight + 'px';
-            wrapper.style.opacity = '1';
-          }
+          wrapper.style.height = content.offsetHeight + 'px';
+          wrapper.style.opacity = '1';
         } else {
           item.classList.remove('active');
           btn.setAttribute('aria-expanded', 'false');
           icon.textContent = '+';
-          if (window.motionAnimate) {
-            window.motionAnimate(wrapper, { height: 0, opacity: 0 }, { duration: 0.2 });
-          } else {
-            wrapper.style.height = '0px';
-            wrapper.style.opacity = '0';
-          }
+          wrapper.style.height = '0px';
+          wrapper.style.opacity = '0';
         }
       });
     });
 
-    // Модальные окна
+    // Модальные окна с фиксацией фокуса (A11y)
     let previousActiveElement = null;
 
     function openModal(id) {
       previousActiveElement = document.activeElement;
       const modal = document.getElementById(id);
-      const modalWindow = modal.querySelector('.modal-window');
-      
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
 
-      if (window.motionAnimate) {
-        window.motionAnimate(modal, { opacity: [0, 1] }, { duration: 0.2 });
-        window.motionAnimate(modalWindow, { scale: [0.95, 1], opacity: [0, 1] }, { duration: 0.25, easing: [0.16, 1, 0.3, 1] });
-      } else {
-        modal.style.opacity = '1';
-      }
+      // Переносим фокус на кнопку закрытия внутри модалки
+      const closeBtn = modal.querySelector('.modal-close-btn');
+      if (closeBtn) closeBtn.focus();
     }
 
     function closeModal(id) {
       const modal = document.getElementById(id);
-      const modalWindow = modal.querySelector('.modal-window');
-
-      if (window.motionAnimate) {
-        Promise.all([
-          window.motionAnimate(modal, { opacity: 0 }, { duration: 0.18 }),
-          window.motionAnimate(modalWindow, { scale: 0.95, opacity: 0 }, { duration: 0.18 })
-        ]).then(() => {
-          modal.classList.remove('active');
-          document.body.style.overflow = '';
-          if (previousActiveElement) previousActiveElement.focus();
-        });
-      } else {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-      }
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+      if (previousActiveElement) previousActiveElement.focus();
     }
 
     function handleOverlayClick(event, id) {
@@ -2063,57 +2281,223 @@
       }
     });
 
-    // Форма: Валидация, Honeypot и Rate-Limiter
-    const form = document.getElementById('contactForm');
-    const statusDiv = document.getElementById('formStatus');
-    const submitBtn = document.getElementById('submitBtn');
-    let lastSubmissionTime = 0;
+    /* ========================================================
+       ОТЛАЖЕННАЯ ЛОГИКА QUIZ ФОРМЫ
+       ======================================================== */
+    document.addEventListener('DOMContentLoaded', () => {
+      const answers = {
+        service: '',
+        budget: '',
+        name: '',
+        contact: ''
+      };
 
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
+      let currentStep = 1;
+      const totalSteps = 3;
+      let isTransitioning = false; // Блокировка быстрого двойного тапа (300 мс)
 
-      const now = Date.now();
-      if (now - lastSubmissionTime < 60000) {
-        const waitSec = Math.ceil((60000 - (now - lastSubmissionTime)) / 1000);
-        statusDiv.textContent = `Пожалуйста, подождите ${waitSec} сек. перед повторной отправкой.`;
-        statusDiv.className = 'form-status error';
-        return;
+      const steps = document.querySelectorAll('[data-quiz-step]');
+      const dots = document.querySelectorAll('#quizProgressDots .quiz-dot');
+      const backBtn = document.getElementById('quizBackBtn');
+      const successStep = document.getElementById('quizSuccessStep');
+      const progressContainer = document.getElementById('quizProgressDots');
+      const contactForm = document.getElementById('quizContactForm');
+      const contactInput = document.getElementById('quizContact');
+      const contactError = document.getElementById('quizContactError');
+      const consentCheck = document.getElementById('quizConsentCheck');
+      const consentContainer = document.getElementById('quizConsentContainer');
+      const consentError = document.getElementById('quizConsentError');
+      const submitBtn = document.getElementById('quizSubmitBtn');
+      const sendErrorBox = document.getElementById('quizSendError');
+
+      // Обновление прогресс-точек
+      function updateQuizDots(stepNum) {
+        dots.forEach((dot, index) => {
+          dot.classList.remove('completed', 'current');
+          const dotStep = index + 1;
+          if (dotStep < stepNum) {
+            dot.classList.add('completed'); // Пройденный
+          } else if (dotStep === stepNum) {
+            dot.classList.add('current');   // Текущий
+          }
+        });
       }
 
-      const botCheck = form.querySelector('input[name="botcheck"]');
-      if (botCheck && botCheck.checked) {
-        return;
-      }
+      // Переход между шагами с установкой фокуса
+      function goToQuizStep(stepNum) {
+        if (isTransitioning) return;
+        isTransitioning = true;
 
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Отправка...';
-      statusDiv.className = 'form-status';
+        steps.forEach(step => step.classList.remove('active'));
 
-      const formData = new FormData(form);
+        const targetStepEl = document.querySelector(`[data-quiz-step="${stepNum}"]`);
+        if (targetStepEl) {
+          targetStepEl.classList.add('active');
+          currentStep = stepNum;
+          updateQuizDots(currentStep);
 
-      fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: formData
-      })
-      .then(async (response) => {
-        let json = await response.json();
-        if (response.status === 200) {
-          lastSubmissionTime = Date.now();
-          statusDiv.textContent = 'Спасибо! Ваша заявка успешно отправлена. Я свяжусь с вами в ближайшее время.';
-          statusDiv.className = 'form-status success';
-          form.reset();
-        } else {
-          statusDiv.textContent = json.message || 'Ошибка отправки. Пожалуйста, напишите напрямую в WhatsApp.';
-          statusDiv.className = 'form-status error';
+          // Показываем кнопку Назад только на шагах 2 и 3
+          if (currentStep > 1) {
+            backBtn.classList.add('visible');
+          } else {
+            backBtn.classList.remove('visible');
+          }
+
+          // Доступность: переносим фокус на заголовок вопроса или первое поле
+          setTimeout(() => {
+            if (currentStep === 3) {
+              const nameInput = document.getElementById('quizName');
+              if (nameInput) nameInput.focus();
+            } else {
+              const title = targetStepEl.querySelector('.quiz-question-title');
+              if (title) title.focus();
+            }
+          }, 50);
         }
-      })
-      .catch(() => {
-        statusDiv.textContent = 'Не удалось отправить форму. Пожалуйста, напишите мне напрямую в WhatsApp.';
-        statusDiv.className = 'form-status error';
-      })
-      .finally(() => {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Отправить заявку';
+
+        // Снимаем блокировку через 350 мс для предотвращения случайного выбора следующего ответа
+        setTimeout(() => {
+          isTransitioning = false;
+        }, 350);
+      }
+
+      // Кнопка "Назад"
+      backBtn.addEventListener('click', () => {
+        if (currentStep > 1 && !isTransitioning) {
+          goToQuizStep(currentStep - 1);
+        }
+      });
+
+      // Выбор вариантов ответов (Шаг 1 и Шаг 2)
+      document.querySelectorAll('.quiz-option-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (isTransitioning) return;
+
+          const key = btn.getAttribute('data-key');
+          const val = btn.getAttribute('data-value');
+          answers[key] = val;
+
+          if (currentStep < totalSteps) {
+            goToQuizStep(currentStep + 1);
+          }
+        });
+      });
+
+      // Валидация телефона в реальном времени (не менее 10 цифр)
+      function validatePhoneDigits(val) {
+        const digits = val.match(/\d/g);
+        return digits && digits.length >= 10;
+      }
+
+      contactInput.addEventListener('input', () => {
+        if (validatePhoneDigits(contactInput.value)) {
+          contactInput.classList.remove('error');
+          contactError.classList.remove('show');
+        }
+      });
+
+      consentCheck.addEventListener('change', () => {
+        if (consentCheck.checked) {
+          consentContainer.classList.remove('has-error');
+          consentError.classList.remove('show');
+        }
+      });
+
+      // Шаг 3: Отправка формы контактов
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        sendErrorBox.classList.remove('show');
+
+        // 1. Проверка чекбокса согласия
+        if (!consentCheck.checked) {
+          consentContainer.classList.add('has-error');
+          consentError.classList.add('show');
+          consentCheck.focus();
+          return;
+        } else {
+          consentContainer.classList.remove('has-error');
+          consentError.classList.remove('show');
+        }
+
+        // 2. Строгая проверка телефона (минимум 10 реальных цифр)
+        const phoneVal = contactInput.value.trim();
+        if (!validatePhoneDigits(phoneVal)) {
+          contactInput.classList.add('error');
+          contactError.classList.add('show');
+          contactInput.focus();
+          return;
+        } else {
+          contactInput.classList.remove('error');
+          contactError.classList.remove('show');
+        }
+
+        // Защита от ботов
+        const botCheck = document.getElementById('quizBotCheck');
+        if (botCheck && botCheck.checked) return;
+
+        answers.name = document.getElementById('quizName').value.trim() || 'Не указано';
+        answers.contact = phoneVal;
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Отправка...';
+
+        /* ========================================================
+           ОТПРАВКА ЧЕРЕЗ FORMSPREE (Альтернатива):
+           Раскомментируйте, если решите перейти на Formspree:
+
+           try {
+             const res = await fetch("https://formspree.io/f/YOUR_FORMSPREE_ID", {
+               method: "POST",
+               headers: { "Content-Type": "application/json", "Accept": "application/json" },
+               body: JSON.stringify(answers)
+             });
+             const data = await res.json();
+             if (!res.ok) throw new Error(data.error || 'Server error');
+           } catch (err) { ... }
+           ======================================================== */
+
+        // Надежная отправка через Web3Forms с проверкой res.ok и data.success
+        try {
+          const payload = {
+            access_key: "2c28b566-fe4c-4818-ba5c-5c5da5dd8e7a",
+            subject: `Заявка с сайта Auguxt Dev: ${answers.service || 'Обсуждение'}`,
+            from_name: "Auguxt Dev Quiz",
+            name: answers.name,
+            phone: answers.contact,
+            tariff: answers.service,
+            budget: answers.budget
+          };
+
+          const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            body: JSON.stringify(payload)
+          });
+
+          const data = await response.json();
+
+          // ЛИДЫ НЕ ТЕРЯЮТСЯ: проверяем реальный статус ответа
+          if (response.ok && data.success === true) {
+            // Успех — показываем финальный экран
+            steps.forEach(step => step.classList.remove('active'));
+            backBtn.classList.remove('visible');
+            progressContainer.style.display = 'none';
+            successStep.classList.add('active');
+            
+            const successTitle = successStep.querySelector('.quiz-question-title');
+            if (successTitle) successTitle.focus();
+          } else {
+            throw new Error(data.message || 'Ошибка сервера Web3Forms');
+          }
+        } catch (err) {
+          console.error("Ошибка при отправке заявки:", err);
+          sendErrorBox.classList.add('show');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Попробовать снова';
+        }
       });
     });
   </script>
